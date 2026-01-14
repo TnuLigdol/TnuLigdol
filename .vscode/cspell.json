@@ -1,0 +1,12 @@
+{
+  "words": ["ligdol"],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build",
+    "package.json",
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml"
+  ]
+}
