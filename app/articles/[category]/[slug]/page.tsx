@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { articles, getArticleBySlug, categoryLabels } from "@/content";
 import { StartupKitForm } from "@/components/forms/startup-kit-form";
+import { ContentRenderer } from "@/components/ui/content-renderer";
 
 interface PageProps {
   params: Promise<{
@@ -62,31 +63,10 @@ export default async function ArticlePage({ params }: PageProps) {
         </header>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none">
-          {article.content.split("\n").map((paragraph, i) => {
-            const trimmed = paragraph.trim();
-            if (!trimmed) return null;
-            if (trimmed.startsWith("## ")) {
-              return (
-                <h2 key={i} className="text-2xl font-bold mt-8 mb-4">
-                  {trimmed.replace("## ", "")}
-                </h2>
-              );
-            }
-            if (trimmed.startsWith("- ")) {
-              return (
-                <li key={i} className="text-muted-foreground">
-                  {trimmed.replace("- ", "")}
-                </li>
-              );
-            }
-            return (
-              <p key={i} className="text-muted-foreground mb-4">
-                {trimmed}
-              </p>
-            );
-          })}
-        </div>
+        <ContentRenderer
+          content={article.content}
+          className="prose prose-lg max-w-none"
+        />
       </article>
 
       <StartupKitForm />
