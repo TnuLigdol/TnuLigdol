@@ -45,3 +45,14 @@ body:has(.mobile-menu-open) {
     @apply border-border;
   }
 }
+
+/* Lock body scroll when mobile menu is open, restore on desktop */
+body:has(.mobile-menu-open) {
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  body:has(.mobile-menu-open) {
+    overflow: auto;
+  }
+}
