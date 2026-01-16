@@ -1,19 +1,21 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Hello World',
-  description: 'A simple Next.js hello world application',
-}
+  title: "תנו לגדול על שקט",
+  description: "הטלפון הראשון הוא טלפון בטוח - יוזמה להשהיית גיל קבלת הסמארטפון",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="he" dir="rtl">
+      <body className="min-h-screen bg-background text-text antialiased">
+        {children}
+      </body>
     </html>
-  )
+  );
 }
