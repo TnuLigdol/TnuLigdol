@@ -12,6 +12,9 @@
 
   /* Font */
   --font-family-sans: "Varela Round", system-ui, sans-serif;
+
+  /* Spacing */
+  --spacing-dropdown-min-w: 11.25rem;
 }
 
 /* Base styles */
