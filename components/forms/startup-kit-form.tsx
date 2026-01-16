@@ -2,13 +2,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface StartupKitFormProps {
   title?: string;
+  id?: string;
 }
 
 export function StartupKitForm({
   title = "קבלו את ערכת ההתנעה",
+  id = "startup-kit",
 }: StartupKitFormProps) {
   return (
-    <section id="startup-kit" className="py-16 md:py-24 bg-primary/5">
+    <section id={id} className="py-16 md:py-24 bg-primary/5">
       <div className="container mx-auto px-4">
         <Card className="max-w-2xl mx-auto">
           <CardHeader>

@@ -16,7 +16,7 @@ export default function Home() {
       <StoriesSection />
       <PhoneGuideSection />
       <FAQ />
-      <StartupKitForm title="הצטרפו אלינו" />
+      <StartupKitForm title="הצטרפו אלינו" id="join-us" />
     </>
   );
 }
