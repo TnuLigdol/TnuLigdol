@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 
+const siteUrl = "https://tnuligdol.co.il";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "תנו לגדול על שקט",
     template: "%s | תנו לגדול על שקט",
@@ -20,14 +23,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "he_IL",
+    url: siteUrl,
     siteName: "תנו לגדול על שקט",
     title: "תנו לגדול על שקט",
     description: "הטלפון הראשון הוא טלפון בטוח - יוזמה להשהיית גיל קבלת הסמארטפון",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "תנו לגדול על שקט - הטלפון הראשון הוא טלפון בטוח",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "תנו לגדול על שקט",
     description: "הטלפון הראשון הוא טלפון בטוח",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
