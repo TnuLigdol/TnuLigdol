@@ -44,7 +44,7 @@ body:has(.mobile-menu-open) {
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (width >= theme(--breakpoint-md)) {
   body:has(.mobile-menu-open) {
     overflow: auto;
   }
