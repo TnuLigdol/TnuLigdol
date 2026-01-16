@@ -10,27 +10,13 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  // Prevent body scroll when menu is open and close on resize to desktop
+  // Toggle body class for scroll locking (CSS handles responsive behavior)
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
-
-      // Close menu when window is resized to desktop width
-      const handleResize = () => {
-        if (window.innerWidth >= 768) {
-          onClose();
-        }
-      };
-
-      window.addEventListener("resize", handleResize);
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("resize", handleResize);
-      };
-    } else {
-      document.body.style.overflow = "";
+      document.body.classList.add("mobile-menu-open");
+      return () => document.body.classList.remove("mobile-menu-open");
     }
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
