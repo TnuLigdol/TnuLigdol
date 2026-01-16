@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { stories, getStoryBySlug } from "@/content";
 import { StartupKitForm } from "@/components/forms/startup-kit-form";
+import { ContentRenderer } from "@/components/ui/content-renderer";
 
 interface PageProps {
   params: Promise<{
@@ -58,31 +59,10 @@ export default async function StoryPage({ params }: PageProps) {
         </header>
 
         {/* Content */}
-        <div className="prose prose-lg max-w-none mb-12">
-          {story.content.split("\n").map((paragraph, i) => {
-            const trimmed = paragraph.trim();
-            if (!trimmed) return null;
-            if (trimmed.startsWith("## ")) {
-              return (
-                <h2 key={i} className="text-2xl font-bold mt-8 mb-4">
-                  {trimmed.replace("## ", "")}
-                </h2>
-              );
-            }
-            if (trimmed.startsWith("- ")) {
-              return (
-                <li key={i} className="text-muted-foreground">
-                  {trimmed.replace("- ", "")}
-                </li>
-              );
-            }
-            return (
-              <p key={i} className="text-muted-foreground mb-4">
-                {trimmed}
-              </p>
-            );
-          })}
-        </div>
+        <ContentRenderer
+          content={story.content}
+          className="prose prose-lg max-w-none mb-12"
+        />
 
         {/* CTA */}
         <div className="text-center p-8 bg-muted/50 rounded-lg">
