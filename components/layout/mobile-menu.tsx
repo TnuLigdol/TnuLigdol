@@ -10,17 +10,27 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  // Prevent body scroll when menu is open
+  // Prevent body scroll when menu is open and close on resize to desktop
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+
+      // Close menu when window is resized to desktop width
+      const handleResize = () => {
+        if (window.innerWidth >= 768) {
+          onClose();
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("resize", handleResize);
+      };
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  }, [open, onClose]);
 
   if (!open) return null;
 
@@ -49,6 +59,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
