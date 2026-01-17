@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Metadata } from 'next';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const metadata: Metadata = {
-  title: "שתפו את הסיפור שלכם | תנו לגדול על שקט",
-  description: "ספרו לנו על היוזמה בקהילה שלכם",
+  title: 'שתפו את הסיפור שלכם | תנו לגדול על שקט',
+  description: 'ספרו לנו על היוזמה בקהילה שלכם',
 };
 
 const storyCategories = [
-  "איך התנעתם את היוזמה בקהילה שלכם",
-  "סיפורי הצלחה של רכישת טלפונים או דיונים בבית הספר",
-  "מכשולים שנתקלתם בהם בדרך",
-  "מקרים אמיתיים שממחישים את הנזקים של סמארטפונים",
-  "חומרים מקוריים שיצרתם",
-  "נושאים רלוונטיים לקהילה",
+  'איך התנעתם את היוזמה בקהילה שלכם',
+  'סיפורי הצלחה של רכישת טלפונים או דיונים בבית הספר',
+  'מכשולים שנתקלתם בהם בדרך',
+  'מקרים אמיתיים שממחישים את הנזקים של סמארטפונים',
+  'חומרים מקוריים שיצרתם',
+  'נושאים רלוונטיים לקהילה',
 ];
 
 export default function ShareYourStoryPage() {
@@ -66,8 +66,8 @@ export default function ShareYourStoryPage() {
 
             {/* Note about photos */}
             <p className="mt-6 text-sm text-muted-foreground text-center">
-              אם אתם מצרפים תמונות בהן מצולמים ילדים, אנא ודאו שהוריהם מאשרים
-              את פרסום התמונות באתר.
+              אם אתם מצרפים תמונות בהן מצולמים ילדים, אנא ודאו שהוריהם מאשרים את
+              פרסום התמונות באתר.
             </p>
           </CardContent>
         </Card>

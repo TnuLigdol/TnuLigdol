@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { phoneGuide } from "@/content";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { phoneGuide } from '@/content';
 
 export const metadata: Metadata = {
-  title: "אני והטלפון שלי | תנו לגדול על שקט",
-  description: "תוכנית חינוכית לשימוש מושכל בסמארטפון לכיתות ב׳-ו׳",
+  title: 'אני והטלפון שלי | תנו לגדול על שקט',
+  description: 'תוכנית חינוכית לשימוש מושכל בסמארטפון לכיתות ב׳-ו׳',
 };
 
 export default function PhoneGuidePage() {
@@ -40,7 +40,9 @@ export default function PhoneGuidePage() {
               <Card key={session.id}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <span className="text-3xl" aria-hidden="true">{session.icon}</span>
+                    <span className="text-3xl" aria-hidden="true">
+                      {session.icon}
+                    </span>
                     {session.title}
                   </CardTitle>
                 </CardHeader>
@@ -110,7 +112,9 @@ export default function PhoneGuidePage() {
               <ul className="space-y-2">
                 {phoneGuide.implementation.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
-                    <span className="text-primary" aria-hidden="true">✓</span>
+                    <span className="text-primary" aria-hidden="true">
+                      ✓
+                    </span>
                     {feature}
                   </li>
                 ))}

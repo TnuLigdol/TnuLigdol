@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { articles, getArticleBySlug, categoryLabels } from "@/content";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
-import { ContentRenderer } from "@/components/ui/content-renderer";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { ContentRenderer } from '@/components/ui/content-renderer';
+import { articles, categoryLabels, getArticleBySlug } from '@/content';
 
 interface PageProps {
   params: Promise<{
@@ -19,10 +19,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
-  if (!article) return { title: "מאמר לא נמצא" };
+  if (!article) return { title: 'מאמר לא נמצא' };
 
   return {
     title: `${article.title} | תנו לגדול על שקט`,
@@ -55,10 +57,12 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="text-primary font-medium mb-2">
             {categoryLabels[article.category]}
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{article.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            {article.title}
+          </h1>
           <div className="text-muted-foreground">
-            {article.author} •{" "}
-            {new Date(article.publishedAt).toLocaleDateString("he-IL")}
+            {article.author} •{' '}
+            {new Date(article.publishedAt).toLocaleDateString('he-IL')}
           </div>
         </header>
 

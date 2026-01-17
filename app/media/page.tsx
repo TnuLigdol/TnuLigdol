@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { mediaCoverage } from "@/content";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { mediaCoverage } from '@/content';
 
 export const metadata: Metadata = {
-  title: "מדיה | תנו לגדול על שקט",
-  description: "סיקור תקשורתי של היוזמה בכלי התקשורת המובילים",
+  title: 'מדיה | תנו לגדול על שקט',
+  description: 'סיקור תקשורתי של היוזמה בכלי התקשורת המובילים',
 };
 
 export default function MediaPage() {
@@ -40,7 +40,7 @@ export default function MediaPage() {
                 <CardContent>
                   <div className="text-sm text-muted-foreground">
                     {item.author && <span>{item.author} • </span>}
-                    {new Date(item.date).toLocaleDateString("he-IL")}
+                    {new Date(item.date).toLocaleDateString('he-IL')}
                   </div>
                 </CardContent>
               </Card>

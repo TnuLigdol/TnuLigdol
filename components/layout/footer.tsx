@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { siteConfig } from "@/content/site";
+import Link from 'next/link';
+import { siteConfig } from '@/content/site';
 
 export function Footer() {
   return (
@@ -27,7 +27,7 @@ export function Footer() {
                 >
                   {link.label}
                 </Link>
-              )
+              ),
             )}
           </nav>
 

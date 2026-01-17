@@ -1,13 +1,13 @@
-import Link from "next/link";
+import Link from 'next/link';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { Article } from "@/content";
-import { categoryLabels } from "@/content";
+} from '@/components/ui/card';
+import type { Article } from '@/content';
+import { categoryLabels } from '@/content';
 
 interface ArticleCardProps {
   article: Article;
@@ -21,10 +21,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
           <div className="text-xs text-primary font-medium mb-1">
             {categoryLabels[article.category]}
           </div>
-          <CardTitle className="text-lg leading-tight">{article.title}</CardTitle>
+          <CardTitle className="text-lg leading-tight">
+            {article.title}
+          </CardTitle>
           <CardDescription>
-            {article.author} •{" "}
-            {new Date(article.publishedAt).toLocaleDateString("he-IL")}
+            {article.author} •{' '}
+            {new Date(article.publishedAt).toLocaleDateString('he-IL')}
           </CardDescription>
         </CardHeader>
         <CardContent>

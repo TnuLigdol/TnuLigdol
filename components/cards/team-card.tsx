@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { TeamMember } from "@/content";
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import type { TeamMember } from '@/content';
 
 interface TeamCardProps {
   member: TeamMember;

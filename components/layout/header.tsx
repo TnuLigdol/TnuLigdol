@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState } from "react";
-import { MenuIcon } from "lucide-react";
-import { siteConfig } from "@/content/site";
-import { MobileMenu } from "./mobile-menu";
+import { MenuIcon } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { siteConfig } from '@/content/site';
+import { MobileMenu } from './mobile-menu';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -61,6 +61,7 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
           onClick={() => setMobileMenuOpen(true)}
           className="md:hidden p-2 text-gray-700 hover:text-primary"
           aria-label="פתח תפריט"
@@ -70,7 +71,10 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileMenu
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
     </header>
   );
 }

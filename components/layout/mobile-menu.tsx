@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useEffect } from "react";
-import { XIcon } from "lucide-react";
-import { siteConfig } from "@/content/site";
+import { XIcon } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { siteConfig } from '@/content/site';
 
 interface MobileMenuProps {
   open: boolean;
@@ -14,8 +14,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   // Toggle body class for scroll locking (CSS handles responsive behavior)
   useEffect(() => {
     if (open) {
-      document.body.classList.add("mobile-menu-open");
-      return () => document.body.classList.remove("mobile-menu-open");
+      document.body.classList.add('mobile-menu-open');
+      return () => document.body.classList.remove('mobile-menu-open');
     }
   }, [open]);
 
@@ -37,6 +37,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             {siteConfig.name}
           </span>
           <button
+            type="button"
             onClick={onClose}
             className="p-2 text-gray-700 hover:text-primary"
             aria-label="סגור תפריט"

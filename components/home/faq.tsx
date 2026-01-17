@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { homepage } from "@/content";
+} from '@/components/ui/accordion';
+import { homepage } from '@/content';
 
 export function FAQ() {
   return (

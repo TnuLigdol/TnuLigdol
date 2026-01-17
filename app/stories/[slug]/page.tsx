@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { stories, getStoryBySlug } from "@/content";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
-import { ContentRenderer } from "@/components/ui/content-renderer";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { Button } from '@/components/ui/button';
+import { ContentRenderer } from '@/components/ui/content-renderer';
+import { getStoryBySlug, stories } from '@/content';
 
 interface PageProps {
   params: Promise<{
@@ -18,10 +18,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const story = getStoryBySlug(slug);
-  if (!story) return { title: "סיפור לא נמצא" };
+  if (!story) return { title: 'סיפור לא נמצא' };
 
   return {
     title: `${story.title} | תנו לגדול על שקט`,
@@ -53,8 +55,8 @@ export default async function StoryPage({ params }: PageProps) {
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{story.title}</h1>
           <div className="text-muted-foreground">
-            {story.author} •{" "}
-            {new Date(story.publishedAt).toLocaleDateString("he-IL")}
+            {story.author} •{' '}
+            {new Date(story.publishedAt).toLocaleDateString('he-IL')}
           </div>
         </header>
 
