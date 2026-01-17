@@ -74,15 +74,14 @@ export const stories: Story[] = [
   },
 ];
 
+const storiesBySlug = new Map(stories.map((story) => [story.slug, story]));
+
 export function getStoryBySlug(slug: string): Story | undefined {
-  return stories.find((s) => s.slug === slug);
+  return storiesBySlug.get(slug);
 }
 
 export function getRecentStories(limit: number = 3): Story[] {
   return [...stories]
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, limit);
 }

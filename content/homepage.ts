@@ -1,4 +1,41 @@
-export const homepage = {
+export interface Cta {
+  label: string;
+  href: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Homepage {
+  hero: {
+    title: string;
+    subtitle: string;
+    cta: Cta;
+  };
+  about: {
+    title: string;
+    content: string;
+  };
+  community: {
+    title: string;
+    description: string;
+  };
+  faq: FaqItem[];
+  storiesSection: {
+    title: string;
+    subtitle: string;
+    cta: Cta;
+  };
+  phoneGuideSection: {
+    title: string;
+    description: string;
+    cta: Cta;
+  };
+}
+
+export const homepage: Homepage = {
   hero: {
     title: "הטלפון הראשון הוא טלפון בטוח",
     subtitle: "יוזמה קהילתית להשהיית גיל קבלת הסמארטפון",

@@ -128,6 +128,20 @@ export const team: TeamMember[] = [
   },
 ];
 
-export const founders = team.filter((m) => m.role === "founder");
-export const advisors = team.filter((m) => m.role === "advisor");
-export const coordinators = team.filter((m) => m.role === "coordinator");
+export const founders: TeamMember[] = [];
+export const advisors: TeamMember[] = [];
+export const coordinators: TeamMember[] = [];
+
+team.forEach((member) => {
+  switch (member.role) {
+    case "founder":
+      founders.push(member);
+      break;
+    case "advisor":
+      advisors.push(member);
+      break;
+    case "coordinator":
+      coordinators.push(member);
+      break;
+  }
+});

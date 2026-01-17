@@ -1,4 +1,41 @@
-export const phoneGuide = {
+export interface Session {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  topics: string[];
+}
+
+export interface Material {
+  title: string;
+  description: string;
+  downloadUrl: string;
+}
+
+export interface PhoneGuide {
+  title: string;
+  subtitle: string;
+  intro: string;
+  targetAudience: string;
+  sessions: Session[];
+  grade2Adaptation: {
+    title: string;
+    description: string;
+  };
+  materials: Material[];
+  implementation: {
+    title: string;
+    description: string;
+    features: string[];
+  };
+  parentSession: {
+    title: string;
+    description: string;
+    videoUrl: string;
+  };
+}
+
+export const phoneGuide: PhoneGuide = {
   title: "אני והטלפון שלי",
   subtitle: "תוכנית חינוכית לשימוש מושכל בסמארטפון",
   intro: `
