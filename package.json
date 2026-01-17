@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "bun run scripts/generate-sitemap.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
