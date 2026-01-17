@@ -7,6 +7,7 @@ Website for the "Let Them Grow Quietly" initiative - promoting delayed smartphon
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
 - **Package Manager**: Bun
 
 ## Getting Started
@@ -33,6 +34,16 @@ components/    # React components
 content/       # Local content files
 public/        # Static assets
 ```
+
+## Adding UI Components
+
+This project uses [shadcn/ui](https://ui.shadcn.com/) for UI components. To add a new component:
+
+```bash
+npx shadcn@latest add <component-name>
+```
+
+For example: `npx shadcn@latest add dialog`
 
 ## Features
 
