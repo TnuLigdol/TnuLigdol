@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 
-const siteUrl = "https://tnuligdol.co.il";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tnuligdol.co.il";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -12,22 +12,12 @@ export const metadata: Metadata = {
   },
   description:
     "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
-  keywords: [
-    "סמארטפון לילדים",
-    "טלפון בטוח",
-    "גיל קבלת טלפון",
-    "ילדים וטכנולוגיה",
-    "הורות דיגיטלית",
-  ],
   authors: [{ name: "תנו לגדול על שקט" }],
   openGraph: {
     type: "website",
     locale: "he_IL",
     url: siteUrl,
     siteName: "תנו לגדול על שקט",
-    title: "תנו לגדול על שקט",
-    description:
-      "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
     images: [
       {
         url: "/og-image.png",
@@ -39,10 +29,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "תנו לגדול על שקט",
-    description:
-      "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
