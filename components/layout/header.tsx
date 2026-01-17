@@ -23,12 +23,23 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-6">
           {siteConfig.navigation.map((item) => (
             <div key={item.href} className="relative group">
-              <Link
-                href={item.href}
-                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
-              >
-                {item.label}
-              </Link>
+              {item.external ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </Link>
+              )}
               {item.children && (
                 <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
                   <div className="bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-dropdown-min-w">
@@ -46,14 +57,6 @@ export function Header() {
               )}
             </div>
           ))}
-          <a
-            href={siteConfig.facebookGroup}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
-          >
-            פייסבוק
-          </a>
         </nav>
 
         {/* Mobile Menu Button */}
