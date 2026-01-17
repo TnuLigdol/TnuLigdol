@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { MenuIcon } from "lucide-react";
 import { siteConfig } from "@/content/site";
 import { MobileMenu } from "./mobile-menu";
 
@@ -61,20 +62,7 @@ export function Header() {
           className="md:hidden p-2 text-gray-700 hover:text-primary"
           aria-label="פתח תפריט"
         >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          <MenuIcon className="size-6" aria-hidden="true" />
         </button>
       </div>
 
