@@ -34,6 +34,7 @@ body:has(.mobile-menu-open) {
   overflow: hidden;
 }
 
+/* biome-ignore lint/correctness/noUnknownFunction: Tailwind CSS v4 theme() */
 @media (min-width: theme(--breakpoint-md)) {
   body:has(.mobile-menu-open) {
     overflow: auto;

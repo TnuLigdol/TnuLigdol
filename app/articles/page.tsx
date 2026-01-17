@@ -18,12 +18,9 @@ export default function ArticlesPage() {
   const articlesByCategory = articles.reduce<
     Partial<Record<ArticleCategory, Article[]>>
   >((acc, article) => {
-    const list = acc[article.category];
-    if (list) {
-      list.push(article);
-    } else {
-      acc[article.category] = [article];
-    }
+    const category = article.category;
+    acc[category] = acc[category] ?? [];
+    acc[category].push(article);
     return acc;
   }, {});
 
