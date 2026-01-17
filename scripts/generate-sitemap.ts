@@ -16,11 +16,24 @@ const staticPages = [
   "/legal",
 ];
 
+function escapeXml(str: string): string {
+  return str.replace(/[<>&"']/g, (c) => {
+    switch (c) {
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case "&": return "&amp;";
+      case '"': return "&quot;";
+      case "'": return "&apos;";
+      default: return c;
+    }
+  });
+}
+
 function generateSitemap(): string {
   const staticEntries = staticPages
     .map(
       (route) => `  <url>
-    <loc>${baseUrl}${route}</loc>
+    <loc>${escapeXml(baseUrl + route)}</loc>
     <changefreq>weekly</changefreq>
     <priority>${route === "" ? "1" : "0.8"}</priority>
   </url>`
@@ -30,7 +43,7 @@ function generateSitemap(): string {
   const articleEntries = articles
     .map(
       (article) => `  <url>
-    <loc>${baseUrl}/articles/${article.category}/${article.slug}</loc>
+    <loc>${escapeXml(`${baseUrl}/articles/${article.category}/${article.slug}`)}</loc>
     <lastmod>${article.publishedAt}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -41,7 +54,7 @@ function generateSitemap(): string {
   const storyEntries = stories
     .map(
       (story) => `  <url>
-    <loc>${baseUrl}/stories/${story.slug}</loc>
+    <loc>${escapeXml(`${baseUrl}/stories/${story.slug}`)}</loc>
     <lastmod>${story.publishedAt}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -54,7 +67,8 @@ function generateSitemap(): string {
 ${staticEntries}
 ${articleEntries}
 ${storyEntries}
-</urlset>`;
+</urlset>
+`;
 }
 
 const sitemap = generateSitemap();
