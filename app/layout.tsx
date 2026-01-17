@@ -26,7 +26,8 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "תנו לגדול על שקט",
     title: "תנו לגדול על שקט",
-    description: "הטלפון הראשון הוא טלפון בטוח - יוזמה להשהיית גיל קבלת הסמארטפון",
+    description:
+      "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
     images: [
       {
         url: "/og-image.png",
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "תנו לגדול על שקט",
-    description: "הטלפון הראשון הוא טלפון בטוח",
+    description:
+      "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
     images: ["/og-image.png"],
   },
   robots: {
