@@ -2,6 +2,7 @@ import { articles } from "../content/articles";
 import { stories } from "../content/stories";
 import { writeFileSync } from "fs";
 import { join } from "path";
+import { create } from "xmlbuilder2";
 
 const baseUrl = process.env.SITE_URL || "https://tnuligdol.co.il";
 
@@ -16,59 +17,39 @@ const staticPages = [
   "/legal",
 ];
 
-function escapeXml(str: string): string {
-  return str.replace(/[<>&"']/g, (c) => {
-    switch (c) {
-      case "<": return "&lt;";
-      case ">": return "&gt;";
-      case "&": return "&amp;";
-      case '"': return "&quot;";
-      case "'": return "&apos;";
-      default: return c;
-    }
-  });
-}
-
 function generateSitemap(): string {
-  const staticEntries = staticPages
-    .map(
-      (route) => `  <url>
-    <loc>${escapeXml(baseUrl + route)}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>${route === "" ? "1" : "0.8"}</priority>
-  </url>`
-    )
-    .join("\n");
+  const root = create({ version: "1.0", encoding: "UTF-8" }).ele(
+    "urlset",
+    { xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" }
+  );
 
-  const articleEntries = articles
-    .map(
-      (article) => `  <url>
-    <loc>${escapeXml(`${baseUrl}/articles/${article.category}/${article.slug}`)}</loc>
-    <lastmod>${article.publishedAt}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>`
-    )
-    .join("\n");
+  for (const route of staticPages) {
+    root
+      .ele("url")
+      .ele("loc").txt(`${baseUrl}${route}`).up()
+      .ele("changefreq").txt("weekly").up()
+      .ele("priority").txt(route === "" ? "1" : "0.8").up();
+  }
 
-  const storyEntries = stories
-    .map(
-      (story) => `  <url>
-    <loc>${escapeXml(`${baseUrl}/stories/${story.slug}`)}</loc>
-    <lastmod>${story.publishedAt}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>`
-    )
-    .join("\n");
+  for (const article of articles) {
+    root
+      .ele("url")
+      .ele("loc").txt(`${baseUrl}/articles/${article.category}/${article.slug}`).up()
+      .ele("lastmod").txt(article.publishedAt).up()
+      .ele("changefreq").txt("monthly").up()
+      .ele("priority").txt("0.6").up();
+  }
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticEntries}
-${articleEntries}
-${storyEntries}
-</urlset>
-`;
+  for (const story of stories) {
+    root
+      .ele("url")
+      .ele("loc").txt(`${baseUrl}/stories/${story.slug}`).up()
+      .ele("lastmod").txt(story.publishedAt).up()
+      .ele("changefreq").txt("monthly").up()
+      .ele("priority").txt("0.6").up();
+  }
+
+  return root.end({ prettyPrint: true });
 }
 
 const sitemap = generateSitemap();
