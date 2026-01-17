@@ -35,8 +35,8 @@ export default function ShareYourStoryPage() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
-              {storyCategories.map((category, i) => (
-                <li key={i} className="flex items-start gap-2">
+              {storyCategories.map((category) => (
+                <li key={category} className="flex items-start gap-2">
                   <span className="text-primary mt-1">•</span>
                   <span className="text-muted-foreground">{category}</span>
                 </li>
