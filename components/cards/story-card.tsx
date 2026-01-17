@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { Story } from "@/content";
+} from '@/components/ui/card';
+import type { Story } from '@/content';
 
 interface StoryCardProps {
   story: Story;
@@ -19,7 +19,10 @@ export function StoryCard({ story }: StoryCardProps) {
         <CardHeader>
           <CardTitle className="text-xl">{story.title}</CardTitle>
           <CardDescription>
-            {story.author} • {new Date(story.publishedAt).toLocaleDateString("he-IL", { timeZone: "UTC" })}
+            {story.author} •{' '}
+            {new Date(story.publishedAt).toLocaleDateString('he-IL', {
+              timeZone: 'UTC',
+            })}
           </CardDescription>
         </CardHeader>
         <CardContent>

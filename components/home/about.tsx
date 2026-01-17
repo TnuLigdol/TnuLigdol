@@ -1,4 +1,4 @@
-import { homepage } from "@/content";
+import { homepage } from '@/content';
 
 export function About() {
   return (

@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { legal } from "@/content";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { legal } from '@/content';
 
 export const metadata: Metadata = {
-  title: "חקיקה | תנו לגדול על שקט",
-  description: "הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים בבתי ספר",
+  title: 'חקיקה | תנו לגדול על שקט',
+  description: 'הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים בבתי ספר',
 };
 
 export default function LegalPage() {
@@ -26,8 +26,8 @@ export default function LegalPage() {
             <Card key={doc.downloadUrl}>
               <CardHeader>
                 <div className="text-sm text-muted-foreground mb-2">
-                  {doc.authority} •{" "}
-                  {new Date(doc.date).toLocaleDateString("he-IL")}
+                  {doc.authority} •{' '}
+                  {new Date(doc.date).toLocaleDateString('he-IL')}
                 </div>
                 <CardTitle className="text-xl">{doc.title}</CardTitle>
               </CardHeader>

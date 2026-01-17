@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface StartupKitFormProps {
   title?: string;
@@ -6,8 +6,8 @@ interface StartupKitFormProps {
 }
 
 export function StartupKitForm({
-  title = "קבלו את ערכת ההתנעה",
-  id = "startup-kit",
+  title = 'קבלו את ערכת ההתנעה',
+  id = 'startup-kit',
 }: StartupKitFormProps) {
   return (
     <section id={id} className="py-16 md:py-24 bg-primary/5">
@@ -22,9 +22,7 @@ export function StartupKitForm({
             {/* Google Form will be embedded here */}
             <div className="bg-muted rounded-lg p-8 text-center text-muted-foreground">
               <p className="mb-4">טופס Google יוטמע כאן</p>
-              <p className="text-sm">
-                השאירו פרטים וקבלו את ערכת ההתנעה למייל
-              </p>
+              <p className="text-sm">השאירו פרטים וקבלו את ערכת ההתנעה למייל</p>
             </div>
           </CardContent>
         </Card>

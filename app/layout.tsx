@@ -1,34 +1,34 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Header, Footer } from "@/components/layout";
+import type { Metadata } from 'next';
+import './globals.css';
+import { Footer, Header } from '@/components/layout';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tnuligdol.co.il";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tnuligdol.co.il';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "תנו לגדול על שקט",
-    template: "%s | תנו לגדול על שקט",
+    default: 'תנו לגדול על שקט',
+    template: '%s | תנו לגדול על שקט',
   },
   description:
-    "הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים",
-  authors: [{ name: "תנו לגדול על שקט" }],
+    'הטלפון הראשון הוא טלפון בטוח - יוזמה קהילתית להשהיית גיל קבלת הסמארטפון לילדים',
+  authors: [{ name: 'תנו לגדול על שקט' }],
   openGraph: {
-    type: "website",
-    locale: "he_IL",
+    type: 'website',
+    locale: 'he_IL',
     url: siteUrl,
-    siteName: "תנו לגדול על שקט",
+    siteName: 'תנו לגדול על שקט',
     images: [
       {
-        url: "/og-image.png",
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: "תנו לגדול על שקט - הטלפון הראשון הוא טלפון בטוח",
+        alt: 'תנו לגדול על שקט - הטלפון הראשון הוא טלפון בטוח',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
   },
   robots: {
     index: true,

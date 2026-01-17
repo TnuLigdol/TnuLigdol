@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { StoryCard } from "@/components/cards/story-card";
-import { homepage, getRecentStories } from "@/content";
+import Link from 'next/link';
+import { StoryCard } from '@/components/cards/story-card';
+import { Button } from '@/components/ui/button';
+import { getRecentStories, homepage } from '@/content';
 
 export function StoriesSection() {
   const stories = getRecentStories(3);

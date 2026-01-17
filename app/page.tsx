@@ -1,11 +1,11 @@
+import { StartupKitForm } from '@/components/forms/startup-kit-form';
 import {
-  Hero,
   About,
   FAQ,
-  StoriesSection,
+  Hero,
   PhoneGuideSection,
-} from "@/components/home";
-import { StartupKitForm } from "@/components/forms/startup-kit-form";
+  StoriesSection,
+} from '@/components/home';
 
 export default function Home() {
   return (

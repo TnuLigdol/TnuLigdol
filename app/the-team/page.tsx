@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { TeamCard } from "@/components/cards/team-card";
-import { founders, advisors, coordinators } from "@/content";
+import type { Metadata } from 'next';
+import { TeamCard } from '@/components/cards/team-card';
+import { advisors, coordinators, founders } from '@/content';
 
 export const metadata: Metadata = {
-  title: "הצוות | תנו לגדול על שקט",
-  description: "הכירו את הצוות שמוביל את היוזמה",
+  title: 'הצוות | תנו לגדול על שקט',
+  description: 'הכירו את הצוות שמוביל את היוזמה',
 };
 
 export default function TeamPage() {
