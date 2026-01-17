@@ -3,7 +3,7 @@ import { stories } from "../content/stories";
 import { writeFileSync } from "fs";
 import { join } from "path";
 
-const baseUrl = "https://tnuligdol.co.il";
+const baseUrl = process.env.SITE_URL || "https://tnuligdol.co.il";
 
 const staticPages = [
   "",
