@@ -49,13 +49,25 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           <ul className="space-y-1">
             {siteConfig.navigation.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={onClose}
-                  className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={onClose}
+                    className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {item.children && (
                   <ul className="mr-4 border-r border-gray-200">
                     {item.children.map((child) => (
@@ -73,17 +85,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 )}
               </li>
             ))}
-            <li>
-              <a
-                href={siteConfig.facebookGroup}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={onClose}
-                className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
-              >
-                קבוצת הפייסבוק שלנו
-              </a>
-            </li>
           </ul>
         </nav>
       </div>

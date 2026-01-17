@@ -8,23 +8,27 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Links */}
           <nav className="flex flex-wrap gap-4 md:gap-6">
-            {siteConfig.footer.links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-gray-600 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <a
-              href={siteConfig.facebookGroup}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-600 hover:text-primary transition-colors"
-            >
-              פייסבוק
-            </a>
+            {siteConfig.footer.links.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-600 hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-gray-600 hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Credit */}
