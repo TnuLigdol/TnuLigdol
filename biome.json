@@ -29,8 +29,7 @@
       "correctness": {
         "useExhaustiveDependencies": "error",
         "useHookAtTopLevel": "error",
-        "noUnusedImports": "error",
-        "noUnknownFunction": "off"
+        "noUnusedImports": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "warn",
