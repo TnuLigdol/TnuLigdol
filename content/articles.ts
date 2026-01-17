@@ -91,8 +91,10 @@ export const articles: Article[] = [
   },
 ];
 
+const articlesBySlug = new Map(articles.map((article) => [article.slug, article]));
+
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug);
+  return articlesBySlug.get(slug);
 }
 
 export function getArticlesByCategory(category: ArticleCategory): Article[] {
@@ -101,9 +103,6 @@ export function getArticlesByCategory(category: ArticleCategory): Article[] {
 
 export function getRecentArticles(limit: number = 6): Article[] {
   return [...articles]
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, limit);
 }

@@ -1,4 +1,19 @@
-export const legal = {
+export interface LegalDocument {
+  title: string;
+  authority: string;
+  date: string;
+  description: string;
+  downloadUrl: string;
+  logo: string;
+}
+
+export interface LegalContent {
+  title: string;
+  subtitle: string;
+  documents: LegalDocument[];
+}
+
+export const legal: LegalContent = {
   title: "חקיקה",
   subtitle: "הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים",
   documents: [
