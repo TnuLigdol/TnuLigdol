@@ -41,7 +41,7 @@ export function Header() {
                 </Link>
               )}
               {item.children && (
-                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all">
                   <div className="bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-dropdown-min-w">
                     {item.children.map((child) => (
                       <Link
