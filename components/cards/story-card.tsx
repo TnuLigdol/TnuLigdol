@@ -1,11 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import type { Story } from '@/content';
 
 interface StoryCardProps {
@@ -15,18 +10,21 @@ interface StoryCardProps {
 export function StoryCard({ story }: StoryCardProps) {
   return (
     <Link href={`/stories/${story.slug}`}>
-      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-        <CardHeader>
-          <CardTitle className="text-xl">{story.title}</CardTitle>
-          <CardDescription>
-            {story.author} •{' '}
-            {new Date(story.publishedAt).toLocaleDateString('he-IL', {
-              timeZone: 'UTC',
-            })}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground line-clamp-3">{story.excerpt}</p>
+      <Card className="h-full hover:shadow-lg transition-all cursor-pointer overflow-hidden hover:-translate-y-1">
+        {story.featuredImage && (
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src={story.featuredImage}
+              alt={story.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+        <CardContent className="p-4">
+          <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+            {story.title}
+          </h3>
         </CardContent>
       </Card>
     </Link>
