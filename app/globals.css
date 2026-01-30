@@ -29,8 +29,9 @@
   --spacing-dropdown-min-w: 11.25rem;
 
   /* Accent colors for decorative elements */
-  --color-accent-orange: #f5b642;
+  --color-accent-orange: #e49d0d;
   --color-accent-green: #8fd18f;
+  --color-primary-light: #e9f5ea;
 }
 
 /* Lock body scroll when mobile menu is open */
@@ -48,6 +49,10 @@ body:has(.mobile-menu-open) {
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    font-family: "Varela Round", system-ui, sans-serif;
   }
 }
 
