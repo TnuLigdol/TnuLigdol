@@ -20,7 +20,6 @@ export function AccessibilityScripts() {
       const a11y = document.createElement('script');
       a11y.src =
         'https://www.negishim.com/accessibility/accessibility_pro_group255.js';
-      a11y.async = false;
       document.body.appendChild(a11y);
     };
   }, []);
