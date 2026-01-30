@@ -10,7 +10,6 @@ export function AccessibilityScripts() {
     // negishim adds data-font-size / data-line-height to elements).
     const jq = document.createElement('script');
     jq.src = 'https://code.jquery.com/jquery-1.12.4.js';
-    jq.async = false;
     document.body.appendChild(jq);
 
     jq.onload = () => {
