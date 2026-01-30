@@ -14,6 +14,9 @@ Website for the "Let Them Grow Quietly" initiative - promoting delayed smartphon
 ## Getting Started
 
 ```bash
+
+# See how to install `bun` here: https://bun.com
+
 # Install dependencies
 bun install
 
