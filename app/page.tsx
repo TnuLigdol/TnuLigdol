@@ -2,6 +2,7 @@ import { StartupKitForm } from '@/components/forms/startup-kit-form';
 import {
   About,
   FAQ,
+  FooterCTA,
   Hero,
   PhoneGuideSection,
   StoriesSection,
@@ -16,7 +17,7 @@ export default function Home() {
       <StoriesSection />
       <PhoneGuideSection />
       <FAQ />
-      <StartupKitForm title="הצטרפו אלינו" id="join-us" />
+      <FooterCTA />
     </main>
   );
 }
