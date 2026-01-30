@@ -16,7 +16,7 @@ export function FooterCTA() {
 
           {/* Image Section */}
           <div className="relative flex-shrink-0 hidden md:block">
-            <div className="absolute -top-8 -right-8 w-48 h-48 rounded-full bg-[#f5b642] opacity-80" />
+            <div className="absolute -top-8 -right-8 w-48 h-48 rounded-full bg-accent-orange opacity-80" />
             <Image
               src="/images/hero/kid-playing.png"
               alt="ילד שמח"

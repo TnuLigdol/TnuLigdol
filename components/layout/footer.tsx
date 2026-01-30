@@ -10,7 +10,7 @@ export function Footer() {
           {/* Logo and Facebook */}
           <div className="flex items-center gap-3">
             <a
-              href="https://facebook.com/groups/311936499275780/"
+              href={siteConfig.socials.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
@@ -25,13 +25,13 @@ export function Footer() {
 
           {/* Credit */}
           <a
-            href="https://www.ofrigonen.com/"
+            href={siteConfig.footer.credit.url}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
           >
             <span className="text-gray-400">🔗</span>
-            {siteConfig.footer.credit.replace('עיצוב: ', '')}
+            {siteConfig.footer.credit.text}
           </a>
         </div>
       </div>

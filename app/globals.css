@@ -27,6 +27,10 @@
   /* Custom */
   --color-primary-hover: #e49d0d;
   --spacing-dropdown-min-w: 11.25rem;
+
+  /* Accent colors for decorative elements */
+  --color-accent-orange: #f5b642;
+  --color-accent-green: #8fd18f;
 }
 
 /* Lock body scroll when mobile menu is open */
@@ -66,7 +70,8 @@ body:has(.mobile-menu-open) {
 
 /* Floating animation for decorative elements */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
