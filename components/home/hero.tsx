@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { homepage } from '@/content';
@@ -25,22 +26,39 @@ function DecorativeCircles() {
 
 export function Hero() {
   return (
-    <section className="relative bg-primary py-20 md:py-32 overflow-hidden">
+    <section className="relative bg-primary py-12 md:py-20 overflow-hidden">
       <DecorativeCircles />
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-          {homepage.hero.title}
-        </h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
-          {homepage.hero.subtitle}
-        </p>
-        <Button
-          asChild
-          size="lg"
-          className="text-lg px-8 py-6 bg-white text-primary hover:bg-white/90 animate-fade-in-up animate-delay-300"
-        >
-          <Link href={homepage.hero.cta.href}>{homepage.hero.cta.label}</Link>
-        </Button>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          {/* Text Content */}
+          <div className="flex-1 text-center md:text-right">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-slide-in-right">
+              {homepage.hero.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl animate-fade-in-up animate-delay-200">
+              {homepage.hero.subtitle}
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="text-lg px-8 py-6 bg-white text-primary hover:bg-white/90 animate-fade-in-up animate-delay-300"
+            >
+              <Link href={homepage.hero.cta.href}>{homepage.hero.cta.label}</Link>
+            </Button>
+          </div>
+
+          {/* Hero Image */}
+          <div className="flex-shrink-0 animate-slide-up animate-delay-100">
+            <Image
+              src="/images/hero/happy-kid-1.png"
+              alt="ילד שמח"
+              width={350}
+              height={400}
+              className="drop-shadow-2xl"
+              priority
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
