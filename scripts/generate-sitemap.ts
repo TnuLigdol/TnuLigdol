@@ -3,8 +3,9 @@ import { join } from 'node:path';
 import { create } from 'xmlbuilder2';
 import { articles } from '../content/articles';
 import { stories } from '../content/stories';
+import { getSiteUrl } from '../lib/site-url';
 
-const baseUrl = process.env.SITE_URL || 'https://tnuligdol.co.il';
+const baseUrl = getSiteUrl();
 
 const staticPages = [
   '',
