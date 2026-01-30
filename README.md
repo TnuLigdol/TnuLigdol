@@ -34,8 +34,10 @@ bun start
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `SITE_URL` | Base URL for sitemap generation | `https://tnuligdol.co.il` |
-| `NEXT_PUBLIC_SITE_URL` | Public site URL for metadata | `https://tnuligdol.co.il` |
+| `SITE_URL` | Base URL for sitemap generation | See `lib/site-url.ts` |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL for metadata | See `lib/site-url.ts` |
+
+The default site URL is defined once in `lib/site-url.ts` (`DEFAULT_SITE_URL`). Change it there to update the domain everywhere.
 
 ## Development
 
