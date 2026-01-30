@@ -1,6 +1,6 @@
 'use client';
 
-import { MenuIcon } from 'lucide-react';
+import { MenuIcon, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { siteConfig } from '@/content/site';
@@ -14,6 +14,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
+          <Smartphone className="size-6 text-primary" />
           <span className="text-xl font-bold text-primary">
             {siteConfig.name}
           </span>
@@ -28,7 +29,11 @@ export function Header() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    item.label === 'פייסבוק'
+                      ? 'bg-[#e49d0d] text-white px-4 py-2 rounded-full hover:bg-[#d18f0c]'
+                      : 'text-gray-700 hover:text-primary'
+                  }`}
                 >
                   {item.label}
                 </a>
