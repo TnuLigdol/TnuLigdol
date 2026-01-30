@@ -30,8 +30,8 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`text-sm font-medium transition-colors ${
-                    item.label === 'פייסבוק'
-                      ? 'bg-[#e49d0d] text-white px-4 py-2 rounded-full hover:bg-[#d18f0c]'
+                    item.highlight
+                      ? 'bg-accent-orange text-white px-4 py-2 rounded-full hover:bg-accent-orange/90'
                       : 'text-gray-700 hover:text-primary'
                   }`}
                 >

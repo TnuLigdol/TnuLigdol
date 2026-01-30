@@ -1,6 +1,9 @@
 export const siteConfig = {
   name: 'תנו לגדול על שקט',
   description: 'הטלפון הראשון הוא טלפון בטוח',
+  socials: {
+    facebook: 'https://facebook.com/groups/311936499275780/',
+  },
   navigation: [
     { label: 'ערכת התנעה', href: '/#startup-kit' },
     { label: 'מדיה', href: '/media' },
@@ -19,10 +22,14 @@ export const siteConfig = {
       label: 'פייסבוק',
       href: 'https://facebook.com/groups/311936499275780/',
       external: true,
+      highlight: true,
     },
   ],
   footer: {
-    credit: 'עיצוב: סטודיו עפרי גונן',
+    credit: {
+      text: 'סטודיו עפרי גונן',
+      url: 'https://www.ofrigonen.com/',
+    },
     links: [
       { label: 'מדיה', href: '/media' },
       { label: 'מאמרים', href: '/articles' },
@@ -42,6 +49,7 @@ export type NavItem = {
   label: string;
   href: string;
   external?: boolean;
+  highlight?: boolean;
   children?: { label: string; href: string }[];
 };
 

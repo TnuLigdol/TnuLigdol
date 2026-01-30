@@ -16,6 +16,7 @@ export interface Homepage {
   };
   about: {
     title: string;
+    subtitle: string;
     content: string;
   };
   community: {
@@ -46,6 +47,7 @@ export const homepage: Homepage = {
   },
   about: {
     title: 'על היוזמה',
+    subtitle: 'דוחים את גיל השימוש בסמארטפון',
     content: `
       אנחנו מאמינים שדחיית גיל קבלת הסמארטפון מאפשרת לילדים יותר זמן לשחק בחוץ,
       לפעילות גופנית, לאינטראקציה חברתית פנים אל פנים, ולזמן משפחתי איכותי.
