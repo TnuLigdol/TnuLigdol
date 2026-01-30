@@ -145,7 +145,7 @@ export function CookieBanner() {
     document.addEventListener('click', handleDocumentClick, true);
 
     return () => {
-      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('click', handleDocumentClick, true);
       overlay?.remove();
       banner?.remove();
     };
