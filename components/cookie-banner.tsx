@@ -86,7 +86,10 @@ export function CookieBanner() {
         role="dialog"
         aria-label="Cookie consent"
         className={`fixed bottom-0 left-0 right-0 z-[10000] bg-background border-t-2 border-border p-5 shadow-[0_-2px_10px_rgba(0,0,0,0.1)] transition-all duration-300 ease-out ${closing ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}
-        style={{ direction: isRTL ? 'rtl' : 'ltr', textAlign: isRTL ? 'right' : 'left' }}
+        style={{
+          direction: isRTL ? 'rtl' : 'ltr',
+          textAlign: isRTL ? 'right' : 'left',
+        }}
       >
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-5">
           <div className="min-w-[300px] flex-1">
