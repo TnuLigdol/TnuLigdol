@@ -13,7 +13,12 @@ const COOKIE_CONSENT_CONFIG: CookieConsentConfig = {
   rtl: true,
 };
 
-const REQUIRED_FIELDS = ['mainText', 'linkText', 'linkUrl', 'buttonText'] as const;
+const REQUIRED_FIELDS = [
+  'mainText',
+  'linkText',
+  'linkUrl',
+  'buttonText',
+] as const;
 const CONSENT_KEY = 'cookie-consent-accepted';
 
 export function CookieBanner() {
