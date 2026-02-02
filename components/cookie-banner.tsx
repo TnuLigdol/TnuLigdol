@@ -32,7 +32,7 @@ export function CookieBanner() {
         : COOKIE_CONSENT_CONFIG;
 
     const missingFields = REQUIRED_FIELDS.filter(
-      (field) => !userConfig[field] || String(userConfig[field]).trim() === ''
+      (field) => !userConfig[field] || String(userConfig[field]).trim() === '',
     );
     if (missingFields.length) {
       console.error('cookie-consent: Missing required configuration fields:', missingFields.join(', '));
