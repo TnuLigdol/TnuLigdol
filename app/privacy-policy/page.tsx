@@ -42,8 +42,8 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-bold mb-4">יצירת קשר</h2>
             <p>
-              לשאלות בנושא פרטיות ניתן לפנות אלינו באמצעות פרטי ההתקשרות המופיעים
-              באתר.
+              לשאלות בנושא פרטיות ניתן לפנות אלינו באמצעות פרטי ההתקשרות
+              המופיעים באתר.
             </p>
           </section>
         </div>
