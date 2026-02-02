@@ -52,7 +52,10 @@ export function CookieBanner() {
   const acceptConsent = useCallback(() => {
     if (!config) return;
     setClosing(true);
-    localStorage.setItem(config.consentKey ?? CONSENT_KEY, new Date().toISOString());
+    localStorage.setItem(
+      config.consentKey ?? CONSENT_KEY,
+      new Date().toISOString(),
+    );
   }, [config]);
 
   useEffect(() => {
