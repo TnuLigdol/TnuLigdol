@@ -35,7 +35,10 @@ export function CookieBanner() {
       (field) => !userConfig[field] || String(userConfig[field]).trim() === '',
     );
     if (missingFields.length) {
-      console.error('cookie-consent: Missing required configuration fields:', missingFields.join(', '));
+      console.error(
+        'cookie-consent: Missing required configuration fields:',
+        missingFields.join(', '),
+      );
       return;
     }
 
