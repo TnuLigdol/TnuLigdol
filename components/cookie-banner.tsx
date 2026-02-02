@@ -23,7 +23,10 @@ const CONSENT_KEY = 'cookie-consent-accepted';
 
 export function CookieBanner() {
   useEffect(() => {
-    const userConfig = typeof window !== 'undefined' ? window.cookieConsentConfig ?? COOKIE_CONSENT_CONFIG : COOKIE_CONSENT_CONFIG;
+    const userConfig =
+      typeof window !== 'undefined'
+        ? (window.cookieConsentConfig ?? COOKIE_CONSENT_CONFIG)
+        : COOKIE_CONSENT_CONFIG;
 
     const missingFields = REQUIRED_FIELDS.filter(
       (field) => !userConfig[field] || String(userConfig[field]).trim() === ''
