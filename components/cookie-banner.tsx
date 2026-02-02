@@ -42,7 +42,10 @@ export function CookieBanner() {
       return;
     }
 
-    if (typeof localStorage === 'undefined' || localStorage.getItem(userConfig.consentKey ?? CONSENT_KEY)) {
+    if (
+      typeof localStorage === 'undefined' ||
+      localStorage.getItem(userConfig.consentKey ?? CONSENT_KEY)
+    ) {
       return;
     }
 
