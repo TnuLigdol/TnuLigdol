@@ -62,7 +62,8 @@ export function CookieBanner() {
     if (!config || closing) return;
     const handleDocumentClick = () => acceptConsent();
     document.addEventListener('click', handleDocumentClick, true);
-    return () => document.removeEventListener('click', handleDocumentClick, true);
+    return () =>
+      document.removeEventListener('click', handleDocumentClick, true);
   }, [config, closing, acceptConsent]);
 
   if (!config) return null;
