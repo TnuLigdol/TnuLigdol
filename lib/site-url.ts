@@ -7,8 +7,6 @@ export const DEFAULT_SITE_URL = 'https://tnuligdol.co.il';
 
 export function getSiteUrl(): string {
   return (
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    process.env.SITE_URL ??
-    DEFAULT_SITE_URL
+    process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? DEFAULT_SITE_URL
   );
 }
