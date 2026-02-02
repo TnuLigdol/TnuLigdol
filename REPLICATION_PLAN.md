@@ -1,5 +1,7 @@
 # Replication Plan: tnuligdol.co.il
 
+> Site domain is configurable in `lib/site-url.ts` (`DEFAULT_SITE_URL`).
+
 ## Executive Summary
 
 Replicate the Hebrew RTL website "תנו לגדול על שקט" using Next.js 16 with local content files and embedded Google Forms.

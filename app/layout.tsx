@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { AccessibilityScripts } from '@/components/accessibility-scripts';
+import { CookieBanner } from '@/components/cookie-banner';
 import { Footer, Header } from '@/components/layout';
+import { getSiteUrl } from '@/lib/site-url';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tnuligdol.co.il';
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,6 +50,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <AccessibilityScripts />
+        <CookieBanner />
       </body>
     </html>
   );
