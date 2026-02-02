@@ -127,7 +127,7 @@ export function CookieBanner() {
       setTimeout(() => {
         overlay?.remove();
         banner?.remove();
-        document.removeEventListener('click', handleDocumentClick);
+        document.removeEventListener('click', handleDocumentClick, true);
       }, 300);
     }
 
