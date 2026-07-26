@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import { GoogleTagManager } from '@next/third-parties/google';
 import './globals.css';
 import { Footer, Header } from '@/components/layout';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tnuligdol.co.il';
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -49,6 +51,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="he" dir="rtl">
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
       <body className="min-h-screen flex flex-col bg-background text-text antialiased">
         {/* TODO: Restore this asap: <Header /> */}
         <main className="flex-1">{children}</main>
