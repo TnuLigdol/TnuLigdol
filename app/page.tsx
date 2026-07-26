@@ -1,4 +1,5 @@
-import { Construction } from 'lucide-react';
+import { Construction } from "lucide-react";
+import { siteConfig } from "@/content/site";
 
 function DecorativeCircles() {
   return (
@@ -38,9 +39,20 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-white/90 mb-4 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
             אנחנו עובדים על חידוש האתר כדי להעניק לכם חוויה טובה יותר.
           </p>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto animate-fade-in-up animate-delay-300">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 animate-fade-in-up animate-delay-300">
             נשמח שתחזרו לבקר בקרוב. תודה על הסבלנות וההבנה!
+            <br />
+            <br />
+            מוזמנים בינתיים להכנס לעמוד הפייסבוק שלנו
           </p>
+          <a
+            href={siteConfig.socials.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-lg px-8 py-3 rounded-full bg-white text-primary font-medium hover:bg-white/90 transition-colors animate-fade-in-up animate-delay-400"
+          >
+            לינק לפייסבוק
+          </a>
         </div>
       </section>
     </main>
