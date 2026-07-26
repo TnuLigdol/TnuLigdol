@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <body className="min-h-screen flex flex-col bg-background text-text antialiased">
-        <Header />
+        {/* TODO: Restore this: <Header /> */}
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
