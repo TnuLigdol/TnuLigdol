@@ -24,8 +24,8 @@ function DecorativeCircles() {
 
 export default function Home() {
   return (
-    <main>
-      <section className="relative bg-primary py-24 md:py-40 overflow-hidden min-h-[70vh] flex items-center">
+    <main className="h-full">
+      <section className="relative bg-primary py-24 md:py-40 overflow-hidden min-h-[70vh] h-full flex items-center">
         <DecorativeCircles />
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="mb-8 flex justify-center animate-fade-in-up">
