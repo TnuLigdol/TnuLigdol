@@ -29,8 +29,9 @@
   --spacing-dropdown-min-w: 11.25rem;
 
   /* Accent colors for decorative elements */
-  --color-accent-orange: #f5b642;
+  --color-accent-orange: #e49d0d;
   --color-accent-green: #8fd18f;
+  --color-primary-light: #e9f5ea;
 }
 
 /* Lock body scroll when mobile menu is open */
@@ -48,6 +49,10 @@ body:has(.mobile-menu-open) {
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    font-family: "Varela Round", system-ui, sans-serif;
   }
 }
 
@@ -90,4 +95,72 @@ body:has(.mobile-menu-open) {
 .animate-float-delayed {
   animation: float 5s ease-in-out infinite;
   animation-delay: 1s;
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Fade in right animation (for RTL, appears from left) */
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-right {
+  opacity: 0;
+  animation: fade-in-right 0.6s ease-out forwards;
+}
+
+/* Slide up animation for images */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+/* Slide in from right (for RTL: visually comes from left) */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  animation: slide-in-right 0.6s ease-out forwards;
 }
