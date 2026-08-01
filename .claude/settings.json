@@ -2,8 +2,21 @@
   "permissions": {
     "allow": [
       "Bash(bun run *)",
+      "Bash(timeout 180 bun run *)",
       "Bash(bun install *)",
-      "Bash(unzip *)"
+      "Bash(bun add *)",
+      "Bash(unzip *)",
+      "Bash(npm ls *)",
+      "Bash(curl *)",
+      "Bash(echo *)",
+      "Bash(curl *)",
+      "Bash(jobs *)",
+      "Bash(disown)",
+      "Bash(grep *)",
+      "Bash(sed *)",
+      "Bash(pkill -f *)",
+      "Bash(http-server *)",
+      "Bash(git diff *)"
     ]
   }
 }

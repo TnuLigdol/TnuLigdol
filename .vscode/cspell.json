@@ -1,5 +1,6 @@
 {
-  "ignoreWords": [
-    "vercel"
+  "words": [
+    "vercel",
+    "pkill"
   ]
 }
