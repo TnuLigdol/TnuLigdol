@@ -188,7 +188,7 @@ let epGlobals = {};
     function youtubeChannelEvents(playerWrap) {
 
         delegate(playerWrap, "click", ".item", function (event) {
-            var embed = "https://web.archive.org/web/20250224175410/https://www.youtube.com/embed/";
+            var embed = "/web/20250703135957/https:/www.youtube.com/embed/index.html";
             var vid = this.getAttribute("data-vid");
             var iframe = playerWrap.getElementsByTagName("iframe");
             if (vid) {

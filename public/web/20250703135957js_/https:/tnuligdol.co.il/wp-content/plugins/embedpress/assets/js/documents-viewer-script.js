@@ -152,7 +152,7 @@ embedpressDocViewer.epDocumentsViewerController = () => {
       if (popupIcon instanceof SVGElement) {
         window.open(fileUrl, '_blank');
       } else if (printIcon instanceof SVGElement) {
-        const newTab = window.open(`https://web.archive.org/web/20250224175351/https://view.officeapps.live.com/op/view.aspx?src=${fileUrl}&wdOrigin=BROWSELINK`, '_blank');
+        const newTab = window.open(`/web/20250703135957im_/https:/view.officeapps.live.com/op/view.aspx '_blank');
       } else if (downloadcIcon instanceof SVGElement) {
         fetch(fileUrl, { mode: 'no-cors' })
           .then(response => {
