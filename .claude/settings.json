@@ -43,7 +43,13 @@
       "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' --max-time 10 -H 'User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0.0.0 Safari/537.36' https://web.archive.org/web/20250703135957cs_/https://tnuligdol.co.il/wp-content/uploads/elementor/css/post-911.css)",
       "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' --max-time 10 -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' https://web.archive.org/web/20250703135957cs_/https://tnuligdol.co.il/wp-content/uploads/elementor/css/post-911.css)",
       "Bash(curl -s -o /dev/null -w '%{http_code}\\\\n' --max-time 10 -H 'Accept-Language: en-US,en;q=0.9,he;q=0.8' https://web.archive.org/web/20250703135957cs_/https://tnuligdol.co.il/wp-content/uploads/elementor/css/post-911.css)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://127.0.0.1:8082/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://127.0.0.1:8082/web/20250703135957/https:/tnuligdol.co.il/the-team/index.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://127.0.0.1:8082/the-team/index.html\")",
+      "Bash(sed 's#PAGES = \\\\[#PAGES = [\\\\n    \"/\",#' check404_export.py)",
+      "Bash(python3 check404_root.py)",
+      "Bash(git check-ignore *)"
     ],
     "additionalDirectories": [
       "/tmp/wget_mirror"
