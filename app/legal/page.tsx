@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { legal } from '@/content';
@@ -44,7 +44,7 @@ export default function LegalPage() {
         </div>
       </div>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

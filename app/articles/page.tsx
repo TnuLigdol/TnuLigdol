@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ArticleCard } from '@/components/cards/article-card';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import {
   type Article,
   type ArticleCategory,
@@ -55,7 +55,7 @@ export default function ArticlesPage() {
         })}
       </div>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

@@ -1,23 +1,25 @@
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
 import {
   About,
   FAQ,
   FooterCTA,
   Hero,
+  KickstartSection,
   PhoneGuideSection,
+  ShareStorySection,
   StoriesSection,
 } from '@/components/home';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Hero />
       <About />
-      <StartupKitForm />
+      <KickstartSection />
       <StoriesSection />
+      <ShareStorySection />
       <PhoneGuideSection />
       <FAQ />
       <FooterCTA />
-    </main>
+    </>
   );
 }

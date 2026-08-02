@@ -3,12 +3,31 @@
 @import "tw-animate-css";
 
 @theme {
-  --font-family-sans: "Varela Round", system-ui, sans-serif;
+  --font-sans: "Varela Round", system-ui, sans-serif;
   --radius: 0.625rem;
+
+  /* Elementor breakpoints from the original site:
+     mobile <=767, tablet 768-1024, desktop >=1025 */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1025px;
 
   /* Brand colors */
   --color-primary: #66b768;
   --color-primary-foreground: #ffffff;
+
+  /* Palette lifted verbatim from the WordPress/Elementor original */
+  --color-green-dark: #1c631e;
+  --color-green-darkest: #0c330d;
+  --color-green-text: #003300;
+  --color-green-hover: #15753a;
+  --color-green-dropdown: #23a455;
+  --color-facebook-pill: #61ce70;
+  --color-circle-orange: #ffd27e;
+  --color-circle-green: #8bdb8d;
+  --color-slate: #223033;
+  --color-panel-gray: #eaeeef;
+  --color-panel-green: #eaf1ea;
+  --color-card-border: #e2e8e1;
 
   /* Semantic colors */
   --color-background: #ffffff;
@@ -48,6 +67,74 @@ body:has(.mobile-menu-open) {
 @layer base {
   * {
     @apply border-border;
+  }
+
+  body {
+    font-family: "Varela Round", sans-serif;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Entrance animations, ported 1:1 from the animate.css bundle Elementor used
+   on the original site. Widgets start hidden and are revealed when they
+   scroll into view (see components/ui/animate-in.tsx).
+   -------------------------------------------------------------------------- */
+@keyframes slideInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.e-invisible {
+  visibility: hidden;
+}
+
+.e-animated {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+}
+
+.e-animated-slideInRight {
+  animation-name: slideInRight;
+}
+.e-animated-slideInUp {
+  animation-name: slideInUp;
+}
+.e-animated-fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .e-animated {
+    animation: none;
+  }
+  .e-invisible {
+    visibility: visible;
   }
 }
 

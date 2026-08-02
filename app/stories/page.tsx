@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { StoryCard } from '@/components/cards/story-card';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import { Button } from '@/components/ui/button';
 import { stories } from '@/content';
 
@@ -36,7 +36,7 @@ export default function StoriesPage() {
         </div>
       </div>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { mediaCoverage } from '@/content';
 
@@ -49,7 +49,7 @@ export default function MediaPage() {
         </div>
       </div>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

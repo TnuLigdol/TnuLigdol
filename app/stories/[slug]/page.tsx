@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import { Button } from '@/components/ui/button';
 import { ContentRenderer } from '@/components/ui/content-renderer';
 import { getStoryBySlug, stories } from '@/content';
@@ -75,7 +75,7 @@ export default async function StoryPage({ params }: PageProps) {
         </div>
       </article>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

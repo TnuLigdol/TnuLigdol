@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { StartupKitForm } from '@/components/forms/startup-kit-form';
+import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
 import { ContentRenderer } from '@/components/ui/content-renderer';
 import { articles, categoryLabels, getArticleBySlug } from '@/content';
 
@@ -73,7 +73,7 @@ export default async function ArticlePage({ params }: PageProps) {
         />
       </article>
 
-      <StartupKitForm />
+      <StartupKitPlaceholder />
     </div>
   );
 }

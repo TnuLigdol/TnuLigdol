@@ -1,6 +1,5 @@
 'use client';
 
-import { XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { siteConfig } from '@/content/site';
@@ -10,85 +9,52 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
+/**
+ * Elementor's burger dropdown: a full-width white panel that drops out of the
+ * header, with a green hover/active state on each row.
+ */
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  // Toggle body class for scroll locking (CSS handles responsive behavior)
   useEffect(() => {
-    if (open) {
-      document.body.classList.add('mobile-menu-open');
-      return () => document.body.classList.remove('mobile-menu-open');
-    }
+    if (!open) return;
+    document.body.classList.add('mobile-menu-open');
+    return () => document.body.classList.remove('mobile-menu-open');
   }, [open]);
 
   if (!open) return null;
 
+  // Elementor's submenus repeat their parent as the first child; in a flat
+  // list that just reads as a duplicate row, so drop it.
+  const rows = siteConfig.navigation.flatMap((item) => [
+    { label: item.label, href: item.href },
+    ...(item.children ?? []).filter((child) => child.href !== item.href),
+  ]);
+
   return (
-    <div className="fixed inset-0 z-50 md:hidden">
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/50"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      {/* Menu Panel */}
-      <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <span className="text-lg font-bold text-primary">
-            {siteConfig.name}
-          </span>
-          <button
-            type="button"
+    <nav className="absolute inset-x-0 top-full z-[1001] bg-white shadow-[0px_0px_22px_-14px_rgba(0,0,0,0.31)] desktop:hidden">
+      <ul>
+        {rows.map((row) => (
+          <li key={`${row.href}-${row.label}`}>
+            <Link
+              href={row.href}
+              onClick={onClose}
+              className="block px-5 py-[13px] text-center font-sans text-[17px] leading-[1.5] text-green-darkest hover:bg-green-dropdown hover:text-white"
+            >
+              {row.label}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <a
+            href={siteConfig.socials.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={onClose}
-            className="p-2 text-gray-700 hover:text-primary"
-            aria-label="סגור תפריט"
+            className="block px-5 py-[13px] text-center font-sans text-[17px] leading-[1.5] text-green-darkest hover:bg-green-dropdown hover:text-white"
           >
-            <XIcon className="size-6" aria-hidden="true" />
-          </button>
-        </div>
-
-        <nav className="p-4">
-          <ul className="space-y-1">
-            {siteConfig.navigation.map((item) => (
-              <li key={item.href}>
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={onClose}
-                    className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className="block py-3 px-4 text-gray-700 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-                {item.children && (
-                  <ul className="mr-4 border-r border-gray-200">
-                    {item.children.map((child) => (
-                      <li key={child.href}>
-                        <Link
-                          href={child.href}
-                          onClick={onClose}
-                          className="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 hover:text-primary rounded-lg transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </div>
+            לקבוצת הפייסבוק
+          </a>
+        </li>
+      </ul>
+    </nav>
   );
 }
