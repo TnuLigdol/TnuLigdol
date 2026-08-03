@@ -10,12 +10,14 @@ export interface Article {
   title: string;
   category: ArticleCategory;
   author: string;
+  /** ISO date. */
   publishedAt: string;
   excerpt: string;
   content: string;
   featuredImage?: string;
 }
 
+/** Category badges as the original labelled them on /articles. */
 export const categoryLabels: Record<ArticleCategory, string> = {
   legislation: 'חקיקה',
   'field-stories': 'סיפורים מהשטח',
@@ -24,83 +26,29 @@ export const categoryLabels: Record<ArticleCategory, string> = {
   misc: 'שונות',
 };
 
-export const articles: Article[] = [
-  {
-    slug: 'ministry-guidelines-2019',
-    title: 'הנחיות משרד החינוך בנוגע לשימוש בטלפונים ניידים בבתי הספר היסודיים',
-    category: 'legislation',
-    author: 'משרד החינוך',
-    publishedAt: '2019-11-04',
-    excerpt:
-      'הנחיות רשמיות של משרד החינוך המגבילות שימוש בטלפונים ניידים בבתי ספר יסודיים.',
-    content: `
-      משרד החינוך פרסם הנחיות מעודכנות בנוגע לשימוש בטלפונים ניידים בבתי הספר היסודיים.
-
-      ## עיקרי ההנחיות
-      - איסור שימוש בטלפונים במהלך שעות הלימודים
-      - הטלפונים יישארו בתיק במצב כבוי
-      - אחריות ההורים על המכשיר
-
-      ## רקע
-      ההנחיות הגיעו בעקבות מחקרים רבים שהראו את ההשפעה השלילית של סמארטפונים על ריכוז ולמידה.
-    `,
-    featuredImage: '/images/articles/ministry.jpg',
-  },
-  {
-    slug: 'screen-time-research',
-    title: 'מחקר: השפעת זמן מסך על התפתחות ילדים',
-    category: 'translated',
-    author: 'תרגום: צוות תנו לגדול',
-    publishedAt: '2020-05-15',
-    excerpt:
-      'סקירת מחקרים עדכניים על הקשר בין זמן מסך לבעיות קשב, שינה והתפתחות חברתית.',
-    content: `
-      מחקרים רבים בשנים האחרונות בחנו את ההשפעה של זמן מסך על ילדים.
-
-      ## ממצאים עיקריים
-      - קשר בין זמן מסך מוגבר לבעיות קשב וריכוז
-      - השפעה על איכות השינה ומשך השינה
-      - ירידה בכישורים חברתיים פנים אל פנים
-
-      ## המלצות החוקרים
-      הגבלת זמן מסך לפי גיל, ודחיית חשיפה לסמארטפון ככל האפשר.
-    `,
-    featuredImage: '/images/articles/research.jpg',
-  },
-  {
-    slug: 'cyberbullying-prevention',
-    title: 'מניעת בריונות ברשת - מדריך להורים',
-    category: 'internet-safety',
-    author: 'צוות תנו לגדול',
-    publishedAt: '2021-03-20',
-    excerpt: 'כלים מעשיים להורים להגנה על ילדים מפני בריונות ברשת.',
-    content: `
-      בריונות ברשת היא אחד האיומים הגדולים על ילדים בעידן הדיגיטלי.
-
-      ## סימני אזהרה
-      - שינויים במצב הרוח אחרי שימוש במכשיר
-      - הסתרת פעילות ברשת
-      - ירידה בביצועים בבית הספר
-
-      ## מה ניתן לעשות
-      - שיחה פתוחה עם הילדים
-      - הכרת הפלטפורמות שהם משתמשים בהן
-      - יצירת סביבה בטוחה לדיווח
-    `,
-    featuredImage: '/images/articles/cyberbullying.jpg',
-  },
-];
-
-const articlesBySlug = new Map(
-  articles.map((article) => [article.slug, article]),
-);
+/**
+ * EMPTY ON PURPOSE.
+ *
+ * The archived /articles index linked to three article pages the crawl never
+ * captured, so no body text for them exists anywhere:
+ *
+ *   רובי ריבלין לא עומד מהצד       internet-safety/lo-omdim             16/02/2020
+ *   חינוך בעידן הסחות הדעת          translated/חינוך-בעידן-הסחות-הדעת     18/01/2020
+ *   כך תפתחו את החוזקות של ילדיכם   more/developing-childrens-strengths  17/12/2019
+ *
+ * This file previously held three *invented* articles with made-up bodies
+ * attributed to real people (משרד החינוך, פרופ' יאיר עמיחי-המבורגר). They were
+ * removed rather than published. Add the real ones here — from the live site or
+ * the client — and restore the article detail route. See todo.md.
+ */
+export const articles: Article[] = [];
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articlesBySlug.get(slug);
+  return articles.find((article) => article.slug === slug);
 }
 
 export function getArticlesByCategory(category: ArticleCategory): Article[] {
-  return articles.filter((a) => a.category === category);
+  return articles.filter((article) => article.category === category);
 }
 
 export function getRecentArticles(limit = 6): Article[] {

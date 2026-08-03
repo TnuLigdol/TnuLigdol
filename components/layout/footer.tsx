@@ -13,8 +13,9 @@ export function Footer() {
           href={siteConfig.footer.facebook.url}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          className="flex items-center font-sans text-[16px] leading-[1.5] text-primary transition-colors hover:text-primary-hover"
+          className="flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover"
         >
+          {/* --e-icon-list-icon-size was set to 19px for this one only */}
           <FacebookCircleIcon className="ml-[9px] h-[19px] w-[19px]" />
           <span>{siteConfig.footer.facebook.text}</span>
         </a>
@@ -23,9 +24,10 @@ export function Footer() {
           href={siteConfig.footer.credit.url}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          className="flex items-center font-sans text-[16px] leading-[1.5] text-primary transition-colors hover:text-primary-hover"
+          className="flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover"
         >
-          <StudioMarkIcon className="ml-[9px] h-[19px] w-[19px]" />
+          {/* this list kept Elementor's default 16px icon size */}
+          <StudioMarkIcon className="ml-[9px] h-4 w-4" />
           <span>{siteConfig.footer.credit.text}</span>
         </a>
       </div>

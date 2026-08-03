@@ -1,31 +1,27 @@
 export interface LegalDocument {
   title: string;
+  /** Issuing body — rendered under the title, beside the date. */
   authority: string;
-  date: string;
-  description: string;
-  downloadUrl: string;
+  /** Logo of the issuing body. */
   logo: string;
+  /** ISO date; rendered as e.g. "4 בנובמבר 2019" via Intl. */
+  date: string;
+  downloadUrl: string;
 }
 
-export interface LegalContent {
-  title: string;
-  subtitle: string;
-  documents: LegalDocument[];
-}
-
-export const legal: LegalContent = {
-  title: 'חקיקה',
-  subtitle: 'הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים',
-  documents: [
-    {
-      title:
-        'הנחיות משרד החינוך בנוגע לשימוש בטלפונים ניידים בבתי-הספר היסודיים',
-      authority: 'משרד החינוך',
-      date: '2019-11-04',
-      description:
-        'מסמך רשמי המפרט את ההנחיות לשימוש בטלפונים ניידים בבתי ספר יסודיים.',
-      downloadUrl: '/downloads/ministry-guidelines.pdf',
-      logo: '/images/ministry-logo.png',
-    },
-  ],
-};
+/**
+ * "חקיקה" — official guidance on mobile phone use in schools. The archived
+ * page listed exactly one document; kept as a list so more can be added
+ * without touching the page. (The original had no intro copy under the
+ * banner — just the card.)
+ */
+export const legalDocuments: LegalDocument[] = [
+  {
+    title: 'הנחיות בנוגע לשימוש בטלפונים ניידים בבתי הספר היסודיים',
+    authority: 'משרד החינוך',
+    logo: '/images/legal/ministry-of-education.png',
+    date: '2019-11-04',
+    downloadUrl:
+      '/downloads/ministry-of-education-mobile-phone-guidelines-2019.pdf',
+  },
+];

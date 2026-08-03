@@ -1,42 +1,31 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { StoryCard } from '@/components/cards/story-card';
-import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
-import { Button } from '@/components/ui/button';
+import { FooterCTA, PageHero } from '@/components/layout';
 import { stories } from '@/content';
 
 export const metadata: Metadata = {
-  title: 'סיפורים מהשטח | תנו לגדול על שקט',
-  description: 'סיפורי הצלחה מקהילות שהצטרפו ליוזמה',
+  title: 'סיפורים מהשטח · תנו לגדול על שקט',
+  description:
+    'הורים וקהילות מספרים איך הריצו את היוזמה אצלם — מה עבד, מה היה קשה, ומה הם למדו',
 };
 
 export default function StoriesPage() {
-  const sortedStories = [...stories].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
-
   return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">סיפורים מהשטח</h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            איך קהילות אחרות הצליחו להטמיע את היוזמה
-          </p>
-          <Button asChild>
-            <Link href="/share-your-story">שתפו את הסיפור שלכם</Link>
-          </Button>
-        </div>
+    <>
+      <PageHero title="סיפורים מהשטח" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {sortedStories.map((story) => (
+      {/* Elementor spacer between the banner and the grid */}
+      <div className="h-[25px]" />
+
+      <div className="mx-auto max-w-[1140px] p-[10px]">
+        <div className="grid grid-cols-1 gap-x-[30px] gap-y-[35px] tablet:grid-cols-2 desktop:grid-cols-3">
+          {stories.map((story) => (
             <StoryCard key={story.slug} story={story} />
           ))}
         </div>
       </div>
 
-      <StartupKitPlaceholder />
-    </div>
+      <FooterCTA />
+    </>
   );
 }

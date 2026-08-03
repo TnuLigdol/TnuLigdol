@@ -1,61 +1,48 @@
 import type { Metadata } from 'next';
-import { ArticleCard } from '@/components/cards/article-card';
-import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
-import {
-  type Article,
-  type ArticleCategory,
-  articles,
-  categoryLabels,
-} from '@/content';
+import { StoryCard } from '@/components/cards/story-card';
+import { FooterCTA, PageHero } from '@/components/layout';
+import { articles, stories } from '@/content';
 
 export const metadata: Metadata = {
-  title: 'מאמרים | תנו לגדול על שקט',
-  description: 'מאמרים וחומרי קריאה בנושא שימוש בטוח בטכנולוגיה לילדים',
+  title: 'מאמרים · תנו לגדול על שקט',
+  description: 'מאמרים, סיפורים מהשטח ותכנים מתורגמים בנושא ילדים ומסכים',
 };
 
+/**
+ * The original "כל המאמרים" was an all-posts index — it mixed field stories
+ * with articles from the חקיקה / מתורגמים / בטיחות ברשת / שונות categories.
+ *
+ * Only the field stories survive in the archive: the three article bodies the
+ * index linked to (and its second page of results) were never captured, so
+ * `content/articles.ts` is deliberately empty. Once real article content lands
+ * there it will appear here alongside the stories with no further changes.
+ */
 export default function ArticlesPage() {
-  // Group articles by category
-  const articlesByCategory = articles.reduce<
-    Partial<Record<ArticleCategory, Article[]>>
-  >((acc, article) => {
-    const category = article.category;
-    acc[category] = acc[category] ?? [];
-    acc[category].push(article);
-    return acc;
-  }, {});
-
-  // Get categories that have articles
-  const categories = Object.keys(categoryLabels).filter(
-    (cat): cat is ArticleCategory => cat in articlesByCategory,
+  const posts = [...stories.map((story) => ({ key: story.slug, story }))].sort(
+    (a, b) => b.story.publishedAt.localeCompare(a.story.publishedAt),
   );
 
   return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          כל המאמרים
-        </h1>
+    <>
+      <PageHero title="כל המאמרים" />
 
-        {categories.map((category) => {
-          const categoryArticles = articlesByCategory[category];
-          if (!categoryArticles) return null;
+      <div className="h-[30px]" />
 
-          return (
-            <section key={category} className="mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold mb-8">
-                {categoryLabels[category]}
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categoryArticles.map((article) => (
-                  <ArticleCard key={article.slug} article={article} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+      <div className="mx-auto max-w-[1140px] p-[10px]">
+        <div className="grid grid-cols-1 gap-x-[30px] gap-y-[35px] tablet:grid-cols-2 desktop:grid-cols-3">
+          {posts.map(({ key, story }) => (
+            <StoryCard key={key} story={story} />
+          ))}
+        </div>
+
+        {articles.length === 0 && (
+          <p className="mt-[35px] text-center font-sans text-[16px] text-ink/60">
+            תכנים נוספים יתווספו בקרוב.
+          </p>
+        )}
       </div>
 
-      <StartupKitPlaceholder />
-    </div>
+      <FooterCTA />
+    </>
   );
 }

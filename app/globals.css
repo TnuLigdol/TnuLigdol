@@ -28,6 +28,9 @@
   --color-panel-gray: #eaeeef;
   --color-panel-green: #eaf1ea;
   --color-card-border: #e2e8e1;
+  /* post-content body colour on story pages, and the sidebar box border */
+  --color-ink: #3d4459;
+  --color-sidebar-border: #ccdecc;
 
   /* Semantic colors */
   --color-background: #ffffff;

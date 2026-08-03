@@ -126,7 +126,7 @@ export function Header() {
 
 function NavLink({ item }: { item: NavItem }) {
   const className =
-    'flex items-center whitespace-nowrap px-4 py-[35px] font-sans text-[16px] font-medium leading-[1.2] tracking-[0.4px] text-green-darkest transition-colors hover:text-primary';
+    'flex items-center whitespace-nowrap px-4 py-[35px] font-sans text-[15.5px] font-medium leading-[20px] tracking-[0.2px] text-green-darkest transition-colors hover:text-primary';
 
   if (item.external) {
     return (

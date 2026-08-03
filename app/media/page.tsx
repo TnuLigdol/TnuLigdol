@@ -1,55 +1,27 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { MediaCard } from '@/components/cards/media-card';
+import { FooterCTA, PageHero } from '@/components/layout';
 import { mediaCoverage } from '@/content';
 
 export const metadata: Metadata = {
-  title: 'מדיה | תנו לגדול על שקט',
-  description: 'סיקור תקשורתי של היוזמה בכלי התקשורת המובילים',
+  title: 'אנחנו בתקשורת · תנו לגדול על שקט',
+  description: 'סיקור תקשורתי של יוזמת "תנו לגדול על שקט" בכלי התקשורת בישראל',
 };
 
 export default function MediaPage() {
   return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          מדיה
-        </h1>
-        <p className="text-xl text-muted-foreground text-center mb-16">
-          כתבו עלינו בכלי התקשורת המובילים
-        </p>
+    <>
+      <PageHero title="אנחנו בתקשורת" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="mx-auto max-w-[1140px] p-[10px]">
+        <div className="grid grid-cols-1 gap-x-[22px] gap-y-[27px] tablet:grid-cols-2 desktop:grid-cols-1">
           {mediaCoverage.map((item) => (
-            <Link
-              key={item.id}
-              href={item.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="text-primary font-bold text-lg mb-2">
-                    {item.publication}
-                  </div>
-                  <h2 className="text-base leading-tight font-semibold">
-                    {item.headline}
-                  </h2>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-sm text-muted-foreground">
-                    {item.author && <span>{item.author} • </span>}
-                    {new Date(item.date).toLocaleDateString('he-IL')}
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+            <MediaCard key={item.url + item.headline} item={item} />
           ))}
         </div>
       </div>
 
-      <StartupKitPlaceholder />
-    </div>
+      <FooterCTA />
+    </>
   );
 }

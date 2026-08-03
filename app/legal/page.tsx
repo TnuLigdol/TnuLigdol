@@ -1,50 +1,28 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { StartupKitPlaceholder } from '@/components/forms/startup-kit-placeholder';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { legal } from '@/content';
+import { LegalCard } from '@/components/cards/legal-card';
+import { FooterCTA, PageHero } from '@/components/layout';
+import { legalDocuments } from '@/content';
 
 export const metadata: Metadata = {
-  title: 'חקיקה | תנו לגדול על שקט',
-  description: 'הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים בבתי ספר',
+  title: 'חקיקה · תנו לגדול על שקט',
+  description: 'הנחיות רשמיות בנוגע לשימוש בטלפונים ניידים בבתי הספר היסודיים',
 };
 
 export default function LegalPage() {
   return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          {legal.title}
-        </h1>
-        <p className="text-xl text-muted-foreground text-center mb-16">
-          {legal.subtitle}
-        </p>
+    <>
+      <PageHero title="חקיקה" titleClassName="desktop:text-[65px]" />
 
-        <div className="max-w-3xl mx-auto space-y-8">
-          {legal.documents.map((doc) => (
-            <Card key={doc.downloadUrl}>
-              <CardHeader>
-                <div className="text-sm text-muted-foreground mb-2">
-                  {doc.authority} •{' '}
-                  {new Date(doc.date).toLocaleDateString('he-IL')}
-                </div>
-                <CardTitle className="text-xl">{doc.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6">{doc.description}</p>
-                <Button asChild>
-                  <Link href={doc.downloadUrl} target="_blank">
-                    הורדת המסמך (PDF)
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      {/* Elementor spacer section between the banner and the first card */}
+      <div className="h-[34px]" />
+
+      <div className="mx-auto flex max-w-[1000px] flex-col gap-[27px] p-[10px] tablet:p-0">
+        {legalDocuments.map((doc) => (
+          <LegalCard key={doc.downloadUrl} document={doc} />
+        ))}
       </div>
 
-      <StartupKitPlaceholder />
-    </div>
+      <FooterCTA />
+    </>
   );
 }

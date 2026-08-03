@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <>
-      <PageHero title="מי אנחנו" />
+      <PageHero title="מי אנחנו" titleClassName="desktop:text-[56px]" />
 
       <div className="mx-auto max-w-[1000px] p-[15px]">
         <div className="grid grid-cols-1 gap-x-[60px] tablet:grid-cols-2">
