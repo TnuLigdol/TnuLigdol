@@ -1,56 +1,28 @@
 import type { Metadata } from 'next';
-import { TeamCard } from '@/components/cards/team-card';
-import { advisors, coordinators, founders } from '@/content';
+import { TeamMemberCard } from '@/components/cards/team-member-card';
+import { FooterCTA, PageHero } from '@/components/layout';
+import { team } from '@/content';
 
 export const metadata: Metadata = {
-  title: 'הצוות | תנו לגדול על שקט',
-  description: 'הכירו את הצוות שמוביל את היוזמה',
+  title: 'מי אנחנו · תנו לגדול על שקט',
+  description:
+    'סיגל רובין שהם מייסדת שותפה של תנועת ״תנו לגדול על שקט״, לצד נעמה גלעדי. גרה בהוד השרון, נשואה ליואב ואם ל- 3 ילדים.',
 };
 
 export default function TeamPage() {
   return (
-    <div className="py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          הצוות
-        </h1>
+    <>
+      <PageHero title="מי אנחנו" />
 
-        {/* Founders */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            מייסדות
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {founders.map((member, index) => (
-              <TeamCard key={index} member={member} />
-            ))}
-          </div>
-        </section>
-
-        {/* Academic Advisor */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            יועץ אקדמי
-          </h2>
-          <div className="grid gap-6 max-w-xl mx-auto">
-            {advisors.map((member, index) => (
-              <TeamCard key={index} member={member} />
-            ))}
-          </div>
-        </section>
-
-        {/* Regional Coordinators */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            רכזים אזוריים
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {coordinators.map((member, index) => (
-              <TeamCard key={index} member={member} showRegion />
-            ))}
-          </div>
-        </section>
+      <div className="mx-auto max-w-[1000px] p-[15px]">
+        <div className="grid grid-cols-1 gap-x-[60px] tablet:grid-cols-2">
+          {team.map((member) => (
+            <TeamMemberCard key={member.name} member={member} />
+          ))}
+        </div>
       </div>
-    </div>
+
+      <FooterCTA />
+    </>
   );
 }

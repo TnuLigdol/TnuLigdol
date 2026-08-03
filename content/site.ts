@@ -34,6 +34,15 @@ export const siteConfig = {
       url: 'https://www.facebook.com/groups/311936499275780',
     },
   },
+  /**
+   * The green "download the kit" card + form that closes out every page on
+   * the original site except /me-and-my-phone (which has its own contact
+   * form instead). Lived in the site-wide WordPress footer template.
+   */
+  footerCta: {
+    title: 'זה יכול להצליח גם בקהילה שלכם.',
+    image: '/images/hero/kid-playing.png',
+  },
 };
 
 export type NavItem = {

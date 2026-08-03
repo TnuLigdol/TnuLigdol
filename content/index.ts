@@ -15,4 +15,4 @@ export { siteConfig } from './site';
 export type { Story } from './stories';
 export { getRecentStories, getStoryBySlug, stories } from './stories';
 export type { TeamMember } from './team';
-export { advisors, coordinators, founders, team } from './team';
+export { team } from './team';

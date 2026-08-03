@@ -1,13 +1,13 @@
 import {
   About,
   FAQ,
-  FooterCTA,
   Hero,
   KickstartSection,
   PhoneGuideSection,
   ShareStorySection,
   StoriesSection,
 } from '@/components/home';
+import { FooterCTA } from '@/components/layout';
 
 export default function Home() {
   return (

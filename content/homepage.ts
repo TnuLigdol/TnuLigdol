@@ -68,10 +68,6 @@ export interface Homepage {
     title: string;
     items: FaqItem[];
   };
-  footerCta: {
-    title: string;
-    image: string;
-  };
 }
 
 export const homepage: Homepage = {
@@ -184,9 +180,5 @@ export const homepage: Homepage = {
           'כמה שנצליח – הרווח הנקי כולו של הילדים שלנו. בתחושת הבטן שלנו, אם נצליח למשוך כך שנתיים, זה יהיה נהדר, והילדים יגדלו על שקט עוד שנתיים. מחיר של טלפון בטוח הוא 100 שח, הרבה פחות ממכשיר חכם, כך שהנזק אינו גדול כך או כך.',
       },
     ],
-  },
-  footerCta: {
-    title: 'זה יכול להצליח גם בקהילה שלכם.',
-    image: '/images/hero/kid-playing.png',
   },
 };

@@ -1,16 +1,18 @@
 import Image from 'next/image';
 import { StartupKitForm } from '@/components/forms/startup-kit-form';
-import { homepage } from '@/content';
+import { siteConfig } from '@/content/site';
 
-const { footerCta } = homepage;
+const { footerCta } = siteConfig;
 
 /**
  * Elementor footer sections `71343f8` (the green card carrying the second
  * signup form, anchored at #kickstart) and `197c6e9` (the winking boy, pulled
  * up over it and hidden below 1025px).
  *
- * On the original these lived in the site-wide footer template. They are
- * scoped to the homepage here until the remaining pages are migrated.
+ * Part of the site-wide WordPress footer template — appears at the bottom of
+ * every page except /me-and-my-phone, which has its own contact form instead.
+ * Not rendered from the root layout because of that one exception; each page
+ * includes it explicitly.
  */
 export function FooterCTA() {
   return (
