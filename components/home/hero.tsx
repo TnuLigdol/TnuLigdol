@@ -1,47 +1,98 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { AnimateIn } from '@/components/ui/animate-in';
+import { ArrowLeftIcon } from '@/components/ui/icons';
 import { homepage } from '@/content';
 
-function DecorativeCircles() {
+const { hero } = homepage;
+
+/**
+ * Elementor section `2d4fbf2`. The negative top margin pulls the green block
+ * up under the transparent header, which is why the nav appears to float on
+ * the hero.
+ *
+ * The page is RTL, so in a plain `flex-row` the first child lands on the
+ * right — matching the source order of the original's columns.
+ */
+export function Hero() {
   return (
-    <>
-      {/* Orange filled circle - top left */}
-      <div className="absolute top-16 left-8 w-16 h-16 md:w-24 md:h-24 rounded-full bg-accent-orange opacity-90 animate-float" />
+    <section className="-mt-20 -mb-20 bg-primary tablet:-mt-[91px] tablet:mb-0">
+      <div className="mx-auto flex max-w-[1140px] flex-col tablet:min-h-[665px] tablet:flex-row">
+        {/* Copy — 52.281% */}
+        <div className="relative flex w-full flex-col justify-center tablet:w-[52.281%] tablet:pr-[76px]">
+          <DecorativeCircles />
 
-      {/* Orange outline circle - middle left */}
-      <div className="absolute top-1/2 left-12 w-28 h-28 md:w-40 md:h-40 rounded-full border-4 border-accent-orange opacity-80 animate-float-slow" />
+          <div className="mb-5 h-[98px] tablet:h-0" />
 
-      {/* Orange filled circle - right side */}
-      <div className="absolute top-1/3 right-0 translate-x-1/3 w-24 h-24 md:w-32 md:h-32 rounded-full bg-accent-orange opacity-90 animate-float-delayed" />
+          <AnimateIn animation="slideInRight" className="mb-5">
+            <h1 className="text-center font-sans text-[42px] font-normal leading-none text-white tablet:text-start tablet:text-[70px]">
+              {hero.titleLine1}
+            </h1>
+          </AnimateIn>
 
-      {/* Green circle - bottom right */}
-      <div className="absolute bottom-0 right-8 translate-y-1/2 w-32 h-32 md:w-48 md:h-48 rounded-full bg-accent-green opacity-80 animate-float-slow" />
+          <AnimateIn animation="slideInRight" delay={200} className="mb-5">
+            <h1 className="text-center font-sans text-[58px] font-normal leading-none text-white tablet:text-start tablet:text-[96px]">
+              {hero.titleLine2}
+            </h1>
+          </AnimateIn>
 
-      {/* Yellow arc - top right corner */}
-      <div className="absolute -top-8 -right-8 w-32 h-32 md:w-48 md:h-48 rounded-full border-8 border-accent-orange opacity-70" />
-    </>
+          <div className="mb-5 h-0 tablet:h-[10px]" />
+
+          <AnimateIn
+            animation="fadeInUp"
+            delay={300}
+            className="z-[1000] flex justify-center tablet:justify-start"
+          >
+            <Link
+              href={hero.cta.href}
+              className="flex items-center justify-center rounded-[50px] border-2 border-primary bg-green-dark px-[30px] py-[15px] font-sans text-[18px] font-medium leading-none tracking-[0.2px] text-white transition-colors hover:border-white hover:bg-white hover:text-green-dark tablet:text-[24px]"
+            >
+              <span>{hero.cta.label}</span>
+              <ArrowLeftIcon className="mr-[14px]" />
+            </Link>
+          </AnimateIn>
+
+          <div className="h-0 tablet:h-[73px]" />
+        </div>
+
+        {/* Image — 47.719% */}
+        <div className="w-full tablet:w-[47.719%]">
+          <div className="h-[15px] tablet:h-[62px]" />
+          <AnimateIn
+            animation="slideInUp"
+            className="tablet:ml-[13px] tablet:-mr-[98px]"
+          >
+            <Image
+              src={hero.image}
+              alt=""
+              width={620}
+              height={603}
+              priority
+              className="mx-auto block h-auto w-full max-w-[620px]"
+            />
+          </AnimateIn>
+        </div>
+      </div>
+    </section>
   );
 }
 
-export function Hero() {
+/**
+ * The floating circles behind the hero copy — desktop only, and positioned
+ * against the copy column exactly as Elementor's absolute widgets were, so
+ * they track the 1140px container rather than the viewport.
+ */
+function DecorativeCircles() {
   return (
-    <section className="relative bg-primary py-20 md:py-32 overflow-hidden">
-      <DecorativeCircles />
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-          {homepage.hero.title}
-        </h1>
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
-          {homepage.hero.subtitle}
-        </p>
-        <Button
-          asChild
-          size="lg"
-          className="text-lg px-8 py-6 bg-white text-primary hover:bg-white/90 animate-fade-in-up animate-delay-300"
-        >
-          <Link href={homepage.hero.cta.href}>{homepage.hero.cta.label}</Link>
-        </Button>
-      </div>
-    </section>
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 hidden desktop:block"
+    >
+      <span className="absolute top-[290px] right-[-138px] size-20 rounded-full bg-circle-orange" />
+      <span className="absolute top-[60px] right-[1162px] size-20 rounded-full bg-circle-orange" />
+      <span className="absolute top-[448px] right-[1037px] h-[120px] w-[121px] rounded-full border-[10px] border-circle-orange" />
+      <span className="absolute top-[-20px] right-[-221px] h-[120px] w-[121px] rounded-full border-[10px] border-circle-orange" />
+      <span className="absolute top-[583px] right-[-170px] size-[120px] rounded-full bg-circle-green" />
+    </div>
   );
 }

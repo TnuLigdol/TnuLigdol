@@ -1,5 +1,5 @@
-import type { Metadata } from 'next';
 import { GoogleTagManager } from '@next/third-parties/google';
+import type { Metadata } from 'next';
 import './globals.css';
 import { Footer, Header } from '@/components/layout';
 
@@ -52,8 +52,8 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       {gtmId && <GoogleTagManager gtmId={gtmId} />}
-      <body className="min-h-screen flex flex-col bg-background text-text antialiased">
-        {/* TODO: Restore this asap: <Header /> */}
+      <body className="flex min-h-screen flex-col bg-background">
+        <Header />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
