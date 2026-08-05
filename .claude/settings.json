@@ -71,7 +71,10 @@
       "Bash(node console3.mjs)",
       "Bash(node slices.mjs http://localhost:8897/me-and-my-phone.html new-mmp 1440)",
       "Bash(pkill -f refsrv)",
-      "Bash(pkill -f \"http.server 889\")"
+      "Bash(pkill -f \"http.server 889\")",
+      "Bash(git fetch *)",
+      "Bash(git --version)",
+      "Bash(git merge-tree *)"
     ],
     "additionalDirectories": [
       "/tmp/wget_mirror"
