@@ -31,6 +31,18 @@ export function Footer() {
           <span>{siteConfig.footer.credit.text}</span>
         </a>
       </div>
+
+      <p className="mx-auto mt-4 max-w-[1000px] text-center font-sans text-[14px] leading-[1.4em] text-ink/60">
+        מצאתם טעות? רוצים לעזור לשפר את האתר?{' '}
+        <a
+          href={siteConfig.footer.facebook.url}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          className="font-bold text-primary transition-colors hover:text-primary-hover"
+        >
+          פנו אלינו!
+        </a>
+      </p>
     </footer>
   );
 }

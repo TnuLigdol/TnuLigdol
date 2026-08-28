@@ -12,7 +12,7 @@ export const siteConfig = {
   navigation: [
     { label: 'להורדת קובץ התנעה', href: '/#kickstart' },
     { label: 'בתקשורת', href: '/media' },
-    { label: 'מאמרים', href: '/articles' },
+    { label: 'מכשירים', href: '/devices' },
     {
       label: 'סיפורים מהשטח',
       href: '/stories',
