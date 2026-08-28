@@ -17,7 +17,9 @@ export function PartialStatusIcon({ className }: { className?: string }) {
       className={className}
     >
       <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
+
+      <path d="m10 6 8 8" />
+      {/* <path d="m6 6 12 12" /> */}
       <path d="M6 18 2 14" />
     </svg>
   );
