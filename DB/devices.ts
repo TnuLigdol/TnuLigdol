@@ -205,7 +205,7 @@ export const devices: Device[] = [
   {
     slug: "mewatch-first-phone",
     name: "MeWatch First Phone",
-    image: "/devices/mewatch-first-phone.jpg",
+    image: "/devices/mewatch-first-phone.png",
     brand: "MeWatch",
     price: { min: 220, max: 300 },
     colors: ["שחור", "כחול", "ורוד"],
@@ -250,6 +250,42 @@ export const devices: Device[] = [
         type: "link",
         description: "אפליקציית הניהול — iOS",
         url: "https://apps.apple.com/il/app/yqt-smart/id6503492229?l=he",
+      },
+    ],
+  },
+  {
+    slug: "kidiphone-plus",
+    name: "KidiPhone Plus",
+    image: "/devices/kidiphone-plus.webp",
+    brand: "KidiWatch",
+    price: { min: 250, max: 300 },
+    colors: ["כחול", "ורוד"],
+    specs: {
+      screenSize: "8 אינץ׳",
+      camera: "קדמית ואחורית",
+      battery: "800mAh",
+      memory: "",
+    },
+    features: {
+      gps: true,
+      sms: "partial",
+      touchscreen: true,
+    },
+    featureNotes: {
+      sms: "מאפשר קבלת סמס, אבל לא שליחה. ניתן לשלוח הודעה למשפחה וחברים מוגדרים מראש",
+    },
+    description:
+      "KidiPhone Plus טלפון אמיתי לילדים עם גבולות חכמים: שיחות וידאו וקול לאנשי קשר מוגדרים, GPS, לחצן SOS, צ׳אט, מצלמה ואפליקציות שימושיות - לצד חסימת זרים, נעילה מרחוק והגדרת אזורי ביטחון.",
+    extraDetails: [
+      {
+        type: "image",
+        description: "",
+        url: "/devices/kidiphone-plus-p1.webp",
+      },
+      {
+        type: "image",
+        description: "",
+        url: "/devices/kidiphone-plus-p2.webp",
       },
     ],
   },
