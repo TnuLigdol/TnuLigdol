@@ -7,8 +7,10 @@ const { kickstart } = homepage;
 
 /**
  * Elementor sections `b4cfc34` (copy + signup form on a tinted green band) and
- * `8591ae8` (the two cheering kids, pulled up over the band with a -654px
- * margin and hidden below 1025px).
+ * `8591ae8` (the two cheering kids, pulled up over the band with a -456px
+ * margin and hidden below 1025px). The margin is tuned to the band's current
+ * height (a title + one button); if that content changes height again, recheck
+ * that the kids don't creep up over the About card above.
  */
 export function KickstartSection() {
   return (
@@ -36,7 +38,7 @@ export function KickstartSection() {
 
       <section
         aria-hidden="true"
-        className="pointer-events-none relative z-10 -mt-[654px] hidden desktop:block"
+        className="pointer-events-none relative z-10 -mt-[456px] hidden desktop:block"
       >
         {/* RTL flex row: the first child sits on the right */}
         <div className="flex items-end py-[10px]">
