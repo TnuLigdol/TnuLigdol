@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { AnimateIn } from '@/components/ui/animate-in';
 import { ArrowLeftIcon } from '@/components/ui/icons';
 import { homepage } from '@/content';
+import { RenovationNotice } from './renovation-notice';
 
 const { hero } = homepage;
 
@@ -23,6 +24,8 @@ export function Hero() {
           <DecorativeCircles />
 
           <div className="mb-5 h-[98px] tablet:h-0" />
+
+          <RenovationNotice />
 
           <AnimateIn animation="slideInRight" className="mb-5">
             <h1 className="text-center font-sans text-[42px] font-normal leading-none text-white tablet:text-start tablet:text-[70px]">

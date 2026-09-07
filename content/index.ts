@@ -21,6 +21,12 @@ export { legalDocuments } from './legal';
 export type { MediaCoverage } from './media';
 export { mediaCoverage } from './media';
 export { phoneGuide } from './phone-guide';
+export type {
+  ContributePage,
+  ContributeStep,
+  RenovationBanner,
+} from './renovation';
+export { contributePage, renovationBanner } from './renovation';
 export { siteConfig } from './site';
 export type { Story, StoryBlock } from './stories';
 export { getRecentStories, getStoryBySlug, stories } from './stories';
