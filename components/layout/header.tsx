@@ -44,12 +44,15 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-[1002] h-[88px] transition-colors duration-300 desktop:static desktop:h-[91px] desktop:bg-transparent',
+        'sticky top-0 z-[1002] h-[88px] transition-colors duration-300 desktop:relative desktop:h-[91px] desktop:bg-transparent',
         scrolled || menuOpen ? 'bg-white/90' : 'bg-transparent',
       )}
     >
-      {/* Desktop: logo right, menu + Facebook pill left */}
-      <div className="hidden px-[30px] desktop:block">
+      {/* Desktop: logo right, menu + Facebook pill left. Kept hidden until
+          the nav (logo + 6 items + Facebook pill) actually fits — it needs
+          close to the full 1140px container, well past the shared 1025px
+          desktop breakpoint, or it overflows and overlaps the hero. */}
+      <div className="hidden px-[30px] min-[1140px]:block">
         <div className="mx-auto flex h-[90px] max-w-[1140px] items-center justify-between">
           <Link href="/" className="shrink-0">
             <Image
@@ -93,7 +96,7 @@ export function Header() {
       </div>
 
       {/* Mobile / tablet: logo right, burger left */}
-      <div className="mx-auto flex h-[87px] max-w-[1000px] items-center justify-between p-5 desktop:hidden">
+      <div className="mx-auto flex h-[87px] max-w-[1000px] items-center justify-between p-5 min-[1140px]:hidden">
         <Link href="/" className="shrink-0">
           <Image
             src="/images/logo.png"

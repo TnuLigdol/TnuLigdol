@@ -30,7 +30,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   ]);
 
   return (
-    <nav className="absolute inset-x-0 top-full z-[1001] bg-white shadow-[0px_0px_22px_-14px_rgba(0,0,0,0.31)] desktop:hidden">
+    <nav className="absolute inset-x-0 top-full z-[1001] bg-white shadow-[0px_0px_22px_-14px_rgba(0,0,0,0.31)] min-[1140px]:hidden">
       <ul>
         {rows.map((row) => (
           <li key={`${row.href}-${row.label}`}>

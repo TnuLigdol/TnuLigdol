@@ -17,10 +17,10 @@ const { hero } = homepage;
  */
 export function Hero() {
   return (
-    <section className="-mt-20 -mb-20 bg-primary tablet:-mt-[91px] tablet:mb-0">
+    <section className="-mt-20 -mb-20 overflow-x-clip bg-primary tablet:-mt-[91px] tablet:mb-0">
       <div className="mx-auto flex max-w-[1140px] flex-col tablet:min-h-[665px] tablet:flex-row">
         {/* Copy — 52.281% */}
-        <div className="relative flex w-full flex-col justify-center tablet:w-[52.281%] tablet:pr-[76px]">
+        <div className="relative flex w-full flex-col justify-center tablet:w-[52.281%] tablet:pr-[76px] tablet:pt-[91px]">
           <DecorativeCircles />
 
           <div className="mb-5 h-[98px] tablet:h-0" />
