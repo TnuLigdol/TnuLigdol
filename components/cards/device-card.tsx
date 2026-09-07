@@ -68,7 +68,7 @@ export function DeviceCard({ device }: { device: Device }) {
 
           <div className="mt-4 flex flex-1 items-end justify-end">
             <span className="flex items-center font-sans text-[15px] font-bold text-green-darkest transition-colors group-hover:text-primary">
-              <span>לפרטים נוספים</span>
+              <span>לפרטים נוספים (לחצו כדי להרחיב)</span>
               <ArrowLeftIcon className="mr-2" />
             </span>
           </div>

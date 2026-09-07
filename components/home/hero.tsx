@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { AnimateIn } from '@/components/ui/animate-in';
 import { ArrowLeftIcon } from '@/components/ui/icons';
 import { homepage } from '@/content';
+import { RenovationNotice } from './renovation-notice';
 
 const { hero } = homepage;
 
@@ -16,13 +17,15 @@ const { hero } = homepage;
  */
 export function Hero() {
   return (
-    <section className="-mt-20 -mb-20 bg-primary tablet:-mt-[91px] tablet:mb-0">
+    <section className="-mt-20 -mb-20 overflow-x-clip bg-primary tablet:-mt-[91px] tablet:mb-0">
       <div className="mx-auto flex max-w-[1140px] flex-col tablet:min-h-[665px] tablet:flex-row">
         {/* Copy — 52.281% */}
-        <div className="relative flex w-full flex-col justify-center tablet:w-[52.281%] tablet:pr-[76px]">
+        <div className="relative flex w-full flex-col justify-center tablet:w-[52.281%] tablet:pr-[76px] tablet:pt-[91px]">
           <DecorativeCircles />
 
           <div className="mb-5 h-[98px] tablet:h-0" />
+
+          <RenovationNotice />
 
           <AnimateIn animation="slideInRight" className="mb-5">
             <h1 className="text-center font-sans text-[42px] font-normal leading-none text-white tablet:text-start tablet:text-[70px]">

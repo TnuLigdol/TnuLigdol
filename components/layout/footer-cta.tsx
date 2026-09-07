@@ -7,7 +7,10 @@ const { footerCta } = siteConfig;
 /**
  * Elementor footer sections `71343f8` (the green card carrying the second
  * signup form, anchored at #kickstart) and `197c6e9` (the winking boy, pulled
- * up over it and hidden below 1025px).
+ * up over it with a -401px margin and hidden below 1025px). The margin is
+ * tuned to the card's current height (a title + one button); if that content
+ * changes height again, recheck that the boy doesn't creep up over whatever
+ * precedes the footer on each page.
  *
  * Part of the site-wide WordPress footer template — appears at the bottom of
  * every page except /me-and-my-phone, which has its own contact form instead.
@@ -43,7 +46,7 @@ export function FooterCTA() {
 
       <section
         aria-hidden="true"
-        className="pointer-events-none relative -mt-[640px] hidden pr-[57px] desktop:block"
+        className="pointer-events-none relative -mt-[401px] hidden pr-[57px] desktop:block"
       >
         <div className="mx-auto flex max-w-[1140px]">
           <div className="w-[58.07%] p-[10px]">

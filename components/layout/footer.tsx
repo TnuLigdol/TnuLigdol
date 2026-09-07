@@ -1,4 +1,5 @@
 import { FacebookCircleIcon, StudioMarkIcon } from '@/components/ui/icons';
+import { renovationBanner } from '@/content';
 import { siteConfig } from '@/content/site';
 
 /**
@@ -35,9 +36,7 @@ export function Footer() {
       <p className="mx-auto mt-4 max-w-[1000px] text-center font-sans text-[14px] leading-[1.4em] text-ink/60">
         מצאתם טעות? רוצים לעזור לשפר את האתר?{' '}
         <a
-          href={siteConfig.footer.facebook.url}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
+          href={`mailto:${renovationBanner.suggestionsEmail}`}
           className="font-bold text-primary transition-colors hover:text-primary-hover"
         >
           פנו אלינו!
