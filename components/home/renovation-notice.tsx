@@ -17,6 +17,7 @@ export function RenovationNotice() {
       <p className="flex flex-wrap items-center justify-center gap-x-[6px] rounded-full border border-accent-orange bg-[#fff7e8] px-4 py-[8px] text-center font-sans text-[13px] leading-snug text-[#5c4204] tablet:text-[15px]">
         <span aria-hidden="true">{emoji}</span>
         <span>{prefix}</span>
+        <span aria-hidden="true">{emoji}</span>
         <a
           href={suggestionsCta.href}
           className="font-bold underline decoration-2 underline-offset-2 transition-colors hover:text-primary-hover"
@@ -30,7 +31,6 @@ export function RenovationNotice() {
         >
           {contributeCta.label}
         </Link>
-        <span aria-hidden="true">{emoji}</span>
       </p>
     </div>
   );
