@@ -6,7 +6,9 @@
       "!**/.next",
       "!**/out",
       "!**/node_modules",
-      "!next-env.d.ts"
+      "!next-env.d.ts",
+      "!TnuLigdol-oldWP-fromArchiveOrg",
+      "!tmp-consider-deleting"
     ]
   },
   "assist": {
