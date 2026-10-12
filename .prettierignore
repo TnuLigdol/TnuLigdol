@@ -1,0 +1,11 @@
+.next
+out
+node_modules
+bun.lock
+next-env.d.ts
+tsconfig.tsbuildinfo
+TnuLigdol-oldWP-fromArchiveOrg
+tmp-consider-deleting
+tmp
+DB
+public
