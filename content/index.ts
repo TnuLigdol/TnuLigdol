@@ -6,13 +6,35 @@ export {
   getArticlesByCategory,
   getRecentArticles,
 } from './articles';
+export type {
+  Device,
+  DeviceFeatures,
+  DevicePrice,
+  DeviceSpecs,
+  ExtraDetail,
+  ExtraDetailType,
+} from './devices';
+export { devices, getDeviceBySlug } from './devices';
 export { homepage } from './homepage';
-export { legal } from './legal';
+export type { LegalDocument } from './legal';
+export { legalDocuments } from './legal';
 export type { MediaCoverage } from './media';
 export { mediaCoverage } from './media';
 export { phoneGuide } from './phone-guide';
+export type {
+  ContributePage,
+  ContributeStep,
+  RenovationBanner,
+} from './renovation';
+export { contributePage, renovationBanner } from './renovation';
 export { siteConfig } from './site';
-export type { Story } from './stories';
+export type { Story, StoryBlock } from './stories';
 export { getRecentStories, getStoryBySlug, stories } from './stories';
+export type { Supplier } from './suppliers';
+export {
+  getSupplierByCode,
+  getSuppliersForDevice,
+  suppliers,
+} from './suppliers';
 export type { TeamMember } from './team';
-export { advisors, coordinators, founders, team } from './team';
+export { team } from './team';

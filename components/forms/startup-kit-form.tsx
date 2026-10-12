@@ -1,56 +1,39 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowLeftIcon } from '@/components/ui/icons';
+import { cn } from '@/lib/utils';
+
+const STARTUP_KIT_PDF_URL = encodeURI('/ערכת התנעה.pdf');
 
 interface StartupKitFormProps {
-  title?: string;
-  id?: string;
-  variant?: 'light' | 'dark';
-  hideTitle?: boolean;
+  /** Button colour and layout differ between placements. */
+  variant: 'kickstart' | 'footer';
+  className?: string;
 }
 
-export function StartupKitForm({
-  title = 'קבלו את ערכת ההתנעה',
-  id = 'startup-kit',
-  variant = 'light',
-  hideTitle = false,
-}: StartupKitFormProps) {
-  if (variant === 'dark') {
-    return (
-      <Card className="bg-white/95 backdrop-blur">
-        {!hideTitle && (
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl text-center text-primary">
-              {title}
-            </CardTitle>
-          </CardHeader>
-        )}
-        <CardContent className={hideTitle ? 'pt-6' : ''}>
-          <div className="bg-muted rounded-lg p-8 text-center text-muted-foreground">
-            <p className="mb-4">טופס Google יוטמע כאן</p>
-            <p className="text-sm">השאירו פרטים וקבלו את ערכת ההתנעה למייל</p>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
+export function StartupKitForm({ variant, className }: StartupKitFormProps) {
+  const isFooter = variant === 'footer';
 
   return (
-    <section id={id} className="py-16 md:py-24 bg-primary/5">
-      <div className="container mx-auto px-4">
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl text-center">
-              {title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {/* Google Form will be embedded here */}
-            <div className="bg-muted rounded-lg p-8 text-center text-muted-foreground">
-              <p className="mb-4">טופס Google יוטמע כאן</p>
-              <p className="text-sm">השאירו פרטים וקבלו את ערכת ההתנעה למייל</p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+    <div
+      className={cn(
+        'flex w-full justify-center',
+        isFooter && 'tablet:justify-stretch',
+        className,
+      )}
+    >
+      <a
+        href={STARTUP_KIT_PDF_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          'flex min-h-[47px] items-center justify-center rounded-[4px] font-sans text-[18px] font-bold leading-none tracking-[0.6px] text-white tablet:text-[20px]',
+          isFooter
+            ? 'bg-green-dark px-[30px] py-[15px] tablet:w-full'
+            : 'bg-primary px-6 py-[10px]',
+        )}
+      >
+        <span>הורידו את ערכת ההתנעה</span>
+        <ArrowLeftIcon className="mr-[11px]" />
+      </a>
+    </div>
   );
 }

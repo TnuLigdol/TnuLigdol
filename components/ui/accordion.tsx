@@ -1,66 +1,72 @@
 'use client';
 
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from 'lucide-react';
-import type * as React from 'react';
+import { useState } from 'react';
+import { LinkText } from '@/components/ui/link-text';
 
-import { cn } from '@/lib/utils';
-
-function Accordion({
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Root>) {
-  return <AccordionPrimitive.Root data-slot="accordion" {...props} />;
+interface AccordionItem {
+  question: string;
+  /** Blank lines separate paragraphs; `[label](url)` becomes a link. */
+  answer: string;
 }
 
-function AccordionItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Item>) {
+/**
+ * Elementor's accordion widget: one panel open at a time, chevron flips on the
+ * active row. Answers are plain text with blank-line paragraph breaks.
+ */
+export function Accordion({ items }: { items: AccordionItem[] }) {
+  const [open, setOpen] = useState<number | null>(0);
+
   return (
-    <AccordionPrimitive.Item
-      data-slot="accordion-item"
-      className={cn('border-b last:border-b-0', className)}
-      {...props}
-    />
+    <div className="flex flex-col">
+      {items.map((item, index) => {
+        const isOpen = open === index;
+        const panelId = `accordion-panel-${index}`;
+        const buttonId = `accordion-button-${index}`;
+
+        return (
+          <div key={item.question} className="border-b border-card-border">
+            <h3>
+              <button
+                type="button"
+                id={buttonId}
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => setOpen(isOpen ? null : index)}
+                className="flex w-full items-center justify-between gap-4 py-[15px] text-right font-sans text-[18px] leading-[1.4em] text-green-darkest transition-colors hover:text-primary"
+              >
+                <span>{item.question}</span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  className={`size-4 shrink-0 transition-transform ${
+                    isOpen ? 'rotate-180' : ''
+                  }`}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+            </h3>
+
+            {isOpen && (
+              <section
+                id={panelId}
+                aria-labelledby={buttonId}
+                className="pb-[15px] text-right font-sans text-[17px] font-light leading-[1.6em] text-ink"
+              >
+                {item.answer.split('\n\n').map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)} className="mt-0 mb-[1em]">
+                    <LinkText>{paragraph}</LinkText>
+                  </p>
+                ))}
+              </section>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
-
-function AccordionTrigger({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
-  return (
-    <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger
-        data-slot="accordion-trigger"
-        className={cn(
-          'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-  );
-}
-
-function AccordionContent({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Content>) {
-  return (
-    <AccordionPrimitive.Content
-      data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
-      {...props}
-    >
-      <div className={cn('pt-0 pb-4', className)}>{children}</div>
-    </AccordionPrimitive.Content>
-  );
-}
-
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
