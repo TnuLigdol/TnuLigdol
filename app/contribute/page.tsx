@@ -43,6 +43,8 @@ export default function ContributePage() {
             <a
               href={`mailto:${suggestionsEmail}`}
               className="font-bold underline underline-offset-2 hover:text-[#8a5a00]"
+              // mail extensions rewrite mailto links before hydration (harmless)
+              suppressHydrationWarning
             >
               {warningAltLinkLabel}
             </a>
