@@ -49,6 +49,8 @@ export interface Milestone {
   articles?: RelatedArticle[];
   /** Warning shown at the top of the dedicated page, below the date. */
   notice?: string;
+  /** Slug of the milestone that superseded this one; the page warns and links to it. */
+  replacedBy?: string;
   /** Short summary written from reading the document itself. */
   summary?: string[];
 }
@@ -108,6 +110,12 @@ function toMilestone([slug, raw]: [string, (typeof milestonesData)[keyof typeof 
 export const milestones = Object.entries(milestonesData)
   .map(toMilestone)
   .toSorted((a, b) => b.date.localeCompare(a.date));
+
+for (const m of milestones) {
+  if (m.replacedBy && !milestones.some((other) => other.slug === m.replacedBy)) {
+    throw new Error(`Unknown replacedBy "${m.replacedBy}" in milestone "${m.slug}"`);
+  }
+}
 
 export function getMilestoneBySlug(slug: string) {
   return milestones.find((m) => m.slug === slug);

@@ -13,13 +13,14 @@ External links break. For every milestone, save a copy of the source document un
 - **Direct PDF link:** `curl -sL -o public/downloads/milestones/<slug>.pdf "<url>"`, then check it is a real PDF (`file`, and page count with `pypdf`).
 - **Web page (e.g. a ministry circular or press release):** print it to PDF with headless Chrome:
   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --no-pdf-header-footer --virtual-time-budget=20000 --print-to-pdf=<out>.pdf "<url>"`
-- **Collapsed accordions:** printed pages drop the content of collapsed sections. Save the HTML, add a `<base href>` and a small script that clicks every closed toggle on load, then print the local file. Confirm the hidden text is now in the PDF (extract it with `pypdf` and search for a string from each section).
+- **Collapsed accordions:** printed pages drop the content of collapsed sections, and this has already bitten us (circular 0466 first shipped without its "הגורם האחראי" and "התחולה" sections). Never trust a plain print of a page that has toggles. Save the HTML (`curl -A "Mozilla/5.0"`), add `<base href>` (the page's directory) and a stylesheet/script that force every hidden section open, then print the local file with `--print-to-pdf=<out>.pdf "file://<local>.html"`. Find the toggles by reading the HTML (`grep -n 'ToggleDiv\|collapse\|accordion\|aria-expanded\|display: *none'`) and note which content containers they hide. For the gov.il circulars database (`apps.education.gov.il/mankal`), the sections are `.divHoraaTochen`, so inject `<style>.divHoraaTochen{display:block !important}</style>` before `</body>`. Do not force-show broader selectors such as `[id^=div]` or `.tabcontent`: they also reveal the search form and menus.
+  Then check the result: extract the text (`pypdf`), search for a string from every section (every toggle heading **and** a line of its body, e.g. the contact email under "הגורם האחראי"), and look at two or three rendered pages (`pymupdf`, `get_pixmap`) to confirm the sections are open and no search form or menu leaked in.
 - **Bot-blocked sites (gov.il, kan.org.il and others serve a Cloudflare challenge):** headless Chrome and `WebFetch` get a 403 or a challenge page. Do not try to get around it. Read the page through the user's own browser (Claude in Chrome), or tell the user the copy is missing and ask them to add the PDF.
 - Always read the result before publishing it (see below). A PDF of a challenge page is worse than no copy.
 
 ### Verify
 
-1. Extract the text (`pypdf`) and confirm it is the right document, not an error or challenge page.
+1. Extract the text (`pypdf`) and confirm it is the right document, not an error or challenge page, and that the body of every collapsible section is present (see "Collapsed accordions").
 2. Page count looks plausible against the source.
 3. `bunx tsc --noEmit` passes (known unrelated errors in `DB/suppliers.ts`), and the detail page returns 200 with the copy link.
 
@@ -35,6 +36,7 @@ External links break. For every milestone, save a copy of the source document un
 | `url`                  | the original source                                                                                                                                                           |
 | `copyUrl`              | local copy, see the rule above                                                                                                                                                |
 | `notice`               | optional warning shown under the date (e.g. an outdated document)                                                                                                             |
+| `replacedBy`           | optional slug of the milestone that superseded this one; the detail page shows a warning linking to it                                                                        |
 | `summary`              | optional bullet points, written from reading the source, not copied                                                                                                           |
 | `articles`             | optional list of news-article slugs (foreign keys into `DB/news-articles.json`); an unknown slug throws at load                                                               |
 

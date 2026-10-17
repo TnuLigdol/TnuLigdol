@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { ArrowLeftIcon } from '@/components/ui/icons';
+import { ArrowLeftIcon, WarningIcon } from '@/components/ui/icons';
 import type { Milestone } from '@/content';
 import { cn, formatHebrewDate } from '@/lib/utils';
 import { CategoryTags } from './category-tags';
 import { PublisherBadges, SourceBadge } from './source-badge';
 import { Reveal } from './reveal';
 
-const ICON_SIZE = 'h-[34px] w-[34px] text-[15px]';
+const ICON_SIZE = 'h-[48px] w-[48px] text-[20px]';
 
 /**
  * Vertical timeline, newest first. The line runs down the right edge on mobile
@@ -25,6 +25,7 @@ export function Timeline({ items }: { items: Milestone[] }) {
       {items.map((item, i) => {
         const onRight = i % 2 === 0;
         const year = item.date.slice(0, 4);
+        const replacement = item.replacedBy ? items.find((m) => m.slug === item.replacedBy) : undefined;
         const newYear = i === 0 || items[i - 1].date.slice(0, 4) !== year;
         return (
           <li
@@ -78,6 +79,13 @@ export function Timeline({ items }: { items: Milestone[] }) {
 
                 <p className='mt-3 font-sans text-[15px] leading-[1.6em] text-ink'>{item.description}</p>
 
+                {replacement && (
+                  <p className='mt-3 flex items-start gap-2 font-sans text-[14px] font-bold leading-[1.5em] text-green-darkest'>
+                    <WarningIcon className='mt-[2px] shrink-0 text-[16px] text-primary-hover' />
+                    <span>הוראה זו הוחלפה בהוראה חדשה מ-{formatHebrewDate(replacement.date)}</span>
+                  </p>
+                )}
+
                 <div className='mt-4 flex flex-wrap items-center justify-between gap-3'>
                   <span className='inline-flex items-center font-sans text-[15px] font-bold text-[#5ca55c] transition-colors group-hover:text-primary-hover'>
                     להרחבה
@@ -88,7 +96,7 @@ export function Timeline({ items }: { items: Milestone[] }) {
                     {item.articles && item.articles.length > 0 && (
                       <>
                         <PublisherBadges articles={item.articles} className={ICON_SIZE} />
-                        <span aria-hidden='true' className='h-[24px] w-px bg-card-border' />
+                        <span aria-hidden='true' className='h-[32px] w-px bg-card-border' />
                       </>
                     )}
                     <SourceBadge name={item.author} icon={item.authorIcon} className={ICON_SIZE} />

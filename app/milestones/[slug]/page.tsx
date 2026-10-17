@@ -29,6 +29,7 @@ export default async function MilestonePage({ params }: PageProps) {
   const { slug } = await params;
   const item = getMilestoneBySlug(slug);
   if (!item) notFound();
+  const replacement = item.replacedBy ? getMilestoneBySlug(item.replacedBy) : undefined;
 
   return (
     <>
@@ -64,6 +65,22 @@ export default async function MilestonePage({ params }: PageProps) {
           >
             <WarningIcon className='mt-[3px] text-[20px] text-primary-hover' />
             <span>{item.notice}</span>
+          </div>
+        )}
+
+        {replacement && (
+          <div
+            role='note'
+            className='mt-5 flex items-start gap-3 rounded-[12px] border border-accent-orange bg-[#fff6e0] p-[14px] font-sans text-[16px] font-bold leading-[1.5em] text-green-darkest'
+          >
+            <WarningIcon className='mt-[3px] text-[20px] text-primary-hover' />
+            <span>
+              שימו לב: הוראה זו הוחלפה ב
+              <Link href={`/milestones/${replacement.slug}`} className='underline hover:text-primary'>
+                {replacement.title} ({formatHebrewDate(replacement.date)})
+              </Link>
+              .
+            </span>
           </div>
         )}
 
