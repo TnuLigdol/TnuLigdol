@@ -2,6 +2,8 @@ import { cn } from '@/lib/utils';
 
 interface PageHeroProps {
   title: string;
+  /** Small line above the title, naming the subject the page belongs to. */
+  eyebrow?: string;
   /**
    * Desktop title size. The original set this per page rather than globally
    * (55px on most, 56px on /the-team, 65px on /legal); mobile is always 35px.
@@ -21,31 +23,37 @@ interface PageHeroProps {
  * overflows the viewport on both sides — hence `overflow-hidden`, matching
  * the `.elementor-shape` wrapper that clipped it originally.
  */
-export function PageHero({ title, titleClassName }: PageHeroProps) {
+export function PageHero({ title, eyebrow, titleClassName }: PageHeroProps) {
   return (
-    <section className="relative -mt-[92px] overflow-hidden bg-primary">
-      <div className="mx-auto flex max-w-[1140px] flex-col p-[10px]">
-        <div className="mb-5 h-[100px]" />
+    <section className='relative -mt-[92px] overflow-hidden bg-primary'>
+      <div className='mx-auto flex max-w-[1140px] flex-col p-[10px]'>
+        <div className='mb-5 h-[100px]' />
+
+        {eyebrow && (
+          <p className='mb-3 text-center font-sans text-[18px] font-bold leading-none text-white/85 desktop:text-[22px]'>
+            {eyebrow}
+          </p>
+        )}
 
         <h1
           className={cn(
             'mb-5 text-center font-sans text-[35px] font-normal leading-none text-white',
-            titleClassName ?? 'desktop:text-[55px]',
+            titleClassName ?? 'desktop:text-[55px]'
           )}
         >
           {title}
         </h1>
 
-        <div className="h-[10px] desktop:h-[60px]" />
+        <div className='h-[10px] desktop:h-[60px]' />
       </div>
 
       <svg
-        aria-hidden="true"
-        viewBox="0 0 1000 100"
-        preserveAspectRatio="none"
-        className="pointer-events-none absolute bottom-0 left-1/2 h-auto w-[143%] -translate-x-1/2 fill-background"
+        aria-hidden='true'
+        viewBox='0 0 1000 100'
+        preserveAspectRatio='none'
+        className='pointer-events-none absolute bottom-0 left-1/2 h-auto w-[143%] -translate-x-1/2 fill-background'
       >
-        <path d="M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V1C1000,19.4,873.3,97.8,500,97z" />
+        <path d='M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V1C1000,19.4,873.3,97.8,500,97z' />
       </svg>
     </section>
   );

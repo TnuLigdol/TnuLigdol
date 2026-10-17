@@ -1,0 +1,50 @@
+{
+  "haaretz": {
+    "name": "הארץ",
+    "icon": "/images/publishers/haaretz.png"
+  },
+  "mako": {
+    "name": "מאקו",
+    "icon": "/images/publishers/mako.png"
+  },
+  "kan-news": {
+    "name": "כאן חדשות",
+    "icon": "/images/publishers/kan-news.png"
+  },
+  "ynet": {
+    "name": "ynet",
+    "icon": "/images/publishers/ynet.png"
+  },
+  "knesset": {
+    "name": "הכנסת",
+    "icon": "/images/authors/knesset.png"
+  },
+  "education-ministry": {
+    "name": "משרד החינוך",
+    "icon": "/images/authors/education-ministry.png"
+  },
+  "news12": {
+    "name": "חדשות 12",
+    "icon": "/images/publishers/news12.jpg"
+  },
+  "yediot": {
+    "name": "ידיעות אחרונות",
+    "icon": "/images/publishers/yediot.png"
+  },
+  "israel-hayom": {
+    "name": "ישראל היום",
+    "icon": "/images/publishers/israel-hayom.png"
+  },
+  "news13": {
+    "name": "החדשות 13",
+    "icon": "/images/publishers/news13.png"
+  },
+  "xnet": {
+    "name": "XNet",
+    "icon": "/images/publishers/xnet.png"
+  },
+  "themarker": {
+    "name": "דה מרקר",
+    "icon": "/images/publishers/themarker.png"
+  }
+}

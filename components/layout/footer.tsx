@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FacebookCircleIcon, StudioMarkIcon } from '@/components/ui/icons';
 import { renovationBanner } from '@/content';
 import { siteConfig } from '@/content/site';
@@ -8,39 +9,49 @@ import { siteConfig } from '@/content/site';
  */
 export function Footer() {
   return (
-    <footer className="p-[30px]">
-      <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-4 p-[10px] tablet:flex-row tablet:justify-between tablet:gap-0">
+    <footer className='p-[30px]'>
+      <div className='mx-auto flex max-w-[1000px] flex-col items-center gap-4 p-[10px] tablet:flex-row tablet:justify-between tablet:gap-0'>
         <a
           href={siteConfig.footer.facebook.url}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          className="flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover"
+          target='_blank'
+          rel='nofollow noopener noreferrer'
+          className='flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover'
         >
           {/* --e-icon-list-icon-size was set to 19px for this one only */}
-          <FacebookCircleIcon className="ml-[9px] h-[19px] w-[19px]" />
+          <FacebookCircleIcon className='ml-[9px] h-[19px] w-[19px]' />
           <span>{siteConfig.footer.facebook.text}</span>
         </a>
 
         <a
           href={siteConfig.footer.credit.url}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          className="flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover"
+          target='_blank'
+          rel='nofollow noopener noreferrer'
+          className='flex items-center font-sans text-[16px] leading-[1.15] text-primary transition-colors hover:text-primary-hover'
         >
           {/* this list kept Elementor's default 16px icon size */}
-          <StudioMarkIcon className="ml-[9px] h-4 w-4" />
+          <StudioMarkIcon className='ml-[9px] h-4 w-4' />
           <span>{siteConfig.footer.credit.text}</span>
         </a>
       </div>
 
-      <p className="mx-auto mt-4 max-w-[1000px] text-center font-sans text-[14px] leading-[1.4em] text-ink/60">
+      <p className='mx-auto mt-4 max-w-[1000px] text-center font-sans text-[14px] leading-[1.4em] text-ink/60'>
         מצאתם טעות? רוצים לעזור לשפר את האתר?{' '}
+        {/* Mail extensions (e.g. "Mailto for Gmail") rewrite mailto links
+            before hydration; the mismatch is harmless, so don't report it. */}
         <a
           href={`mailto:${renovationBanner.suggestionsEmail}`}
-          className="font-bold text-primary transition-colors hover:text-primary-hover"
+          className='font-bold text-primary transition-colors hover:text-primary-hover'
+          suppressHydrationWarning
         >
-          פנו אלינו!
-        </a>
+          פנו אלינו
+        </a>{' '}
+        {renovationBanner.connector}{' '}
+        <Link
+          href={renovationBanner.contributeCta.href}
+          className='font-bold text-primary transition-colors hover:text-primary-hover'
+        >
+          {renovationBanner.contributeCta.label}!
+        </Link>
       </p>
     </footer>
   );

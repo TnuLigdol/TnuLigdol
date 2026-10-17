@@ -21,6 +21,8 @@ export function RenovationNotice() {
         <a
           href={suggestionsCta.href}
           className="font-bold underline decoration-2 underline-offset-2 transition-colors hover:text-primary-hover"
+          // mailto: mail extensions rewrite it before hydration (harmless)
+          suppressHydrationWarning
         >
           {suggestionsCta.label}
         </a>

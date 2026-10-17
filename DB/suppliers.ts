@@ -43,6 +43,16 @@ export const suppliersData: SuppliersData = {
       'nokia-215-4g': 'https://ksp.co.il/web/item/311652',
     },
   },
+  refaeli: {
+    name: 'רפאלי',
+    url: 'https://refaeli.co.il',
+    description:
+      "אתר המכירות 'רפאלי' הינו אתר בתחום מוצרי החשמל והאלקטרוניקה. האתר הוקם בשנת 2006.",
+    devices: {
+      'nokia-225-4g':
+        'https://refaeli.co.il/search/?q=%D7%98%D7%9C%D7%A4%D7%95%D7%9F+%D7%A1%D7%9C%D7%95%D7%9C%D7%A8%D7%99+%D7%AA%D7%95%D7%9E%D7%9A+%D7%9B%D7%A9%D7%A8+%D7%A0%D7%95%D7%A7%D7%99%D7%94+%D7%A6%D7%91%D7%A2+%D7%95%D7%A8%D7%95%D7%93+Nokia+225+4G+2024+TA-1610',
+    },
+  },
   MeWatch: {
     name: 'MeWatch',
     url: 'https://www.mewatch.co.il/',
@@ -63,13 +73,11 @@ export const suppliersData: SuppliersData = {
     },
   },
   Kravitz: {
-    name: 'Kravitz',
-    url: 'https://www.kravitz.co.il',
-    description:
-      'קרביץ - רשת בפריסה ארצית, עם אתר אינטרנט חדשני, המתמחה במכירת מגוון גדול של ציוד משרדי, מדפסות, מחשבים, מוצרי גיימינג, תיקי גב לנסיעות ועבודה, מוצרי לימודים מהגן ועד האוניברסיטה.',
+    name: "Kravitz",
+    url: "https://www.kravitz.co.il",
+    description: "קרביץ - רשת בפריסה ארצית, עם אתר אינטרנט חדשני, המתמחה במכירת מגוון גדול של ציוד משרדי, מדפסות, מחשבים, מוצרי גיימינג, תיקי גב לנסיעות ועבודה, מוצרי לימודים מהגן ועד האוניברסיטה.",
     devices: {
-      'kidiphone-plus':
-        'https://www.kravitz.co.il/products/%d7%98%d7%9c%d7%a4%d7%95%d7%9f-%d7%97%d7%9b%d7%9d-%d7%95%d7%91%d7%98%d7%95%d7%97-%d7%9c%d7%99%d7%9c%d7%93%d7%99%d7%9d-mewatch-first-phone-4g-gps-copy',
+      "kidiphone-plus": "https://www.kravitz.co.il/products/%d7%98%d7%9c%d7%a4%d7%95%d7%9f-%d7%97%d7%9b%d7%9d-%d7%95%d7%91%d7%98%d7%95%d7%97-%d7%9c%d7%99%d7%9c%d7%93%d7%99%d7%9d-mewatch-first-phone-4g-gps-copy",
     },
   },
 };
