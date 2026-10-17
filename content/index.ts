@@ -8,7 +8,7 @@ export { legalDocuments } from './legal';
 export type { MediaCoverage } from './media';
 export { mediaCoverage } from './media';
 export type { Milestone, MilestoneCategory } from './milestones';
-export { milestoneCategoryLabels, milestones, milestonesPage } from './milestones';
+export { getMilestoneBySlug, milestoneCategoryLabels, milestones, milestonesPage } from './milestones';
 export { phoneGuide } from './phone-guide';
 export type { ContributePage, ContributeStep, RenovationBanner } from './renovation';
 export { contributePage, renovationBanner } from './renovation';

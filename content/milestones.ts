@@ -13,6 +13,8 @@ export const milestoneCategoryLabels: Record<MilestoneCategory, string> = {
 };
 
 export interface Milestone {
+  /** URL segment of the dedicated page: /milestones/[slug]. */
+  slug: string;
   title: string;
   /** A few words describing the entry. */
   description: string;
@@ -31,5 +33,22 @@ export const milestonesPage = {
     'מקבץ של מסמכים, החלטות ומהלכים שמסמנים את הדרך שעשינו - בישראל ובעולם - בהגנה על ילדים מפני הנזקים של שימוש מוקדם וחסר פיקוח בסמארטפונים.',
 };
 
-/** Records live in `DB/milestones.json`; add an entry there and it shows up. */
-export const milestones = milestonesData as Milestone[];
+function isMilestoneCategory(value: string): value is MilestoneCategory {
+  return value in milestoneCategoryLabels;
+}
+
+/** Validates a raw JSON record, so a typo in a category fails loudly. */
+function toMilestone(raw: (typeof milestonesData)[number]): Milestone {
+  const categories = raw.categories.filter(isMilestoneCategory);
+  if (categories.length !== raw.categories.length) {
+    throw new Error(`Unknown category in milestone "${raw.slug}"`);
+  }
+  return { ...raw, categories };
+}
+
+/** Records live in `DB/milestones.json`; add an entry there and it shows up. Newest first. */
+export const milestones = milestonesData.map(toMilestone).toSorted((a, b) => b.date.localeCompare(a.date));
+
+export function getMilestoneBySlug(slug: string) {
+  return milestones.find((m) => m.slug === slug);
+}
