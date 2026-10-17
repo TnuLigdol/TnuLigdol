@@ -15,6 +15,7 @@ const staticPages = [
   '/me-and-my-phone',
   '/the-team',
   '/legal',
+  '/parties',
 ];
 
 function generateSitemap(): string {

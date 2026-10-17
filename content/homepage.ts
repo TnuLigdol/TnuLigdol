@@ -58,6 +58,11 @@ export interface Homepage {
     cta: Cta;
     image: string;
   };
+  parties: {
+    title: string;
+    description: string;
+    cta: Cta;
+  };
   phoneGuide: {
     title: string;
     paragraphs: RichParagraph[];
@@ -129,6 +134,12 @@ export const homepage: Homepage = {
       'התחלתם פרויקט בקהילה? נתקלתם בקשיים? פעלתם בדרך מעניינת, או קצרתם הצלחה, אפילו קטנה?',
     cta: { label: 'שתפו את הקהילה', href: '/share-your-story' },
     image: '/images/share-story.jpg',
+  },
+  parties: {
+    title: 'לקראת הבחירות: מה המפלגות מציעות לילדים?',
+    description:
+      'ריכזנו את עמדות המפלגות על ילדים, מסכים ורשתות חברתיות, עם המקורות. אנחנו מבקשים תוכנית ציבורית רצינית ומתוקצבת, עם אחריות ברורה ולוחות זמנים.',
+    cta: { label: 'עמדות המפלגות - מה התוכנית לילדים?', href: '/parties' },
   },
   phoneGuide: {
     title: 'ואם לרוב השכבה כבר יש סמרטפון?',

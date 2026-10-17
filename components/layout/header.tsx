@@ -127,9 +127,14 @@ export function Header() {
   );
 }
 
+/**
+ * Seven items no longer fit at the original 15.5px / 16px padding at any
+ * width (the container caps at 1140px), so the menu is compacted: 14px while
+ * the container is still narrowing (1140-1199px), 15px once it is full width.
+ */
 function NavLink({ item }: { item: NavItem }) {
   const className =
-    'flex items-center whitespace-nowrap px-4 py-[35px] font-sans text-[15.5px] font-medium leading-[20px] tracking-[0.2px] text-green-darkest transition-colors hover:text-primary';
+    'flex items-center whitespace-nowrap px-2 py-[35px] font-sans text-[14px] font-medium leading-[20px] tracking-[0.2px] text-green-darkest transition-colors hover:text-primary min-[1200px]:px-2.5 min-[1200px]:text-[15px]';
 
   if (item.external) {
     return (
