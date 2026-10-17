@@ -1,13 +1,13 @@
 import milestonesData from '@/DB/milestones.json';
 
 export const milestoneCategoryLabels = {
-  'global-trends': 'מגמות בעולם ובארץ',
+  'global-trends': 'מגמות בעולם',
   'negative-effects': 'השפעות שליליות',
   'severe-cases': 'דוגמאות למקרים קשים',
   'company-activity': 'פעילות החברות בתחום',
   'success-stories': 'סיפורי הצלחה',
   'knowledge-base': 'מאגר מידע מרכזי גדול',
-  'israel-government-and-parliament': 'ממשלת ישראל והכנסת',
+  'local-trends': 'מגמה בארץ',
 } as const;
 
 export type MilestoneCategory = keyof typeof milestoneCategoryLabels;

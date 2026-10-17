@@ -8,11 +8,12 @@ import { Reveal } from './reveal';
 /**
  * Vertical timeline, newest first. The line runs down the right edge on mobile
  * and down the centre on desktop, where entries alternate sides (RTL: the first
- * sits on the right).
+ * sits on the right). Each side stacks independently (floats) and the left column
+ * is offset lower, so consecutive dots sit close together.
  */
 export function Timeline({ items }: { items: Milestone[] }) {
   return (
-    <ol className='relative'>
+    <ol className='relative desktop:flow-root'>
       <div
         aria-hidden='true'
         className='absolute top-0 bottom-0 right-[15px] w-[3px] rounded-full bg-gradient-to-b from-primary to-card-border desktop:right-1/2 desktop:translate-x-1/2'
@@ -20,21 +21,42 @@ export function Timeline({ items }: { items: Milestone[] }) {
 
       {items.map((item, i) => {
         const onRight = i % 2 === 0;
+        const year = item.date.slice(0, 4);
+        const newYear = i === 0 || items[i - 1].date.slice(0, 4) !== year;
         return (
           <li
             key={item.slug}
             className={cn(
               'relative pb-[40px] pr-[50px] desktop:w-1/2 desktop:pr-0',
-              onRight ? 'desktop:pl-[45px]' : 'desktop:mr-[50%] desktop:pr-[45px]'
+              newYear && 'pt-[30px]',
+              newYear && i > 0 && 'mt-[20px]',
+              onRight
+                ? 'desktop:float-right desktop:clear-right desktop:pl-[45px]'
+                : 'desktop:float-left desktop:clear-left desktop:pr-[45px]',
+              !onRight && (newYear && i > 0 ? 'desktop:mt-[110px]' : 'desktop:mt-[90px]')
             )}
           >
             <span
               aria-hidden='true'
               className={cn(
-                'absolute top-[28px] right-[6px] h-[21px] w-[21px] rounded-full border-4 border-background bg-primary shadow-[0_0_0_3px_#66b768]',
+                'absolute right-[6px] h-[21px] w-[21px] rounded-full border-4 border-background bg-primary shadow-[0_0_0_3px_#66b768]',
+                newYear ? 'top-[58px]' : 'top-[28px]',
                 onRight ? 'desktop:right-auto desktop:left-0 desktop:-translate-x-1/2' : 'desktop:right-0 desktop:translate-x-1/2'
               )}
             />
+
+            {newYear && (
+              <span
+                className={cn(
+                  'absolute -top-[8px] right-[-5px] flex h-[28px] w-[44px] items-center justify-center rounded-full bg-primary font-sans text-[13px] font-bold text-white desktop:h-[32px] desktop:w-[72px] desktop:text-[16px]',
+                  onRight
+                    ? 'desktop:right-auto desktop:left-0 desktop:-translate-x-1/2'
+                    : 'desktop:right-0 desktop:translate-x-1/2'
+                )}
+              >
+                {year}
+              </span>
+            )}
 
             <Reveal>
               <Link
