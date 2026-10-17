@@ -1,19 +1,19 @@
 {
   "haaretz": {
     "name": "הארץ",
-    "icon": "/images/news-media/haaretz.png"
+    "icon": "/images/publishers/haaretz.png"
   },
   "mako": {
     "name": "מאקו",
-    "icon": "/images/news-media/mako.png"
+    "icon": "/images/publishers/mako.png"
   },
   "kan-news": {
     "name": "כאן חדשות",
-    "icon": "/images/news-media/kan-news.png"
+    "icon": "/images/publishers/kan-news.png"
   },
   "ynet": {
     "name": "ynet",
-    "icon": "/images/news-media/ynet.png"
+    "icon": "/images/publishers/ynet.png"
   },
   "knesset": {
     "name": "הכנסת",

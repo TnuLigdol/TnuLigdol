@@ -16,7 +16,7 @@ export interface MediaCoverage {
  */
 export const mediaCoverage: MediaCoverage[] = [
   {
-    logo: '/images/media/ynet.png',
+    logo: '/images/publishers/ynet-media.png',
     publication: 'YNET',
     headline: 'סיבת הפזילה של בת ה-13: שימוש מופרז בסלולרי בחופש',
     author: 'ענבר טויזר',
@@ -24,7 +24,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.ynet.co.il/articles/0,7340,L-5594718,00.html',
   },
   {
-    logo: '/images/media/news12.jpg',
+    logo: '/images/publishers/news12.jpg',
     publication: 'חדשות 12',
     headline: 'מדריך: טלפונים טיפשים לילדים חכמים',
     author: 'סיגל רובין שהם',
@@ -32,7 +32,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.mako.co.il/news-israel/education-q3_2018/Article-f9ebae5042d4561004.htm',
   },
   {
-    logo: '/images/media/yediot.png',
+    logo: '/images/publishers/yediot.png',
     publication: 'ידיעות אחרונות',
     headline: 'קנו להם טלפון טיפש',
     author: 'סיגל רובין שהם',
@@ -40,7 +40,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.yediot.co.il/articles/0,7340,L-5554369,00.html',
   },
   {
-    logo: '/images/media/news12.jpg',
+    logo: '/images/publishers/news12.jpg',
     publication: 'חדשות 12',
     headline: 'כך תפרידו את הילדים ממסכים',
     author: 'חדשות 2',
@@ -48,7 +48,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.mako.co.il/news-israel/education-q1_2019/Article-873c8c1458a5861004.htm',
   },
   {
-    logo: '/images/media/israel-hayom.png',
+    logo: '/images/publishers/israel-hayom.png',
     publication: 'ישראל היום',
     headline: 'תופעה: חוזרים לטלפון "טיפש"',
     author: 'נועם (דבול) דביר',
@@ -56,7 +56,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.israelhayom.co.il/article/625279',
   },
   {
-    logo: '/images/media/news13.png',
+    logo: '/images/publishers/news13.png',
     publication: 'החדשות 13',
     headline: 'תנו לגדול על שקט: ההורים שהחליטו לא לתת סמארטפונים לילדים',
     author: 'בוקר אור',
@@ -64,7 +64,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://13news.co.il/10news/online/180291',
   },
   {
-    logo: '/images/media/xnet.png',
+    logo: '/images/publishers/xnet.png',
     publication: 'XNET',
     headline: 'שובו של הטלפון הטיפש: יוזמה חדשה של הורים תופסת תאוצה',
     author: 'גלי לויטה ליבוביץ',
@@ -72,7 +72,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://xnet.ynet.co.il/articles/0,7340,L-5351658,00.html',
   },
   {
-    logo: '/images/media/mako.png',
+    logo: '/images/publishers/mako.png',
     publication: 'MAKO',
     headline: 'מחתרת הטיפשים',
     author: 'דרור גלוברמן',
@@ -80,7 +80,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.mako.co.il/nexter-dror-globerman/Article-baaa56d6a998561006.htm',
   },
   {
-    logo: '/images/media/themarker.png',
+    logo: '/images/publishers/themarker.png',
     publication: 'דה מרקר',
     headline: 'רק בישראל, סמארטפון בגיל שמונה נחשב לדבר מקובל',
     author: 'נעמה גלעדי',
@@ -88,7 +88,7 @@ export const mediaCoverage: MediaCoverage[] = [
     url: 'https://www.themarker.com/news/education/.premium-1.6384744',
   },
   {
-    logo: '/images/media/news12.jpg',
+    logo: '/images/publishers/news12.jpg',
     publication: 'חדשות 12',
     headline: 'יוזמת ההורים: טלפון "טיפש" לילד',
     author: 'יעל אודם',

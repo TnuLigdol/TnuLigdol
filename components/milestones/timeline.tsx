@@ -92,7 +92,7 @@ export function Timeline({ items }: { items: Milestone[] }) {
                     <ArrowLeftIcon className='mr-[5px]' />
                   </span>
 
-                  <span className='inline-flex items-center gap-[10px]'>
+                  <span className='mr-auto inline-flex items-center gap-[10px]'>
                     {item.articles && item.articles.length > 0 && (
                       <>
                         <PublisherBadges articles={item.articles} className={ICON_SIZE} />

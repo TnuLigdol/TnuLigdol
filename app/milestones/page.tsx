@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function MilestonesPage() {
   return (
     <>
-      <PageHero title={milestonesPage.title} />
+      <PageHero eyebrow={milestonesPage.eyebrow} title={milestonesPage.title} />
 
       <div className='mx-auto max-w-[1140px] p-[10px]'>
         <p className='mx-auto max-w-[760px] text-center font-sans text-[18px] leading-[1.6em] text-ink'>{milestonesPage.intro}</p>
