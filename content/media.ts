@@ -16,7 +16,7 @@ export interface MediaCoverage {
  */
 export const mediaCoverage: MediaCoverage[] = [
   {
-    logo: '/images/publishers/ynet-media.png',
+    logo: '/images/publishers/ynet.png',
     publication: 'YNET',
     headline: 'סיבת הפזילה של בת ה-13: שימוש מופרז בסלולרי בחופש',
     author: 'ענבר טויזר',
