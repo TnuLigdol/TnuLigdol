@@ -1,5 +1,24 @@
 # Party positions page — implementation instructions
 
+> **Current status (17 October 2026).** This file is the original 15 October brief, kept for history. Where it conflicts with the page, the page and this note win.
+>
+> **Changes since the brief:**
+> - The work is committed on `feat/parties-public-ready` and submitted for review.
+> - For public release, the editors removed these from the page on 17.10.2026:
+>   - the "no outreach was sent" notes
+>   - the "draft" label on the principles
+>   - the יחד/ביחד explanation
+>   - the "אין בכך קביעה שאין מדיניות" caveat
+>
+>   A methodology disclaimer (section "על המידע בעמוד") now covers the general caveats. The ynet quote on the ביחד card still says "יחד", and the pc.co.il source is still cited.
+> - The page adds search metadata and a homepage link. See `docs/party-positions-search-launch.md`.
+>
+> **Still true:**
+> - 14 lists, with 6 reported positions shown first.
+> - MK bills are not shown as party positions.
+> - Budget, timeline and owner stay "לא ידוע".
+> - The "Validation results" below describe the 15 October state.
+
 ## Scope and delivery constraints
 Implement the approved “מה התוכנית לילדים?” party-positions reference as a native page in this repository, at `/parties`. This is the party comparison project, not the activist field guide. Deliver a local, reviewable implementation only. Do not commit, stage, push, deploy, change hosting access, or alter remote configuration.
 

@@ -4,6 +4,12 @@ Status as of 15 October 2026. Independent review of `content/party-positions.jso
 This file records what was checked, what is still open, and what the data needs before public release.
 No data or code was changed during this review.
 
+> **Update, 17 October 2026.** A second independent check confirmed all six reported records against ynet. The FakeReporter graphic in the article shows each party's answers. It also corrected two statements below:
+> - **Not byte-identical:** the production JSON is no longer byte-identical to the prototype. It was edited after this review (section 9).
+> - **Waldiger:** MK מיכל וולדיגר is #30 on behalf of האיחוד הלאומי - תקומה, not זהות.
+>
+> The יחד/ביחד match is a strong inference, not a confirmed fact. No list is registered as "יחד", and pc.co.il calls it Bennett and Lapid's party, but the original questionnaire answer was not seen. The explanation was removed from the page for public release; the pc.co.il source stays on the ביחד card.
+
 ## 1. Sources examined
 
 | Source | Access | Notes |
@@ -23,7 +29,7 @@ No data or code was changed during this review.
 - Order: the reported records come first, sorted alphabetically, followed by the unknown records, sorted alphabetically.
 - All 8 unknown records use "לא נמצאה עמדה ייעודית בסוגיה."
 - All 14 detail arrays have 4 entries. Budget, timeline and owner are "לא ידוע" for all 14.
-- The production JSON is **byte-identical** to the reviewed prototype `party-mock/parties.json`. Every content issue below was inherited from the prototype, not introduced in implementation.
+- At the time of this review, the production JSON was **byte-identical** to the reviewed prototype `party-mock/parties.json`. Every content issue below was inherited from the prototype, not introduced in implementation.
 - The page states that no outreach was sent and does not imply that any party ignored this initiative.
 - The principles are labelled as a draft.
 
@@ -91,7 +97,7 @@ No data or code was changed during this review.
 No party-level 2026 position was found for any of the eight. These MK-level items exist; they are **not** party policy, but readers may cite them against the page:
 
 - **ש"ס:** bill פ/6415/25 by MK יוסף טייב (#9 on the Shas list) sets 16 as the minimum age for opening a social-network account. This is the highest risk of the page looking stale or unfair. https://www.law.co.il/legislation/2026/01/03/protection-of-minors-online-age-restriction-private-bill/
-- **הציונות הדתית וזהות:** MK מיכל וולדיגר (#30, of זהות) presented her bill at the 12.10 conference: Israeli courts as the venue, parental monitoring, 150K ₪ fines.
+- **הציונות הדתית וזהות:** MK מיכל וולדיגר (#30, of האיחוד הלאומי - תקומה) presented her bill at the 12.10 conference: Israeli courts as the venue, parental monitoring, 150K ₪ fines.
 - No hits for the other six: הליכוד, עוצמה יהודית, יהדות התורה, כחול לבן, רע"ם, עמך ישראל. The search was limited (about 6 queries), so confidence is moderate.
 
 **Context worth knowing (pc.co.il):** the questionnaire went to 13 parties. All 5 coalition parties, plus רע"ם and עמך ישראל, did not answer. That accounts for 13, which implies **כחול לבן was not sent the questionnaire**. This is an inference. The page doesn't claim non-response, so nothing is wrong today, but never add "did not answer" for כחול לבן.

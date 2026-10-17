@@ -38,11 +38,11 @@ function normalize(text: string) {
     .trim();
 }
 
-// Shared text leaves the page's caveats behind, so an unknown record must
-// carry its own: the gap is in the sources reviewed, not proof of no policy.
+// Shared text leaves the page behind, so an unknown record keeps its scope:
+// the gap is in the sources reviewed.
 function shareSummary(party: Party) {
   return party.type === 'unknown'
-    ? 'במקורות שנסקרו לא נמצאה עמדה ייעודית בסוגיה. אין בכך קביעה שאין מדיניות.'
+    ? 'במקורות שנסקרו לא נמצאה עמדה ייעודית בסוגיה.'
     : party.text;
 }
 
@@ -71,10 +71,19 @@ export function PartyPositions({
   const date = data.checked_at.split('-').reverse().join('.');
   const reported = parties.filter((party) => party.type === 'reported').length;
   const needle = normalize(query);
+  // Ballot letters like ל or ב also occur inside most names, so an exact
+  // letters match wins over the substring search.
+  const letterMatches = parties.filter(
+    (party) => normalize(party.letter) === needle,
+  );
   const visible = parties.filter(
     (party) =>
       (filter === 'all' || party.type === filter) &&
-      normalize(`${party.name} ${party.full} ${party.letter}`).includes(needle),
+      (letterMatches.length
+        ? letterMatches.includes(party)
+        : normalize(`${party.name} ${party.full} ${party.letter}`).includes(
+            needle,
+          )),
   );
   const compared = parties.filter((party) => selected.includes(party.id));
 
@@ -97,6 +106,12 @@ export function PartyPositions({
     return () => clearTimeout(timer);
   }, [notice]);
 
+  // A notice belongs to where it was raised: opening or closing a dialog
+  // drops it, so "copied" never shows up in a dialog the user didn't copy from.
+  function changeModal(next: Modal) {
+    setNotice('');
+    setModal(next);
+  }
   function toggle(id: string) {
     if (selected.includes(id))
       setSelected(selected.filter((item) => item !== id));
@@ -184,17 +199,20 @@ export function PartyPositions({
       <section className={s.hero} aria-labelledby="party-page-title">
         <div className={`${s.wrap} ${s.heroGrid}`}>
           <div>
-            <p className={s.eyebrow}>בחירות 2026 · ילדים בעולם הדיגיטלי</p>
+            <p className={s.eyebrow}>
+              תנו לגדול על שקט · עמדות המפלגות · בחירות 2026
+            </p>
             <h1 id="party-page-title">
               מה התוכנית
               <br />
               <span>לילדים?</span>
             </h1>
             <p className={s.lead}>
-              הורים לא צריכים להתמודד עם זה לבד.
+              הורים ואנשי חינוך לא צריכים להתמודד עם זה לבד.
               <br />
-              אנחנו מצפים מהמפלגות להוביל תוכנית רצינית ומתוקצבת להגנה על הילדים
-              בעולם הדיגיטלי.
+              ריכזנו כאן את עמדות המפלגות על ילדים, מסכים ורשתות חברתיות. אנחנו
+              מצפים מהמפלגות להוביל תוכנית ציבורית רצינית ומתוקצבת, עם אחריות
+              ברורה ולוחות זמנים לביצוע.
             </p>
             <div className={s.actions}>
               <a className={s.button} href="#positions">
@@ -203,7 +221,7 @@ export function PartyPositions({
               <button
                 type="button"
                 className={s.secondary}
-                onClick={() => setModal({ kind: 'principles' })}
+                onClick={() => changeModal({ kind: 'principles' })}
               >
                 מה אנחנו מבקשים?
               </button>
@@ -332,7 +350,7 @@ export function PartyPositions({
                       מקור: דיווח ynet ↗
                     </a>
                   ) : (
-                    'במקורות שנסקרו; אין בכך קביעה שאין מדיניות.'
+                    'מקור: לא נמצא במקורות שנסקרו'
                   )}
                 </div>
                 <dl className={s.metrics}>
@@ -351,7 +369,7 @@ export function PartyPositions({
                   <button
                     type="button"
                     className={s.textButton}
-                    onClick={() => setModal({ kind: 'party', party })}
+                    onClick={() => changeModal({ kind: 'party', party })}
                     aria-label={`פירוט ומקורות: ${party.name}`}
                   >
                     פירוט ומקורות ←
@@ -400,7 +418,7 @@ export function PartyPositions({
             <button
               type="button"
               className={s.textButton}
-              onClick={() => setModal({ kind: 'principles' })}
+              onClick={() => changeModal({ kind: 'principles' })}
             >
               לעקרונות המוצעים ←
             </button>
@@ -428,7 +446,7 @@ export function PartyPositions({
           </button>
         </section>
         <section className={s.method} aria-labelledby="method-title">
-          <h2 id="method-title">איך קוראים את המידע?</h2>
+          <h2 id="method-title">על המידע בעמוד</h2>
           <p className={s.disclaimer}>{data.disclaimer}</p>
           <details>
             <summary>מה נבדק, ומה עדיין לא?</summary>
@@ -480,7 +498,7 @@ export function PartyPositions({
           <button
             type="button"
             disabled={selected.length < 2}
-            onClick={() => setModal({ kind: 'compare' })}
+            onClick={() => changeModal({ kind: 'compare' })}
           >
             {selected.length < 2 ? 'בחרו עוד מפלגה להשוואה' : 'השוואת המפלגות'}
           </button>
@@ -503,12 +521,12 @@ export function PartyPositions({
           ref={dialog}
           className={s.dialog}
           aria-labelledby="party-dialog-title"
-          onCancel={() => setModal(null)}
+          onCancel={() => changeModal(null)}
         >
           <button
             type="button"
             className={s.close}
-            onClick={() => setModal(null)}
+            onClick={() => changeModal(null)}
             aria-label="סגירת החלון"
           >
             ×
@@ -579,7 +597,7 @@ export function PartyPositions({
           )}
           {modal.kind === 'compare' && (
             <>
-              <p>נבדק ב־{date}. היעדר מידע אינו קביעה שאין מדיניות.</p>
+              <p>נבדק ב־{date}.</p>
               {/* Phones get one block per party; four table columns don't
                   fit in 310px and sideways scrolling hid three of them. */}
               <div className={s.compareStack}>

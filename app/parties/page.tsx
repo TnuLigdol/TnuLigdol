@@ -2,12 +2,16 @@ import type { Metadata } from 'next';
 import { PartyPositions } from '@/components/parties/party-positions';
 import { partyData, sortedParties } from '@/content/party-positions';
 
-const title = 'מה התוכנית לילדים? עמדות המפלגות';
+// The title leads with the brand itself, so it opts out of the root
+// "%s | תנו לגדול על שקט" template rather than naming the brand twice.
+const title = 'תנו לגדול - עמדות המפלגות על ילדים, מסכים ורשתות חברתיות';
+// Every record's budget, timeline and owner is unknown, so the description
+// says the page checks for them rather than implying they are listed.
 const description =
-  'עמדות המפלגות על הגנת ילדים בעולם הדיגיטלי: מה פורסם, מה חסר, ואיפה המקורות. דורשים תוכנית רצינית, מתוקצבת וניתנת לביצוע.';
+  'מה התוכנית לילדים? השוואת עמדות המפלגות על הגנת ילדים ברשתות החברתיות ובעולם הדיגיטלי, עם מקורות, ובדיקה אם פורסמו תקציב, לוח זמנים ואחריות לביצוע.';
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: '/parties' },
   // A page-level openGraph replaces the root one wholesale, so restate the
@@ -23,7 +27,7 @@ export const metadata: Metadata = {
       {
         url: '/og-image.png',
         width: 1200,
-        height: 630,
+        height: 628,
         alt: 'תנו לגדול על שקט - הטלפון הראשון הוא טלפון בטוח',
       },
     ],
