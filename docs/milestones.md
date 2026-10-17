@@ -48,4 +48,13 @@ Coverage lives outside the milestone records, so one article or outlet is define
 
 A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the publisher and author names) into `RelatedArticle` objects.
 
+### Adding a news article (checklist for AI agents)
+
+1. Read the article itself (the user's browser via Claude in Chrome, or `curl -A "Mozilla/5.0"`). Take the exact headline, the byline and the publication date from the page. Meta tags such as `article:published_time` or JSON-LD `datePublished` are reliable; image upload paths are not. If you cannot establish the date, ask the user.
+2. Publisher: reuse a slug from `DB/publishers.json`. If the outlet is new, add it (slug = lowercase outlet name, `name` as the outlet writes it). `icon` is optional; if you add one, save the logo under `public/images/news-media/<publisher>.png`. Without a logo, tell the user it is missing.
+3. Author: if there is a byline, reuse or add a slug in `DB/authors.json` (kebab-case transliteration of the name, `name` in Hebrew). Omit `author` when there is no byline.
+4. Add the record to `DB/news-articles.json` with the slug `YYYY-MM-DD-<publisher>-<topic>`, `publisher`, `headline` (verbatim), `date`, `url` (the canonical article URL without tracking parameters), `author` and a short `description` (the subheadline, or a summary in your own words; never copy long passages).
+5. Attach it by appending the article slug to `articles` of the relevant milestone in `DB/milestones.json`. Choose the milestone the article is about; if unclear, ask. Several articles on one milestone are fine.
+6. Keep the JSON formatting (2-space indent, UTF-8 Hebrew, no escapes) and check that every slug you referenced exists, since an unknown slug throws at load.
+
 Do not use `as` assertions in new code. Validate with type guards (or Zod if really needed).

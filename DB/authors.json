@@ -15,5 +15,8 @@
   "education-ministry": {
     "name": "משרד החינוך",
     "icon": "/images/authors/education-ministry.png"
+  },
+  "batya-duek": {
+    "name": "בתיה דואק"
   }
 }

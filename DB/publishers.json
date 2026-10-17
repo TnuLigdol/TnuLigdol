@@ -11,6 +11,10 @@
     "name": "כאן חדשות",
     "icon": "/images/news-media/kan-news.png"
   },
+  "ynet": {
+    "name": "ynet",
+    "icon": "/images/news-media/ynet.png"
+  },
   "knesset": {
     "name": "הכנסת",
     "icon": "/images/authors/knesset.png"
