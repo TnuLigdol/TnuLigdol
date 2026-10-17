@@ -1,10 +1,11 @@
 # Party positions page: fact-check record
 
-Status as of 15 October 2026. Independent review of `content/party-positions.json`, the data behind `/parties`.
+Status as of 15 October 2026. Independent review of `DB/2026-10-party-positions.json`, the data behind `/parties`.
 This file records what was checked, what is still open, and what the data needs before public release.
 No data or code was changed during this review.
 
 > **Update, 17 October 2026.** A second independent check confirmed all six reported records against ynet. The FakeReporter graphic in the article shows each party's answers. It also corrected two statements below:
+>
 > - **Not byte-identical:** the production JSON is no longer byte-identical to the prototype. It was edited after this review (section 9).
 > - **Waldiger:** MK מיכל וולדיגר is #30 on behalf of האיחוד הלאומי - תקומה, not זהות.
 >
@@ -12,15 +13,15 @@ No data or code was changed during this review.
 
 ## 1. Sources examined
 
-| Source | Access | Notes |
-|--------|--------|-------|
-| ynet, "המערב הפרוע של הרשתות: הציבור רוצה להגן על הילדים. הפוליטיקאים מהססים", רפאל קאהאן, 12.10.2026 11:34. https://www.ynet.co.il/digital/technews/article/sjy6cb9izg | Full text (HTTP 200) | The main source. |
-| pc.co.il, 12.10.2026, coverage of the same questionnaire. https://www.pc.co.il/news/%D7%A8%D7%A9%D7%AA%D7%95%D7%AA-%D7%97%D7%91%D7%A8%D7%AA%D7%99%D7%95%D7%AA/459488/ | Full text | Used for corroboration only. |
-| mako, 12.10.2026, coverage of the same conference | Full text | Used for corroboration only. |
-| gov.il candidates-lists-26 (updated 12.10.2026) and all 14 registry pages | gov.il returns 403 to scripts; read via the r.jina.ai mirror | Used for identity only. |
-| the7eye.org.il/594759 | **Not accessible** (Cloudflare CAPTCHA) | |
-| FakeReporter data graphic inside the ynet article | **Not readable** (image only) | It may hold a per-party breakdown that we have not seen. |
-| Original FakeReporter / Brandeis questionnaire answers | **Not available** | Every "reported" position is second-hand, through Ynet. |
+| Source                                                                                                                                                                  | Access                                                       | Notes                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
+| ynet, "המערב הפרוע של הרשתות: הציבור רוצה להגן על הילדים. הפוליטיקאים מהססים", רפאל קאהאן, 12.10.2026 11:34. https://www.ynet.co.il/digital/technews/article/sjy6cb9izg | Full text (HTTP 200)                                         | The main source.                                         |
+| pc.co.il, 12.10.2026, coverage of the same questionnaire. https://www.pc.co.il/news/%D7%A8%D7%A9%D7%AA%D7%95%D7%AA-%D7%97%D7%91%D7%A8%D7%AA%D7%99%D7%95%D7%AA/459488/   | Full text                                                    | Used for corroboration only.                             |
+| mako, 12.10.2026, coverage of the same conference                                                                                                                       | Full text                                                    | Used for corroboration only.                             |
+| gov.il candidates-lists-26 (updated 12.10.2026) and all 14 registry pages                                                                                               | gov.il returns 403 to scripts; read via the r.jina.ai mirror | Used for identity only.                                  |
+| the7eye.org.il/594759                                                                                                                                                   | **Not accessible** (Cloudflare CAPTCHA)                      |                                                          |
+| FakeReporter data graphic inside the ynet article                                                                                                                       | **Not readable** (image only)                                | It may hold a per-party breakdown that we have not seen. |
+| Original FakeReporter / Brandeis questionnaire answers                                                                                                                  | **Not available**                                            | Every "reported" position is second-hand, through Ynet.  |
 
 ## 2. Structural checks (all pass)
 
@@ -44,16 +45,16 @@ No data or code was changed during this review.
 
 ### Verdicts
 
-| Claim in our data | Parties | Verdict |
-|---|---|---|
-| Support for enhanced duties to protect minors | All 6 | **Verified.** The statement is collective, but the article names all six. Wording it as each party's position is fair. |
-| "טרם גובשה עמדה על סף גיל 16" | The 5 other than ביחד | **Verified by inference.** The article says "five of them" and that "יחד" is the only exception, so the five are identifiable even though none is named individually. pc.co.il confirms: "שאר המפלגות טרם גיבשו עמדה". |
-| Subjecting platforms to Israeli law | All 6 | **Verified** ("שש המפלגות"). |
-| Fines based on global turnover | הדמוקרטים, המילואימניקים | **Verified.** The article names them specifically. |
-| Fines based on global turnover | ביחד | **Missing from our data.** The article also names "יחד" here. |
-| Privacy concerns, marked "דווח גם" | Only הדמוקרטים, המילואימניקים | **Partly inaccurate.** The article attributes this to all five "remaining parties" and names these two only as the leading examples ("ובראשן"). It is not specific to them. It is also missing from ישר!, הרשימה המשותפת and ישראל ביתנו. |
-| Support for an age-16 limit | ביחד | **Verified.** "יחד" is the only party that backs the move. pc.co.il: "רק מפלגת יחד של בנט ולפיד תומכת באיסור על שימוש ברשתות החברתיות מתחת לגיל 16." |
-| Quote "שהציגה תוכנית להטלת קנסות ... תעודות מזהות" | ביחד | **Verbatim and correctly attributed**, but it starts mid-sentence (see 5.B). |
+| Claim in our data                                  | Parties                       | Verdict                                                                                                                                                                                                                                   |
+| -------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Support for enhanced duties to protect minors      | All 6                         | **Verified.** The statement is collective, but the article names all six. Wording it as each party's position is fair.                                                                                                                    |
+| "טרם גובשה עמדה על סף גיל 16"                      | The 5 other than ביחד         | **Verified by inference.** The article says "five of them" and that "יחד" is the only exception, so the five are identifiable even though none is named individually. pc.co.il confirms: "שאר המפלגות טרם גיבשו עמדה".                    |
+| Subjecting platforms to Israeli law                | All 6                         | **Verified** ("שש המפלגות").                                                                                                                                                                                                              |
+| Fines based on global turnover                     | הדמוקרטים, המילואימניקים      | **Verified.** The article names them specifically.                                                                                                                                                                                        |
+| Fines based on global turnover                     | ביחד                          | **Missing from our data.** The article also names "יחד" here.                                                                                                                                                                             |
+| Privacy concerns, marked "דווח גם"                 | Only הדמוקרטים, המילואימניקים | **Partly inaccurate.** The article attributes this to all five "remaining parties" and names these two only as the leading examples ("ובראשן"). It is not specific to them. It is also missing from ישר!, הרשימה המשותפת and ישראל ביתנו. |
+| Support for an age-16 limit                        | ביחד                          | **Verified.** "יחד" is the only party that backs the move. pc.co.il: "רק מפלגת יחד של בנט ולפיד תומכת באיסור על שימוש ברשתות החברתיות מתחת לגיל 16."                                                                                      |
+| Quote "שהציגה תוכנית להטלת קנסות ... תעודות מזהות" | ביחד                          | **Verbatim and correctly attributed**, but it starts mid-sentence (see 5.B).                                                                                                                                                              |
 
 **Collective statement wrongly attributed to an individual party?** Partly: the privacy concern is presented as specific to two parties when the article gives it to five. No other misattribution was found.
 
@@ -72,6 +73,7 @@ No data or code was changed during this review.
 ## 5. Issues to fix in the data
 
 **A. Privacy concern misattributed (high).** In p1 (הדמוקרטים) and p8 (המילואימניקים), "דווח גם על חשש לפגיעה בפרטיות" implies something said only by those two. Fix it one of two ways:
+
 - add it to all five non-ביחד reported records, as "לפי ynet, חמש המפלגות שלא תמכו בהגבלת גיל הביעו חשש...", or
 - remove it from both.
 

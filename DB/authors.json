@@ -1,0 +1,46 @@
+{
+  "noa-limona": {
+    "name": "נועה לימונה"
+  },
+  "yael-odem": {
+    "name": "יעל אודם"
+  },
+  "liran-kojehinov": {
+    "name": "לירן כוג'הינוף"
+  },
+  "knesset": {
+    "name": "הכנסת",
+    "icon": "/images/authors/knesset.png"
+  },
+  "education-ministry": {
+    "name": "משרד החינוך",
+    "icon": "/images/authors/education-ministry.png"
+  },
+  "batya-duek": {
+    "name": "בתיה דואק"
+  },
+  "inbar-toizer": {
+    "name": "ענבר טויזר"
+  },
+  "sigal-rubin-shaham": {
+    "name": "סיגל רובין שהם"
+  },
+  "news-2": {
+    "name": "חדשות 2"
+  },
+  "noam-dabol-dvir": {
+    "name": "נועם (דבול) דביר"
+  },
+  "boker-or": {
+    "name": "בוקר אור"
+  },
+  "gali-levita-libovitz": {
+    "name": "גלי לויטה ליבוביץ"
+  },
+  "dror-globerman": {
+    "name": "דרור גלוברמן"
+  },
+  "naama-gilady": {
+    "name": "נעמה גלעדי"
+  }
+}

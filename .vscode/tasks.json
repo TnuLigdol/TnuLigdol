@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Merge staging into current branch",
+      "command": "git pull && git merge origin/staging --no-edit && git push",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ]
+}
