@@ -31,8 +31,7 @@ export interface ExtraDetail {
   url: string;
 }
 
-export interface Device {
-  slug: string;
+export interface DeviceRecord {
   name: string;
   brand: string;
   /** Product photo. Omitted where we only have a manufacturer sheet — see `extraDetails`. */
@@ -49,6 +48,9 @@ export interface Device {
   extraDetails?: ExtraDetail[];
 }
 
+/** Devices keyed by slug (the URL segment and the key into `DB/suppliers.ts`). */
+export type DevicesData = Record<string, DeviceRecord>;
+
 /**
  * Devices recommended as safe alternatives to a smartphone for children.
  *
@@ -60,9 +62,8 @@ export interface Device {
  * Which supplier(s) carry a device, and the per-device product URL, live in
  * `DB/suppliers.ts` — see `getSuppliersForDevice` in `content/suppliers.ts`.
  */
-export const devices: Device[] = [
-  {
-    slug: 'nokia-105-4g',
+export const devicesData: DevicesData = {
+  'nokia-105-4g': {
     name: 'Nokia 105 4G',
     image: '/devices/nokia_105_4G-DTC-CONNECTIVITY-device_front-animated.webp',
     brand: 'Nokia',
@@ -92,8 +93,7 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'nokia-110-4g',
+  'nokia-110-4g': {
     name: 'Nokia 110 4G',
     image: '/devices/nokia-110-4g-main.png',
     brand: 'Nokia',
@@ -123,8 +123,7 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'nokia-8210-4g',
+  'nokia-8210-4g': {
     name: 'Nokia 8210 4G',
     image: '/devices/nokia-8210_4G-sand-front_back-int.avif',
     brand: 'Nokia',
@@ -153,8 +152,7 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'nokia-3210-4g',
+  'nokia-3210-4g': {
     name: 'Nokia 3210 4G',
     image: '/devices/Nokia_3210-JOMO-GenericSection-Device-Animated.png',
     brand: 'Nokia',
@@ -175,8 +173,7 @@ export const devices: Device[] = [
     description:
       'הדגם המשודרג בסדרה, עם המצלמה הטובה ביותר מבין הכפתורים. שיחות והודעות טקסט בלבד, ללא GPS.',
   },
-  {
-    slug: 'nokia-215-4g',
+  'nokia-215-4g': {
     name: 'Nokia 215 4G',
     image: '/devices/Nokia-215_4G-2024-Peach-Front_Back-Int.png',
     brand: 'Nokia',
@@ -206,8 +203,29 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'mewatch-first-phone',
+  'nokia-225-4g': {
+    name: 'Nokia 225 4G',
+    image: '/devices/nokia-225-4g.png',
+    brand: 'Nokia',
+    price: 289,
+    colors: ['ורוד', 'כחול כהה'],
+    specs: {
+      screenSize: '2.4 אינץ׳',
+      camera: '0.3MP אחורית + פלאש',
+      battery: '1450mAh',
+      weight: '64.4 גרם',
+      memory: '64MB RAM / 128MB Storage',
+    },
+    features: {
+      gps: false,
+      sms: true,
+      touchscreen: false,
+      bluetooth: true,
+    },
+    description:
+      'דגם 2024 של HMD (יצרנית טלפוני נוקיה הפשוטים): טלפון כפתורים עם משחק הסנייק ומצלמה פשוטה, בלי דפדפן. אין בו GPS, ולכן מומלץ להוסיף SmartTag או AirTag לשיתוף מיקום.',
+  },
+  'mewatch-first-phone': {
     name: 'MeWatch First Phone',
     image: '/devices/mewatch-first-phone.png',
     brand: 'MeWatch',
@@ -257,8 +275,7 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'kidiphone-plus',
+  'kidiphone-plus': {
     name: 'KidiPhone Plus',
     image: '/devices/kidiphone-plus.webp',
     brand: 'KidiWatch',
@@ -293,40 +310,4 @@ export const devices: Device[] = [
       },
     ],
   },
-  {
-    slug: 'kidiphone-plus',
-    name: 'KidiPhone Plus',
-    image: '/devices/kidiphone-plus.webp',
-    brand: 'KidiWatch',
-    price: { min: 250, max: 300 },
-    colors: ['כחול', 'ורוד'],
-    specs: {
-      screenSize: '8 אינץ׳',
-      camera: 'קדמית ואחורית',
-      battery: '800mAh',
-      memory: '',
-    },
-    features: {
-      gps: true,
-      sms: 'partial',
-      touchscreen: true,
-    },
-    featureNotes: {
-      sms: 'מאפשר קבלת סמס, אבל לא שליחה. ניתן לשלוח הודעה למשפחה וחברים מוגדרים מראש',
-    },
-    description:
-      'KidiPhone Plus טלפון אמיתי לילדים עם גבולות חכמים: שיחות וידאו וקול לאנשי קשר מוגדרים, GPS, לחצן SOS, צ׳אט, מצלמה ואפליקציות שימושיות - לצד חסימת זרים, נעילה מרחוק והגדרת אזורי ביטחון.',
-    extraDetails: [
-      {
-        type: 'image',
-        description: '',
-        url: '/devices/kidiphone-plus-p1.webp',
-      },
-      {
-        type: 'image',
-        description: '',
-        url: '/devices/kidiphone-plus-p2.webp',
-      },
-    ],
-  },
-];
+};

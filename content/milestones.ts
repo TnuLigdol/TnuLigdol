@@ -1,16 +1,27 @@
 import milestonesData from '@/DB/milestones.json';
 
-export type MilestoneCategory =
-  'global-trends' | 'negative-effects' | 'severe-cases' | 'company-activity' | 'success-stories' | 'knowledge-base';
-
-export const milestoneCategoryLabels: Record<MilestoneCategory, string> = {
+export const milestoneCategoryLabels = {
   'global-trends': 'מגמות בעולם ובארץ',
   'negative-effects': 'השפעות שליליות',
   'severe-cases': 'דוגמאות למקרים קשים',
   'company-activity': 'פעילות החברות בתחום',
   'success-stories': 'סיפורי הצלחה',
   'knowledge-base': 'מאגר מידע מרכזי גדול',
-};
+  'israel-government-and-parliament': 'ממשלת ישראל והכנסת',
+} as const;
+
+export type MilestoneCategory = keyof typeof milestoneCategoryLabels;
+
+export interface RelatedArticle {
+  publication: string;
+  headline: string;
+  author?: string;
+  /** One line on what the piece covers. */
+  description?: string;
+  /** ISO date. */
+  date: string;
+  url: string;
+}
 
 export interface Milestone {
   /** URL segment of the dedicated page: /milestones/[slug]. */
@@ -24,7 +35,9 @@ export interface Milestone {
   categories: MilestoneCategory[];
   url: string;
   /** Local copy under /public, in case the original link breaks. */
-  copyUrl: string;
+  copyUrl?: string;
+  /** News coverage of this milestone. */
+  articles?: RelatedArticle[];
   /** Warning shown at the top of the dedicated page, below the date. */
   notice?: string;
   /** Short summary written from reading the document itself. */
@@ -42,16 +55,18 @@ function isMilestoneCategory(value: string): value is MilestoneCategory {
 }
 
 /** Validates a raw JSON record, so a typo in a category fails loudly. */
-function toMilestone(raw: (typeof milestonesData)[number]): Milestone {
+function toMilestone([slug, raw]: [string, (typeof milestonesData)[keyof typeof milestonesData]]): Milestone {
   const categories = raw.categories.filter(isMilestoneCategory);
   if (categories.length !== raw.categories.length) {
-    throw new Error(`Unknown category in milestone "${raw.slug}"`);
+    throw new Error(`Unknown category in milestone "${slug}"`);
   }
-  return { ...raw, categories };
+  return { ...raw, slug, categories };
 }
 
-/** Records live in `DB/milestones.json`; add an entry there and it shows up. Newest first. */
-export const milestones = milestonesData.map(toMilestone).toSorted((a, b) => b.date.localeCompare(a.date));
+/** Records live in `DB/milestones.json`, keyed by slug; add an entry there and it shows up. Newest first. */
+export const milestones = Object.entries(milestonesData)
+  .map(toMilestone)
+  .toSorted((a, b) => b.date.localeCompare(a.date));
 
 export function getMilestoneBySlug(slug: string) {
   return milestones.find((m) => m.slug === slug);

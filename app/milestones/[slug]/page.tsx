@@ -89,15 +89,48 @@ export default async function MilestonePage({ params }: PageProps) {
           >
             חזרה לציר הזמן
           </Link>
-          <a
-            href={item.copyUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='justify-self-center font-sans text-[14px] text-green-dark underline underline-offset-2 hover:text-primary-hover'
-          >
-            עותק נוסף לגיבוי
-          </a>
+          {item.copyUrl && (
+            <a
+              href={item.copyUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='justify-self-center font-sans text-[14px] text-green-dark underline underline-offset-2 hover:text-primary-hover'
+            >
+              עותק נוסף לגיבוי
+            </a>
+          )}
         </div>
+
+        {item.articles && item.articles.length > 0 && (
+          <section className='mt-10'>
+            <h2 className='font-sans text-[22px] font-bold text-green-darkest'>כתבות קשורות</h2>
+            <ul className='mt-4 space-y-3'>
+              {item.articles.map((article) => (
+                <li key={article.url}>
+                  <a
+                    href={article.url}
+                    target='_blank'
+                    rel='nofollow noopener noreferrer'
+                    className='block rounded-[15px] border border-card-border p-[16px] transition-shadow hover:shadow-[0px_0px_30px_-4px_rgba(12,51,13,0.25)]'
+                  >
+                    <div className='font-sans text-[14px] text-green-darkest'>
+                      <span className='font-bold text-primary'>{article.publication}</span>
+                      {' · '}
+                      {article.author && <>{article.author}, </>}
+                      <time dateTime={article.date}>{formatHebrewDate(article.date)}</time>
+                    </div>
+                    <h3 className='mt-1 font-sans text-[18px] font-semibold leading-[1.3em] text-green-darkest'>
+                      {article.headline}
+                    </h3>
+                    {article.description && (
+                      <p className='mt-1 font-sans text-[15px] leading-[1.5em] text-ink'>{article.description}</p>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </article>
 
       <div className='h-[60px]' />
