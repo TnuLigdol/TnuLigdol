@@ -35,9 +35,12 @@ export function Footer() {
 
       <p className="mx-auto mt-4 max-w-[1000px] text-center font-sans text-[14px] leading-[1.4em] text-ink/60">
         מצאתם טעות? רוצים לעזור לשפר את האתר?{' '}
+        {/* Mail extensions (e.g. "Mailto for Gmail") rewrite mailto links
+            before hydration; the mismatch is harmless, so don't report it. */}
         <a
           href={`mailto:${renovationBanner.suggestionsEmail}`}
           className="font-bold text-primary transition-colors hover:text-primary-hover"
+          suppressHydrationWarning
         >
           פנו אלינו!
         </a>

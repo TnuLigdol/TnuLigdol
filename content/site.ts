@@ -5,7 +5,7 @@ export const siteConfig = {
     facebook: 'https://www.facebook.com/groups/311936499275780/',
   },
   /**
-   * The desktop menu of the WordPress original, verbatim. (The old site also
+   * The original WordPress menu, extended with the party positions page. (The old site also
    * had a second, divergent menu for phones/tablets; it was dropped in favour
    * of showing this one at every width.)
    */
@@ -22,6 +22,7 @@ export const siteConfig = {
       ],
     },
     { label: 'כשכבר יש סמרטפון', href: '/me-and-my-phone' },
+    { label: 'עמדות המפלגות', href: '/parties' },
     { label: 'מי אנחנו', href: '/the-team' },
   ] as NavItem[],
   footer: {
