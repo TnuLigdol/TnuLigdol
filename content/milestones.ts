@@ -23,6 +23,10 @@ export interface Milestone {
   /** A record may belong to more than one category. */
   categories: MilestoneCategory[];
   url: string;
+  /** Local copy under /public, in case the original link breaks. */
+  copyUrl: string;
+  /** Warning shown at the top of the dedicated page, below the date. */
+  notice?: string;
   /** Short summary written from reading the document itself. */
   summary?: string[];
 }
