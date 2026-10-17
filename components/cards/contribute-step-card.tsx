@@ -2,7 +2,7 @@ import type { ContributeStep } from '@/content';
 
 /**
  * One numbered step on /contribute — a bordered card matching the rest of
- * the site's card language (see MediaCard), with a circular step number
+ * the site's card language (see PublicationCard), with a circular step number
  * standing in for an icon.
  */
 export function ContributeStepCard({ step, index }: { step: ContributeStep; index: number }) {

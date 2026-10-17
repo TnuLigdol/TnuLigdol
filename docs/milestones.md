@@ -38,24 +38,24 @@ External links break. For every milestone, save a copy of the source document un
 | `notice`               | optional warning shown under the date (e.g. an outdated document)                                                                                                             |
 | `replacedBy`           | optional slug of the milestone that superseded this one; the detail page shows a warning linking to it                                                                        |
 | `summary`              | optional bullet points, written from reading the source, not copied                                                                                                           |
-| `articles`             | optional list of news-article slugs (foreign keys into `DB/news-articles.json`); an unknown slug throws at load                                                               |
+| `articles`             | optional list of news-article slugs (foreign keys into `DB/publications.json`); an unknown slug throws at load                                                                |
 
 ### News articles, publishers and authors
 
 Coverage lives outside the milestone records, so one article or outlet is defined once:
 
 - `DB/publishers.json`, keyed by publisher slug (e.g. `kan-news`, `knesset`): `name`, optionally `icon`.
-- `DB/news-articles.json`, keyed by article slug (`YYYY-MM-DD-<publisher>-<topic>`): `publisher` (a publisher slug), `headline`, `date`, `url`, and optionally `author` (an author slug), `description`.
+- `DB/publications.json`, keyed by article slug (`YYYY-MM-DD-<publisher>-<topic>`): `publisher` (a publisher slug), `headline`, `date`, `url`, and optionally `author` (an author slug), `description`.
 - `DB/authors.json`, keyed by author slug (e.g. `noa-limona`): `name`.
 
-A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the publisher and author names) into `RelatedArticle` objects.
+A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the publisher and author names) into `Publication` objects.
 
 ### Adding a news article (checklist for AI agents)
 
 1. Read the article itself (the user's browser via Claude in Chrome, or `curl -A "Mozilla/5.0"`). Take the exact headline, the byline and the publication date from the page. Meta tags such as `article:published_time` or JSON-LD `datePublished` are reliable; image upload paths are not. If you cannot establish the date, ask the user.
 2. Publisher: reuse a slug from `DB/publishers.json`. If the outlet is new, add it (slug = lowercase outlet name, `name` as the outlet writes it). `icon` is optional; if you add one, save the logo under `public/images/publishers/<publisher>.png`. Without a logo, tell the user it is missing.
 3. Author: if there is a byline, reuse or add a slug in `DB/authors.json` (kebab-case transliteration of the name, `name` in Hebrew). Omit `author` when there is no byline.
-4. Add the record to `DB/news-articles.json` with the slug `YYYY-MM-DD-<publisher>-<topic>`, `publisher`, `headline` (verbatim), `date`, `url` (the canonical article URL without tracking parameters), `author` and a short `description` (the subheadline, or a summary in your own words; never copy long passages).
+4. Add the record to `DB/publications.json` with the slug `YYYY-MM-DD-<publisher>-<topic>`, `publisher`, `headline` (verbatim), `date`, `url` (the canonical article URL without tracking parameters), `author` and a short `description` (the subheadline, or a summary in your own words; never copy long passages).
 5. Attach it by appending the article slug to `articles` of the relevant milestone in `DB/milestones.json`. Choose the milestone the article is about; if unclear, ask. Several articles on one milestone are fine.
 6. Keep the JSON formatting (2-space indent, UTF-8 Hebrew, no escapes) and check that every slug you referenced exists, since an unknown slug throws at load.
 

@@ -3,12 +3,12 @@ export { articles, categoryLabels, getArticleBySlug, getArticlesByCategory, getR
 export type { Device, DeviceFeatures, DevicePrice, DeviceSpecs, ExtraDetail, ExtraDetailType } from './devices';
 export { devices, getDeviceBySlug } from './devices';
 export { homepage } from './homepage';
-export type { MediaCoverage } from './media';
-export { mediaCoverage } from './media';
-export type { Milestone, RelatedArticle } from './milestones';
+export type { Milestone } from './milestones';
 export type { MilestoneCategory } from './milestones';
 export { getMilestoneBySlug, milestoneCategoryLabels, milestones, milestonesPage } from './milestones';
 export { phoneGuide } from './phone-guide';
+export type { Publication } from './publications';
+export { publications } from './publications';
 export type { ContributePage, ContributeStep, RenovationBanner } from './renovation';
 export { contributePage, renovationBanner } from './renovation';
 export { siteConfig } from './site';
