@@ -7,5 +7,13 @@
   },
   "liran-kojehinov": {
     "name": "לירן כוג'הינוף"
+  },
+  "knesset": {
+    "name": "הכנסת",
+    "icon": "/images/authors/knesset.png"
+  },
+  "education-ministry": {
+    "name": "משרד החינוך",
+    "icon": "/images/authors/education-ministry.png"
   }
 }

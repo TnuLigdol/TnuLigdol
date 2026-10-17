@@ -3,7 +3,10 @@ import { ArrowLeftIcon } from '@/components/ui/icons';
 import type { Milestone } from '@/content';
 import { cn, formatHebrewDate } from '@/lib/utils';
 import { CategoryTags } from './category-tags';
+import { PublisherBadges, SourceBadge } from './source-badge';
 import { Reveal } from './reveal';
+
+const ICON_SIZE = 'h-[34px] w-[34px] text-[15px]';
 
 /**
  * Vertical timeline, newest first. The line runs down the right edge on mobile
@@ -75,10 +78,22 @@ export function Timeline({ items }: { items: Milestone[] }) {
 
                 <p className='mt-3 font-sans text-[15px] leading-[1.6em] text-ink'>{item.description}</p>
 
-                <span className='mt-4 inline-flex items-center font-sans text-[15px] font-bold text-[#5ca55c] transition-colors group-hover:text-primary-hover'>
-                  להרחבה
-                  <ArrowLeftIcon className='mr-[5px]' />
-                </span>
+                <div className='mt-4 flex flex-wrap items-center justify-between gap-3'>
+                  <span className='inline-flex items-center font-sans text-[15px] font-bold text-[#5ca55c] transition-colors group-hover:text-primary-hover'>
+                    להרחבה
+                    <ArrowLeftIcon className='mr-[5px]' />
+                  </span>
+
+                  <span className='inline-flex items-center gap-[10px]'>
+                    <SourceBadge name={item.author} icon={item.authorIcon} className={ICON_SIZE} />
+                    {item.articles && item.articles.length > 0 && (
+                      <>
+                        <span aria-hidden='true' className='h-[24px] w-px bg-card-border' />
+                        <PublisherBadges articles={item.articles} className={ICON_SIZE} />
+                      </>
+                    )}
+                  </span>
+                </div>
               </Link>
             </Reveal>
           </li>

@@ -1,0 +1,22 @@
+{
+  "haaretz": {
+    "name": "הארץ",
+    "icon": "/images/news-media/haaretz.png"
+  },
+  "mako": {
+    "name": "מאקו",
+    "icon": "/images/news-media/mako.png"
+  },
+  "kan-news": {
+    "name": "כאן חדשות",
+    "icon": "/images/news-media/kan-news.png"
+  },
+  "knesset": {
+    "name": "הכנסת",
+    "icon": "/images/authors/knesset.png"
+  },
+  "education-ministry": {
+    "name": "משרד החינוך",
+    "icon": "/images/authors/education-ministry.png"
+  }
+}

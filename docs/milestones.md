@@ -30,6 +30,7 @@ External links break. For every milestone, save a copy of the source document un
 | _(object key)_         | The slug: `DB/milestones.json` is an object keyed by slug, not an array. Format `YYYY-MM-DD-kebab-case` (starts with the `date`); it is the URL segment and the PDF file name |
 | `title`, `description` | `description` is the few words shown on the timeline                                                                                                                          |
 | `date`                 | `YYYY-MM-DD` only. The list is sorted newest first by string comparison, whatever the order in the file                                                                       |
+| `author`               | author slug (foreign key into `DB/authors.json`), e.g. `education-ministry`, `knesset`; an unknown slug throws at load                                                        |
 | `categories`           | values of the `MilestoneCategory` enum; a typo throws at load                                                                                                                 |
 | `url`                  | the original source                                                                                                                                                           |
 | `copyUrl`              | local copy, see the rule above                                                                                                                                                |
@@ -37,14 +38,14 @@ External links break. For every milestone, save a copy of the source document un
 | `summary`              | optional bullet points, written from reading the source, not copied                                                                                                           |
 | `articles`             | optional list of news-article slugs (foreign keys into `DB/news-articles.json`); an unknown slug throws at load                                                               |
 
-### News articles and media
+### News articles, publishers and authors
 
 Coverage lives outside the milestone records, so one article or outlet is defined once:
 
-- `DB/news-media.json`, keyed by media slug (e.g. `kan-news`): `name`.
-- `DB/news-articles.json`, keyed by article slug (`YYYY-MM-DD-<media>-<topic>`): `media` (a media slug), `headline`, `date`, `url`, and optionally `author` (an author slug), `description`.
+- `DB/publishers.json`, keyed by publisher slug (e.g. `kan-news`, `knesset`): `name`, optionally `icon`.
+- `DB/news-articles.json`, keyed by article slug (`YYYY-MM-DD-<publisher>-<topic>`): `publisher` (a publisher slug), `headline`, `date`, `url`, and optionally `author` (an author slug), `description`.
 - `DB/authors.json`, keyed by author slug (e.g. `noa-limona`): `name`.
 
-A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the outlet and author names) into `RelatedArticle` objects.
+A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the publisher and author names) into `RelatedArticle` objects.
 
 Do not use `as` assertions in new code. Validate with type guards (or Zod if really needed).

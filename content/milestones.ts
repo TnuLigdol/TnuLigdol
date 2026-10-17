@@ -1,7 +1,7 @@
+import authorsData from '@/DB/authors.json';
 import milestonesData from '@/DB/milestones.json';
 import newsArticlesData from '@/DB/news-articles.json';
-import newsAuthorsData from '@/DB/authors.json';
-import newsMediaData from '@/DB/news-media.json';
+import publishersData from '@/DB/publishers.json';
 
 export const milestoneCategoryLabels = {
   'global-trends': 'מגמות בעולם',
@@ -17,6 +17,8 @@ export type MilestoneCategory = keyof typeof milestoneCategoryLabels;
 
 export interface RelatedArticle {
   publication: string;
+  /** Outlet icon under /public, when we have one. */
+  publicationIcon?: string;
   headline: string;
   author?: string;
   /** One line on what the piece covers. */
@@ -30,6 +32,10 @@ export interface Milestone {
   /** URL segment of the dedicated page: /milestones/[slug]. */
   slug: string;
   title: string;
+  /** Who issued the document (name, resolved from `DB/authors.json`). */
+  author: string;
+  /** Icon of the author, when we have one. */
+  authorIcon?: string;
   /** A few words describing the entry. */
   description: string;
   /** ISO date of the document, when known. */
@@ -61,23 +67,26 @@ function isKeyOf<T extends object>(obj: T, key: string): key is Extract<keyof T,
   return key in obj;
 }
 
-/** Looks up a news article by slug and joins its media and author names; an unknown slug fails loudly. */
+/** Looks up a news article by slug and joins its publisher and author names; an unknown slug fails loudly. */
 function toRelatedArticle(milestoneSlug: string, articleSlug: string): RelatedArticle {
   if (!isKeyOf(newsArticlesData, articleSlug)) {
     throw new Error(`Unknown article "${articleSlug}" in milestone "${milestoneSlug}"`);
   }
-  const { media, ...article } = newsArticlesData[articleSlug];
-  if (!isKeyOf(newsMediaData, media)) {
-    throw new Error(`Unknown media "${media}" in article "${articleSlug}"`);
+  const { publisher: publisherSlug, ...article } = newsArticlesData[articleSlug];
+  if (!isKeyOf(publishersData, publisherSlug)) {
+    throw new Error(`Unknown publisher "${publisherSlug}" in article "${articleSlug}"`);
   }
+  const publisher = publishersData[publisherSlug];
+  const publication = publisher.name;
+  const publicationIcon = 'icon' in publisher ? publisher.icon : undefined;
   if (!('author' in article)) {
-    return { ...article, publication: newsMediaData[media].name };
+    return { ...article, publication, publicationIcon };
   }
   const { author, ...rest } = article;
-  if (!isKeyOf(newsAuthorsData, author)) {
+  if (!isKeyOf(authorsData, author)) {
     throw new Error(`Unknown author "${author}" in article "${articleSlug}"`);
   }
-  return { ...rest, publication: newsMediaData[media].name, author: newsAuthorsData[author].name };
+  return { ...rest, publication, publicationIcon, author: authorsData[author].name };
 }
 
 /** Validates a raw JSON record, so a typo in a category or article slug fails loudly. */
@@ -86,8 +95,13 @@ function toMilestone([slug, raw]: [string, (typeof milestonesData)[keyof typeof 
   if (categories.length !== raw.categories.length) {
     throw new Error(`Unknown category in milestone "${slug}"`);
   }
+  if (!isKeyOf(authorsData, raw.author)) {
+    throw new Error(`Unknown author "${raw.author}" in milestone "${slug}"`);
+  }
   const articles = 'articles' in raw ? raw.articles.map((articleSlug) => toRelatedArticle(slug, articleSlug)) : undefined;
-  return { ...raw, slug, categories, articles };
+  const author = authorsData[raw.author];
+  const authorIcon = 'icon' in author ? author.icon : undefined;
+  return { ...raw, author: author.name, authorIcon, slug, categories, articles };
 }
 
 /** Records live in `DB/milestones.json`, keyed by slug; add an entry there and it shows up. Newest first. */
