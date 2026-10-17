@@ -1,3 +1,4 @@
 {
+  "ignoreRegExpList": ["/[\\u0590-\\u05FF\\uFB1D-\\uFB4F]+/g"],
   "words": ["vercel", "pkill"]
 }
