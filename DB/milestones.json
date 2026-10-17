@@ -15,27 +15,9 @@
       "לפי הדיווח בכאן חדשות: התלמידים יוכלו להביא את הטלפון לבית הספר אך הוא יישאר בתיק, האיסור יחול גם בהפסקות ובמרחבים הציבוריים, כולל הכניסה והיציאה, וצפויים אמצעי ענישה מאזהרה ועד החרמת המכשיר. השר אמר שהמשרד לא פוסל הרחבה עתידית לחטיבות הביניים. (ההרחבה אכן הוגשמה בחוזר מנכ״ל באוגוסט 2026.)"
     ],
     "articles": [
-      {
-        "publication": "הארץ",
-        "headline": "משרד החינוך יאסור על תלמידים להשתמש בטלפונים חכמים בבתי ספר יסודיים",
-        "author": "נועה לימונה",
-        "date": "2025-12-11",
-        "url": "https://www.haaretz.co.il/news/education/2025-12-11/ty-article/0000019b-0c3d-d153-abbf-ec3fecca0000"
-      },
-      {
-        "publication": "מאקו",
-        "headline": "החל מפברואר: איסור מוחלט על שימוש בטלפונים ניידים בבתי הספר היסודיים",
-        "author": "יעל אודם",
-        "date": "2025-12-11",
-        "url": "https://www.mako.co.il/news-education/2025_q4/Article-04ae27d0eac0b91026.htm"
-      },
-      {
-        "publication": "כאן חדשות",
-        "headline": "החל מפברואר: איסור על שימוש בניידים בבתי ספר יסודיים",
-        "author": "לירן כוג'הינוף",
-        "date": "2025-12-11",
-        "url": "https://www.kan.org.il/content/kan-news/local/979650/"
-      }
+      "2025-12-11-haaretz-primary-schools-phone-ban",
+      "2025-12-11-mako-primary-schools-phone-ban",
+      "2025-12-11-kan-news-primary-schools-phone-ban"
     ]
   },
   "2026-08-11-education-ministry-circular-0484": {
@@ -48,13 +30,7 @@
     "url": "https://apps.education.gov.il/Mankal/Horaa.aspx?siduri=605",
     "copyUrl": "/downloads/milestones/2026-08-11-education-ministry-circular-0484.pdf",
     "articles": [
-      {
-        "publication": "כאן 11",
-        "headline": "עם מחסור במורים ואיסור חדש על טלפונים: האם שנת הלימודים תיפתח כשורה?",
-        "description": "פריט במהדורת האקטואליה לקראת פתיחת שנת הלימודים: כמה מורים חסרים, והאם האיסור על הטלפונים הניידים באמת יתממש.",
-        "date": "2026-08-31",
-        "url": "https://www.kan.org.il/content/kan-news/newstv/p-963853/s1/1094685/"
-      }
+      "2026-08-31-kan-11-school-year-opening-teacher-shortage-phone-ban"
     ]
   },
   "2017-08-09-knesset-research-mobile-phones-in-schools": {

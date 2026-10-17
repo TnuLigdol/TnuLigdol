@@ -1,4 +1,7 @@
 import milestonesData from '@/DB/milestones.json';
+import newsArticlesData from '@/DB/news-articles.json';
+import newsAuthorsData from '@/DB/authors.json';
+import newsMediaData from '@/DB/news-media.json';
 
 export const milestoneCategoryLabels = {
   'global-trends': 'מגמות בעולם',
@@ -54,13 +57,37 @@ function isMilestoneCategory(value: string): value is MilestoneCategory {
   return value in milestoneCategoryLabels;
 }
 
-/** Validates a raw JSON record, so a typo in a category fails loudly. */
+function isKeyOf<T extends object>(obj: T, key: string): key is Extract<keyof T, string> {
+  return key in obj;
+}
+
+/** Looks up a news article by slug and joins its media and author names; an unknown slug fails loudly. */
+function toRelatedArticle(milestoneSlug: string, articleSlug: string): RelatedArticle {
+  if (!isKeyOf(newsArticlesData, articleSlug)) {
+    throw new Error(`Unknown article "${articleSlug}" in milestone "${milestoneSlug}"`);
+  }
+  const { media, ...article } = newsArticlesData[articleSlug];
+  if (!isKeyOf(newsMediaData, media)) {
+    throw new Error(`Unknown media "${media}" in article "${articleSlug}"`);
+  }
+  if (!('author' in article)) {
+    return { ...article, publication: newsMediaData[media].name };
+  }
+  const { author, ...rest } = article;
+  if (!isKeyOf(newsAuthorsData, author)) {
+    throw new Error(`Unknown author "${author}" in article "${articleSlug}"`);
+  }
+  return { ...rest, publication: newsMediaData[media].name, author: newsAuthorsData[author].name };
+}
+
+/** Validates a raw JSON record, so a typo in a category or article slug fails loudly. */
 function toMilestone([slug, raw]: [string, (typeof milestonesData)[keyof typeof milestonesData]]): Milestone {
   const categories = raw.categories.filter(isMilestoneCategory);
   if (categories.length !== raw.categories.length) {
     throw new Error(`Unknown category in milestone "${slug}"`);
   }
-  return { ...raw, slug, categories };
+  const articles = 'articles' in raw ? raw.articles.map((articleSlug) => toRelatedArticle(slug, articleSlug)) : undefined;
+  return { ...raw, slug, categories, articles };
 }
 
 /** Records live in `DB/milestones.json`, keyed by slug; add an entry there and it shows up. Newest first. */

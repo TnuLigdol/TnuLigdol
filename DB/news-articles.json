@@ -1,0 +1,30 @@
+{
+  "2025-12-11-haaretz-primary-schools-phone-ban": {
+    "media": "haaretz",
+    "headline": "משרד החינוך יאסור על תלמידים להשתמש בטלפונים חכמים בבתי ספר יסודיים",
+    "author": "noa-limona",
+    "date": "2025-12-11",
+    "url": "https://www.haaretz.co.il/news/education/2025-12-11/ty-article/0000019b-0c3d-d153-abbf-ec3fecca0000"
+  },
+  "2025-12-11-mako-primary-schools-phone-ban": {
+    "media": "mako",
+    "headline": "החל מפברואר: איסור מוחלט על שימוש בטלפונים ניידים בבתי הספר היסודיים",
+    "author": "yael-odem",
+    "date": "2025-12-11",
+    "url": "https://www.mako.co.il/news-education/2025_q4/Article-04ae27d0eac0b91026.htm"
+  },
+  "2025-12-11-kan-news-primary-schools-phone-ban": {
+    "media": "kan-news",
+    "headline": "החל מפברואר: איסור על שימוש בניידים בבתי ספר יסודיים",
+    "author": "liran-kojehinov",
+    "date": "2025-12-11",
+    "url": "https://www.kan.org.il/content/kan-news/local/979650/"
+  },
+  "2026-08-31-kan-11-school-year-opening-teacher-shortage-phone-ban": {
+    "media": "kan-11",
+    "headline": "עם מחסור במורים ואיסור חדש על טלפונים: האם שנת הלימודים תיפתח כשורה?",
+    "description": "פריט במהדורת האקטואליה לקראת פתיחת שנת הלימודים: כמה מורים חסרים, והאם האיסור על הטלפונים הניידים באמת יתממש.",
+    "date": "2026-08-31",
+    "url": "https://www.kan.org.il/content/kan-news/newstv/p-963853/s1/1094685/"
+  }
+}

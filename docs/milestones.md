@@ -35,6 +35,16 @@ External links break. For every milestone, save a copy of the source document un
 | `copyUrl`              | local copy, see the rule above                                                                                                                                                |
 | `notice`               | optional warning shown under the date (e.g. an outdated document)                                                                                                             |
 | `summary`              | optional bullet points, written from reading the source, not copied                                                                                                           |
-| `articles`             | optional related news coverage: `publication`, `headline`, `date`, `url`, and optionally `author`, `description`                                                              |
+| `articles`             | optional list of news-article slugs (foreign keys into `DB/news-articles.json`); an unknown slug throws at load                                                               |
+
+### News articles and media
+
+Coverage lives outside the milestone records, so one article or outlet is defined once:
+
+- `DB/news-media.json`, keyed by media slug (e.g. `kan-news`): `name`.
+- `DB/news-articles.json`, keyed by article slug (`YYYY-MM-DD-<media>-<topic>`): `media` (a media slug), `headline`, `date`, `url`, and optionally `author` (an author slug), `description`.
+- `DB/authors.json`, keyed by author slug (e.g. `noa-limona`): `name`.
+
+A milestone lists only article slugs in `articles`; `content/milestones.ts` resolves them (and the outlet and author names) into `RelatedArticle` objects.
 
 Do not use `as` assertions in new code. Validate with type guards (or Zod if really needed).
