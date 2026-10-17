@@ -85,13 +85,13 @@ export function Timeline({ items }: { items: Milestone[] }) {
                   </span>
 
                   <span className='inline-flex items-center gap-[10px]'>
-                    <SourceBadge name={item.author} icon={item.authorIcon} className={ICON_SIZE} />
                     {item.articles && item.articles.length > 0 && (
                       <>
-                        <span aria-hidden='true' className='h-[24px] w-px bg-card-border' />
                         <PublisherBadges articles={item.articles} className={ICON_SIZE} />
+                        <span aria-hidden='true' className='h-[24px] w-px bg-card-border' />
                       </>
                     )}
+                    <SourceBadge name={item.author} icon={item.authorIcon} className={ICON_SIZE} />
                   </span>
                 </div>
               </Link>
