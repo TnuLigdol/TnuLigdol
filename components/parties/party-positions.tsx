@@ -208,9 +208,7 @@ export function PartyPositions({
                 מה אנחנו מבקשים?
               </button>
             </div>
-            <p className={s.small}>
-              מידע ממקורות פומביים · נבדק ב־{date} · טרם נשלחו פניות מטעם היוזמה
-            </p>
+            <p className={s.small}>מידע ממקורות פומביים · נבדק ב־{date}</p>
           </div>
           <aside className={s.pledge}>
             <div className={s.pledgeTop}>
@@ -387,8 +385,7 @@ export function PartyPositions({
             )}
           </div>
           <p className={s.listNote}>
-            עמדה שדווחה אינה התחייבות ליוזמה. פעילות של חברי כנסת אינה מוצגת
-            כעמדת המפלגה.
+            פעילות של חברי כנסת אינה מוצגת כעמדת המפלגה.
           </p>
         </section>
         <section className={s.principles} aria-labelledby="principles-title">
@@ -432,6 +429,7 @@ export function PartyPositions({
         </section>
         <section className={s.method} aria-labelledby="method-title">
           <h2 id="method-title">איך קוראים את המידע?</h2>
+          <p className={s.disclaimer}>{data.disclaimer}</p>
           <details>
             <summary>מה נבדק, ומה עדיין לא?</summary>
             <p>
@@ -454,21 +452,8 @@ export function PartyPositions({
               >
                 כתבת ynet מ־12.10.2026
               </a>{' '}
-              המדווחת על שאלון של פייק ריפורטר ומכון ברנדייס. התשובות המקוריות
-              לשאלון לא נבדקו בנפרד. קישורי ועדת הבחירות משמשים לזיהוי הרשימות,
-              ולא כמקור לעמדה.
-            </p>
-            <p>
-              בכתבה נכתב ״יחד״. אין רשימה רשומה בשם זה; הרשימה היא ״ביחד בראשות
-              נפתלי בנט״ (ריצה משותפת עם יש עתיד), וכך היא מזוהה גם בדיווחים
-              אחרים על אותו שאלון. פירוט בכרטיס הרשימה.
-            </p>
-          </details>
-          <details>
-            <summary>למה לא כתוב ״לא התקבלה תשובה״?</summary>
-            <p>
-              טרם נשלחו פניות מטעם היוזמה. אי־מענה לשאלון אחר אינו אי־מענה
-              אלינו, ופעילות חקיקה של ח״כ אינה תחליף לעמדה מפלגתית.
+              המדווחת על שאלון של פייק ריפורטר ומכון ברנדייס. קישורי ועדת
+              הבחירות משמשים לזיהוי הרשימות, ולא כמקור לעמדה.
             </p>
           </details>
           <button
@@ -657,7 +642,7 @@ export function PartyPositions({
           {modal.kind === 'principles' && (
             <>
               <p className={s.dialogNote}>
-                טיוטת עקרונות לדיון · אינה מצע שאומץ בידי מפלגה
+                הצעה לשיח ציבורי · אינה מצע שאומץ בידי מפלגה
               </p>
               <p>
                 אנחנו מבקשים מכל מפלגה להציג תוכנית רצינית ומתוקצבת להגנת ילדים

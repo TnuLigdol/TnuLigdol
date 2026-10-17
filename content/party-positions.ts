@@ -15,7 +15,12 @@ export type Party = {
   sources: { title: string; url: string }[];
   registry: string;
 };
-export type PartyData = { checked_at: string; scope: string; parties: Party[] };
+export type PartyData = {
+  checked_at: string;
+  scope: string;
+  disclaimer: string;
+  parties: Party[];
+};
 export const partyData = data as PartyData;
 export const sortedParties = [...partyData.parties].sort(
   (a, b) =>

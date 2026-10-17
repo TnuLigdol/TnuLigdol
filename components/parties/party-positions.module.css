@@ -442,6 +442,15 @@
   font-size: 26px;
   margin-bottom: 18px;
 }
+.method .disclaimer {
+  background: #fffdf4;
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid #ffd27e;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 0 0 8px;
+  color: #0c330d;
+}
 .method details {
   padding: 18px 0;
   border-bottom: 1px solid var(--line);
