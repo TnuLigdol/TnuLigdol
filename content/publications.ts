@@ -50,7 +50,7 @@ export function getArticle(slug: string, context: string): Publication {
   }
 }
 
-/** Every record in `DB/publications.json`, newest first: the list shown on "אנחנו בתקשורת". */
+/** Every record in `DB/publications.json`, newest first: the list shown on "בתקשורת". */
 export const publications = Object.keys(publicationsData)
   .map(toArticle)
   .toSorted((a, b) => b.date.localeCompare(a.date));
