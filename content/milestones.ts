@@ -10,7 +10,7 @@ export const milestoneCategoryLabels = {
   'company-activity': 'פעילות החברות בתחום',
   'success-stories': 'סיפורי הצלחה',
   'knowledge-base': 'מאגר מידע מרכזי גדול',
-  'local-trends': 'מגמה בארץ',
+  'local-trends': 'המגמה בארץ',
 } as const;
 
 export type MilestoneCategory = keyof typeof milestoneCategoryLabels;

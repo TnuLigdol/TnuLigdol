@@ -3,8 +3,6 @@ export { articles, categoryLabels, getArticleBySlug, getArticlesByCategory, getR
 export type { Device, DeviceFeatures, DevicePrice, DeviceSpecs, ExtraDetail, ExtraDetailType } from './devices';
 export { devices, getDeviceBySlug } from './devices';
 export { homepage } from './homepage';
-export type { LegalDocument } from './legal';
-export { legalDocuments } from './legal';
 export type { MediaCoverage } from './media';
 export { mediaCoverage } from './media';
 export type { Milestone, RelatedArticle } from './milestones';

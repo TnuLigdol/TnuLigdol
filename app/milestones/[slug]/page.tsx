@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/layout';
 import { CategoryTags } from '@/components/milestones/category-tags';
-import { PublisherBadges, SourceBadge } from '@/components/milestones/source-badge';
+import { SourceBadge } from '@/components/milestones/source-badge';
 import { ArrowLeftIcon, WarningIcon } from '@/components/ui/icons';
 import { getMilestoneBySlug, milestones } from '@/content';
 import { formatHebrewDate } from '@/lib/utils';
@@ -44,7 +44,7 @@ export default async function MilestonePage({ params }: PageProps) {
             <span>חזרה לציר הזמן</span>
           </Link>
 
-          <div className='flex flex-wrap items-center gap-3'>
+          <div className='flex flex-col items-end gap-2'>
             <time dateTime={item.date} className='font-sans text-[16px] font-bold text-primary'>
               {formatHebrewDate(item.date)}
             </time>
@@ -52,9 +52,9 @@ export default async function MilestonePage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className='mt-4 flex items-center gap-2 font-sans text-[15px] text-green-darkest'>
-          <SourceBadge name={item.author} icon={item.authorIcon} />
-          <span className='font-bold'>{item.author}</span>
+        <div className='mt-4 flex items-center gap-4 font-sans text-[20px] text-green-darkest'>
+          <SourceBadge name={item.author} icon={item.authorIcon} className='h-[64px] w-[64px] text-[28px]' />
+          <span className='text-[22px] font-bold'>{item.author}</span>
         </div>
 
         {item.notice && (
@@ -110,10 +110,7 @@ export default async function MilestonePage({ params }: PageProps) {
 
         {item.articles && item.articles.length > 0 && (
           <section className='mt-10 border-t-2 border-card-border pt-8'>
-            <div className='flex flex-wrap items-center gap-3'>
-              <h2 className='font-sans text-[22px] font-bold text-green-darkest'>כתבות קשורות</h2>
-              <PublisherBadges articles={item.articles} />
-            </div>
+            <h2 className='font-sans text-[22px] font-bold text-green-darkest'>כתבות קשורות</h2>
             <ul className='mt-4 space-y-3'>
               {item.articles.map((article) => (
                 <li key={article.url}>
@@ -121,29 +118,31 @@ export default async function MilestonePage({ params }: PageProps) {
                     href={article.url}
                     target='_blank'
                     rel='nofollow noopener noreferrer'
-                    className='block rounded-[15px] border border-card-border p-[16px] transition-shadow hover:shadow-[0px_0px_30px_-4px_rgba(12,51,13,0.25)]'
+                    className='flex items-start gap-4 rounded-[15px] border border-card-border p-[16px] transition-shadow hover:shadow-[0px_0px_30px_-4px_rgba(12,51,13,0.25)]'
                   >
-                    <div className='font-sans text-[14px] text-green-darkest'>
-                      {article.publicationIcon && (
-                        <Image
-                          src={article.publicationIcon}
-                          alt=''
-                          width={18}
-                          height={18}
-                          className='ml-[6px] inline-block h-[18px] w-[18px] rounded-[3px] align-text-bottom'
-                        />
-                      )}
-                      <span className='font-bold text-primary'>{article.publication}</span>
-                      {' · '}
-                      {article.author && <>{article.author}, </>}
-                      <time dateTime={article.date}>{formatHebrewDate(article.date)}</time>
-                    </div>
-                    <h3 className='mt-1 font-sans text-[18px] font-semibold leading-[1.3em] text-green-darkest'>
-                      {article.headline}
-                    </h3>
-                    {article.description && (
-                      <p className='mt-1 font-sans text-[15px] leading-[1.5em] text-ink'>{article.description}</p>
+                    {article.publicationIcon && (
+                      <Image
+                        src={article.publicationIcon}
+                        alt={article.publication}
+                        width={64}
+                        height={64}
+                        className='h-[64px] w-[64px] shrink-0 rounded-[10px] object-contain'
+                      />
                     )}
+                    <div className='min-w-0 flex-1'>
+                      <div className='font-sans text-[14px] text-green-darkest'>
+                        <span className='font-bold text-primary'>{article.publication}</span>
+                        {' · '}
+                        {article.author && <>{article.author}, </>}
+                        <time dateTime={article.date}>{formatHebrewDate(article.date)}</time>
+                      </div>
+                      <h3 className='mt-1 font-sans text-[18px] font-semibold leading-[1.3em] text-green-darkest'>
+                        {article.headline}
+                      </h3>
+                      {article.description && (
+                        <p className='mt-1 font-sans text-[15px] leading-[1.5em] text-ink'>{article.description}</p>
+                      )}
+                    </div>
                   </a>
                 </li>
               ))}
