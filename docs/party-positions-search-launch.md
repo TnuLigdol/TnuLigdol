@@ -1,11 +1,30 @@
 # Party positions page: search launch handoff
 
-Status as of 17 October 2026. Branch `feat/parties-public-ready`.
+Status as of 17 October 2026.
 
 - **Production URL:** https://tnuligdol.co.il/parties
 - **Search phrase:** תנו לגדול מפלגות
-- **Live state:** not published yet. On 17.10.2026 the URL returned HTTP 404.
+- **Live state:** published 17.10.2026 via #49 (`d8bcfa2`). All post-deploy checks in section 4 passed on production.
 - **Search visibility:** nothing here guarantees indexing or ranking. Google decides both.
+
+## Launch log (17.10.2026)
+
+**Search Console:**
+- **Property:** `https://tnuligdol.co.il/` (URL prefix), verified by yanovskishai with the HTML file `public/googlecc2c7af39290314b.html` (#50).
+  - **Keep that file.** Deleting it un-verifies the property.
+  - A separate Domain property was already verified by someone else through a DNS TXT record, so it predates this work.
+- **URL Inspection, `/parties`:**
+  - The live test said "URL is available to Google".
+  - Indexing was requested, and the URL was added to the priority crawl queue.
+- **Homepage:** indexing re-requested, since it now links to `/parties`.
+- **Sitemaps:** `sitemap.xml` submitted; Google read 12 URLs. The old WordPress `sitemap_index.xml` (404 since the rebuild) was removed from the list.
+
+**Hosting and DNS:**
+- DNS is managed at **livedns.co.il** (`park1`/`park2.livedns.co.il`), not Cloudflare. Cloudflare only serves the traffic.
+
+**Still open:**
+- the prototype redirect (section 7)
+- the "חפשו בגוגל" wording, which waits until the page actually appears for the phrase
 
 ## 1. What was implemented and verified locally
 
@@ -81,10 +100,10 @@ curl -s https://tnuligdol.co.il/ | grep -o 'href="/parties"' | wc -l      # expe
 
 ## 5. Google Search Console
 
-These steps need the owner or a full user of the site's property. Nobody has checked yet whether a property exists or who owns it. Nothing has been submitted.
+These steps need the owner or a full user of the site's property. Done once on 17.10.2026; see the launch log at the top.
 
 1. **Find the property.** Prefer an existing Domain property `tnuligdol.co.il`, or a URL-prefix property `https://tnuligdol.co.il/`.
-   - If none exists, the site owner verifies one. A Domain property needs a DNS TXT record in Cloudflare.
+   - If none exists, the site owner verifies one. A Domain property needs a DNS TXT record at livedns.co.il.
    - Don't create tokens on someone else's behalf.
 2. **Inspect the page.** After the deploy, open URL Inspection for `https://tnuligdol.co.il/parties`.
 3. **Run the live test.** Click "Test live URL" and confirm the page can be indexed, the canonical matches, and the HTML is rendered.
@@ -103,7 +122,7 @@ These steps need the owner or a full user of the site's property. Nobody has che
 | PR merge | Asaf-S |
 | Check Render settings and confirm the deploy | Render account |
 | URL Inspection, request indexing, sitemap | Search Console owner or full user |
-| If a Domain property must be verified: DNS TXT record | Cloudflare DNS for tnuligdol.co.il |
+| If a Domain property must be verified: DNS TXT record | DNS at livedns.co.il for tnuligdol.co.il |
 | Prototype redirect, noindex or takedown | Owner of the kovrr-1010.chatgpt.site hosting |
 
 ## 7. The standalone prototype
