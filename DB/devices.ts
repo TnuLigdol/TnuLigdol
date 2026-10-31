@@ -227,7 +227,9 @@ export const devicesData: DevicesData = {
   },
   'nokia-235-4g': {
     name: 'Nokia 235 4G',
+    image: '/devices/nokia-235-4g.avif',
     brand: 'Nokia',
+    price: { min: 260, max: 350 },
     colors: ['שחור'],
     specs: {
       screenSize: '2.8 אינץ׳',
