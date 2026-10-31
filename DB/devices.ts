@@ -225,6 +225,27 @@ export const devicesData: DevicesData = {
     description:
       'דגם 2024 של HMD (יצרנית טלפוני נוקיה הפשוטים): טלפון כפתורים עם משחק הסנייק ומצלמה פשוטה, בלי דפדפן. אין בו GPS, ולכן מומלץ להוסיף SmartTag או AirTag לשיתוף מיקום.',
   },
+  'nokia-235-4g': {
+    name: 'Nokia 235 4G',
+    image: '/devices/nokia-235-4g.avif',
+    brand: 'Nokia',
+    price: { min: 260, max: 350 },
+    colors: ['שחור'],
+    specs: {
+      screenSize: '2.8 אינץ׳',
+      camera: '2MP אחורית + פלאש LED',
+      battery: '1450mAh (ניתנת להסרה)',
+      memory: '64MB RAM / 128MB Storage',
+    },
+    features: {
+      gps: false,
+      sms: true,
+      touchscreen: false,
+      bluetooth: true,
+    },
+    description:
+      'דגם 2024 (TA-1614) עם מסך 2.8 אינץ׳, מצלמה אחורית עם פלאש, Bluetooth 5.0, נגן MP3 ורדיו FM. טלפון כפתורים לשיחות והודעות טקסט, ללא GPS. תומך בכרטיס MicroSD עד 32GB (נמכר בנפרד).',
+  },
   'mewatch-first-phone': {
     name: 'MeWatch First Phone',
     image: '/devices/mewatch-first-phone.png',

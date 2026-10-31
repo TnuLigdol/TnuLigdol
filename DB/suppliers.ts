@@ -31,6 +31,7 @@ export const suppliersData: SuppliersData = {
       'nokia-8210-4g': 'https://www.zap.co.il/model.aspx?modelid=796019',
       'nokia-3210-4g': 'https://www.zap.co.il/model.aspx?modelid=1242606',
       'nokia-215-4g': 'https://www.zap.co.il/model.aspx?modelid=1234418',
+      'nokia-235-4g': 'https://www.zap.co.il/model.aspx?modelid=1226556',
     },
   },
   ksp: {
@@ -41,6 +42,25 @@ export const suppliersData: SuppliersData = {
       'nokia-105-4g': 'https://ksp.co.il/web/item/298111',
       'nokia-110-4g': 'https://ksp.co.il/web/item/291143',
       'nokia-215-4g': 'https://ksp.co.il/web/item/311652',
+      'nokia-235-4g': 'https://ksp.co.il/web/item/311567',
+    },
+  },
+  payngo: {
+    name: 'מחסני חשמל (Payngo)',
+    url: 'https://www.payngo.co.il',
+    description: 'רשת מוצרי חשמל ואלקטרוניקה, כולל טלפונים ניידים, בפריסה ארצית. האתר כולל גם חנות מקוונת.',
+    devices: {
+      'nokia-235-4g': 'https://www.payngo.co.il/356624.html',
+    },
+  },
+  refaeli: {
+    name: 'רפאלי',
+    url: 'https://refaeli.co.il',
+    description:
+      "אתר המכירות 'רפאלי' הינו אתר בתחום מוצרי החשמל והאלקטרוניקה. האתר הוקם בשנת 2006.",
+    devices: {
+      'nokia-225-4g': 'https://refaeli.co.il/items/9070258-TA-1610',
+      'nokia-235-4g': 'https://refaeli.co.il/items/7450097',
     },
   },
   refaeli: {
