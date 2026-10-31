@@ -3,6 +3,7 @@ import {
   FAQ,
   Hero,
   KickstartSection,
+  PartiesSection,
   PhoneGuideSection,
   ShareStorySection,
   StoriesSection,
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <KickstartSection />
+      <PartiesSection />
       <StoriesSection />
       <ShareStorySection />
       <PhoneGuideSection />
